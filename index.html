@@ -132,23 +132,15 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      color: #ffffff;
       margin-bottom: 20px;
     }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: var(--red);
-      flex-shrink: 0;
-    }
     .hero h1 {
-      font-size: clamp(48px, 5.5vw, 78px);
+      font-size: clamp(36px, 4vw, 58px);
       font-weight: 300;
       line-height: 1.05;
       color: #fff;
@@ -502,6 +494,9 @@
     .tier-flagship { background: #fff; color: var(--red); }
     .tier-core { background: rgba(255,255,255,0.85); color: var(--charcoal); }
     .tier-limited { background: var(--charcoal); color: #fff; }
+    .tier-classic { background: rgba(255,255,255,0.85); color: var(--charcoal); }
+    .tier-fruit-forward { background: #fff; color: var(--red); }
+    .tier-experimental { background: var(--charcoal); color: #fff; }
 
     .coffee-body {
       padding: 24px 24px 28px;
@@ -1384,12 +1379,21 @@
     .cta-section {
       background: #fff;
       padding: 96px 80px;
-      text-align: center;
       position: relative;
       overflow: hidden;
       border-top: 1px solid var(--grey);
     }
-    .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cta-left { padding-top: 8px; }
     .cta-tag {
       font-size: 10px;
       font-weight: 600;
@@ -1399,7 +1403,7 @@
       margin-bottom: 20px;
     }
     .cta-section h2 {
-      font-size: clamp(40px, 5vw, 64px);
+      font-size: clamp(32px, 4vw, 52px);
       font-weight: 300;
       color: var(--text-dark);
       line-height: 1.05;
@@ -1407,12 +1411,273 @@
       margin-bottom: 20px;
     }
     .cta-section h2 em { font-style: italic; color: var(--red); }
-    .cta-section p {
+    .cta-section .cta-desc {
       font-size: 15px;
       font-weight: 300;
       line-height: 1.7;
       color: var(--text-mid);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
+    }
+    .cta-contact-info { display: flex; flex-direction: column; gap: 10px; }
+    .cta-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+    .cta-contact-item svg { flex-shrink: 0; color: var(--red); }
+    .cta-contact-item a { color: var(--text-dark); text-decoration: none; font-weight: 400; }
+    .cta-contact-item a:hover { color: var(--red); }
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: #faf9f7;
+      border: 1px solid #e0ddd8;
+      border-radius: 4px;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(194,28,4,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .sample-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid #e0ddd8;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #faf9f7;
+      width: fit-content;
+    }
+    .stepper-btn {
+      background: none;
+      border: none;
+      width: 40px;
+      height: 42px;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-mid);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, color 0.15s ease;
+      flex-shrink: 0;
+    }
+    .stepper-btn:hover { background: rgba(194,28,4,0.07); color: var(--red); }
+    .stepper-btn:active { background: rgba(194,28,4,0.14); }
+    .stepper-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-dark);
+      min-width: 36px;
+      text-align: center;
+      border-left: 1px solid #e0ddd8;
+      border-right: 1px solid #e0ddd8;
+      padding: 0 4px;
+      line-height: 42px;
+      user-select: none;
+    }
+    .stepper-note {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 6px;
+    }
+    /* Custom multi-select dropdown */
+    .coffee-dropdown-wrap { position: relative; }
+    .coffee-dropdown-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #faf9f7;
+      border: 1px solid #e0ddd8;
+      border-radius: 4px;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-mid);
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .coffee-dropdown-trigger.open,
+    .coffee-dropdown-trigger:hover { border-color: var(--red); }
+    .coffee-dropdown-trigger.has-selection { color: var(--text-dark); }
+    .coffee-dropdown-trigger svg { flex-shrink: 0; transition: transform 0.2s ease; }
+    .coffee-dropdown-trigger.open svg { transform: rotate(180deg); }
+    .coffee-dropdown-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: #fff;
+      border: 1px solid #e0ddd8;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 50;
+      overflow: hidden;
+    }
+    .coffee-dropdown-list.open { display: block; }
+    .coffee-dropdown-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: background 0.12s ease;
+      border-bottom: 1px solid #f0ede8;
+    }
+    .coffee-dropdown-option:last-child { border-bottom: none; }
+    .coffee-dropdown-option:hover { background: #faf7f4; }
+    .coffee-dropdown-option.selected { background: #fdf5f3; }
+    .coffee-opt-check {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border: 1px solid #c8c4bc;
+      border-radius: 3px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .coffee-dropdown-option.selected .coffee-opt-check {
+      background: var(--red);
+      border-color: var(--red);
+    }
+    .coffee-opt-check svg { display: none; }
+    .coffee-dropdown-option.selected .coffee-opt-check svg { display: block; }
+    .coffee-opt-text { display: flex; flex-direction: column; gap: 1px; }
+    .coffee-opt-name { font-size: 13px; font-weight: 400; color: var(--text-dark); line-height: 1.3; }
+    .coffee-opt-process { font-size: 11px; color: var(--text-light); font-weight: 300; }
+    .coffee-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      min-height: 0;
+    }
+    .coffee-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fdf5f3;
+      border: 1px solid rgba(194,28,4,0.2);
+      border-radius: 3px;
+      padding: 4px 8px 4px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--red);
+      letter-spacing: 0.02em;
+    }
+    .coffee-tag-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: var(--red);
+      opacity: 0.6;
+      line-height: 1;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .coffee-tag-remove:hover { opacity: 1; }
+    /* Roasted toggle */
+    .roast-toggle {
+      display: flex;
+      gap: 0;
+      border: 1px solid #e0ddd8;
+      border-radius: 4px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .roast-toggle input[type="radio"] { display: none; }
+    .roast-toggle label {
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      cursor: pointer;
+      background: #faf9f7;
+      border-right: 1px solid #e0ddd8;
+      transition: background 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
+    .roast-toggle label:last-of-type { border-right: none; }
+    .roast-toggle input[type="radio"]:checked + label {
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: #fff;
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      align-self: flex-start;
+    }
+    .form-submit:hover { background: #a51803; transform: translateY(-1px); }
+    .form-submit:active { transform: translateY(0); }
+    .form-success {
+      display: none;
+      background: #f0faf4;
+      border: 1px solid #b6dfc6;
+      border-radius: 4px;
+      padding: 18px 20px;
+      font-size: 14px;
+      color: #2a6645;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cta-section { padding: 72px 24px; }
+    }
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
     }
     .btn-white {
       display: inline-flex;
@@ -1513,6 +1778,21 @@
       color: rgba(255,255,255,0.25);
     }
 
+    /* ── HERO LOAD FADE-IN ── */
+    .hero-load {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .hero-load.hero-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-load-d1 { transition-delay: 0.12s; }
+    .hero-load-d2 { transition-delay: 0.24s; }
+    .hero-load-d3 { transition-delay: 0.36s; }
+    .hero-load-d4 { transition-delay: 0.48s; }
+
     /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
@@ -1556,15 +1836,16 @@
     Scroll
   </div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Specialty Green Coffee &nbsp;·&nbsp; Vancouver, BC</p>
-    <h1>West Java,<br /><em>Direct to Your Roastery.</em></h1>
-    <p class="hero-sub">We import traceable green coffee from the Bandung and Cianjur Highlands, working directly with Java Frinsa Estate and Pusat Kopi Nusantara to bring exceptional West Java lots to North American roasters.</p>
-    <div class="hero-btns">
+    <p class="hero-eyebrow hero-load">Specialty Green Coffee &nbsp;·&nbsp; Vancouver, BC</p>
+    <h1 class="hero-load hero-load-d1">Indonesia's Finest,<br /><em>Direct to Your Roastery</em></h1>
+    <p class="hero-sub hero-load hero-load-d2">We import traceable green coffee directly from Indonesia, partnering with numerous farmers and estates across the archipelago to bring exceptional lots to roasters worldwide. Our current local inventory features coffees from Java Frinsa Estate in the Bandung and Cianjur Highlands of West Java.</p>
+    <div class="hero-btns hero-load hero-load-d3">
       <a href="#contact" class="btn-red">
         Request Samples
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
       <a href="#coffees" class="btn-outline-white">View Coffees</a>
+      <a href="#beyond-coffee" class="btn-outline-white">Additional Trades</a>
     </div>
   </div>
 </section>
@@ -1598,9 +1879,9 @@
   </div>
   <div>
     <p class="section-tag reveal">Who We Are</p>
-    <h2 class="section-heading reveal reveal-d1" style="margin-bottom:20px;">An importer built for serious roasters.</h2>
-    <p class="section-body reveal reveal-d2" style="margin-bottom:18px;">Across Indonesian Seas is a Vancouver-based specialty green coffee importer. We focus exclusively on West Java, one of the world's most underrepresented fine coffee origins, working directly with the farmers producing it.</p>
-    <p class="section-body reveal reveal-d3" style="margin-bottom:32px;">Every lot we carry is fully traceable and available in sample and full-bag quantities for roasters across North America. Cupping scores are available upon request.</p>
+    <h2 class="section-heading reveal reveal-d1" style="margin-bottom:20px;">An importer built for serious roasters</h2>
+    <p class="section-body reveal reveal-d2" style="margin-bottom:18px;">Across Indonesian Seas is a Vancouver-based trading and logistics company specializing in Indonesian exports. We connect buyers worldwide with traceable, high-quality goods sourced directly from producers across the archipelago.</p>
+    <p class="section-body reveal reveal-d3" style="margin-bottom:32px;">Our current focus is specialty green coffee, with inventory sourced directly from farmers and estates in West Java. Every lot is fully traceable and available in sample and full-bag quantities. Cupping scores available upon request.</p>
     <div class="pill-list reveal reveal-d4">
       <span class="pill"><span class="pill-dot"></span>Bandung Highlands</span>
       <span class="pill"><span class="pill-dot"></span>Cianjur Highlands</span>
@@ -1609,283 +1890,6 @@
       <span class="pill"><span class="pill-dot"></span>Frinsa Collective</span>
       <span class="pill"><span class="pill-dot"></span>Pusat Kopi Nusantara</span>
       <span class="pill"><span class="pill-dot"></span>Natural · Honey · Washed</span>
-    </div>
-  </div>
-</section>
-
-<!-- COFFEES -->
-<section class="coffees-section" id="coffees">
-  <div class="coffees-header">
-    <div>
-      <p class="section-tag reveal">Current Offerings</p>
-      <h2 class="section-heading reveal reveal-d1">Available Lots</h2>
-    </div>
-    <a href="#contact" class="btn-outline-dark reveal reveal-d2">
-      Full Catalogue
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-
-  <div class="filter-tabs reveal" id="filter-tabs">
-    <button class="filter-tab active" data-filter="all">All</button>
-    <button class="filter-tab" data-filter="flagship">Flagship</button>
-    <button class="filter-tab" data-filter="core">Core</button>
-    <button class="filter-tab" data-filter="limited">Limited</button>
-  </div>
-
-  <div class="coffee-list" id="coffee-list">
-
-    <!-- 015/020 -->
-    <div class="coffee-card reveal" data-tier="flagship">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/020</span>
-        <span class="process-badge">Natural Lactic</span>
-        <span class="tier-flag tier-flagship">Flagship</span>
-        <img src="/Frinsa Bags/Frinsa Lactic Natural.jpg" alt="Frinsa Estate Natural Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Estate</p>
-        <h3 class="coffee-name">Frinsa Estate Natural Lactic</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Ripe mango, honeydew, candy-like sweetness</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter · Espresso</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 015/019 -->
-    <div class="coffee-card reveal reveal-d1" data-tier="core">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/019</span>
-        <span class="process-badge">Natural</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/Frinsa Bags/Frinsa Collective Natural.jpg" alt="Frinsa Collective Natural" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Collective</p>
-        <h3 class="coffee-name">Frinsa Collective Natural</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Melon, peach strudel, elegant melon acidity</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter · Espresso</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 015/024 -->
-    <div class="coffee-card reveal reveal-d2" data-tier="limited">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/024</span>
-        <span class="process-badge">Honey Tempe</span>
-        <span class="tier-flag tier-limited">Limited</span>
-        <img src="/Frinsa Bags/Frinsa Honey Tempe.jpg" alt="Frinsa Honey Tempe" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Estate</p>
-        <h3 class="coffee-name">Frinsa Honey Tempe</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Honeydew melon, orange citrus, Earl Grey tea</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 015/023 -->
-    <div class="coffee-card reveal reveal-d3" data-tier="limited">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/023</span>
-        <span class="process-badge">Honey Lactic</span>
-        <span class="tier-flag tier-limited">Limited</span>
-        <img src="/Frinsa Bags/Frinsa Honey Lactic.jpg" alt="Frinsa Honey Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Estate</p>
-        <h3 class="coffee-name">Frinsa Honey Lactic</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Honeydew melon, orange citrus, floral honey, Earl Grey tea, clean finish</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter · Espresso</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 015/021 -->
-    <div class="coffee-card reveal reveal-d4" data-tier="core">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/021</span>
-        <span class="process-badge">Fully Washed</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/Frinsa Bags/Frinsa Collective Full Wash.jpg" alt="Frinsa Collective Full Wash" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Collective</p>
-        <h3 class="coffee-name">Frinsa Collective Fully Washed</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Sweet and fruit forward, bright orange acidity, milk chocolate aftertaste</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Espresso · Filter</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 015/022 Wet Hulled -->
-    <div class="coffee-card reveal reveal-d5" data-tier="core">
-      <div class="coffee-img" style="background: #fff;">
-        <span class="lot-id">015/022</span>
-        <span class="process-badge">Wet Hulled</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/Frinsa Bags/Frinsa Collective Wethulled.jpg" alt="Frinsa Collective Wet Hulled" loading="lazy" style="object-fit: contain; background: #fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Java Frinsa Collective</p>
-        <h3 class="coffee-name">Frinsa Collective Wet Hulled</h3>
-        <p class="coffee-origin">Bandung Highlands, West Java</p>
-        <p class="tasting-notes">Dark chocolate, cedar, earthy body, clean finish</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter · Espresso</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PKNI Natural -->
-    <div class="coffee-card reveal" data-tier="core">
-      <div class="coffee-img" style="background:#fff;">
-        <span class="process-badge">Natural</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/PKNI Bags/Pusaka Natural.jpg" alt="PKNI Natural" loading="lazy" style="object-fit:contain;background:#fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Pusat Kopi Nusantara</p>
-        <h3 class="coffee-name">PKNI Natural</h3>
-        <p class="coffee-origin">Cianjur Highlands, West Java</p>
-        <p class="tasting-notes">Fig and red apple when hot, transitioning to apple cinnamon as it cools. Medium to full body with a long-lasting, pleasantly sweet aftertaste.</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter · Espresso</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PKNI Honey -->
-    <div class="coffee-card reveal reveal-d1" data-tier="core">
-      <div class="coffee-img" style="background:#fff;">
-        <span class="process-badge">Honey</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/PKNI Bags/Pusaka Honey.jpg" alt="PKNI Honey" loading="lazy" style="object-fit:contain;background:#fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Pusat Kopi Nusantara</p>
-        <h3 class="coffee-name">PKNI Honey</h3>
-        <p class="coffee-origin">Cianjur Highlands, West Java</p>
-        <p class="tasting-notes">Honey and soft cocoa fragrance with subtle white tea aromatics. Smooth and balanced, with gentle sweetness, light chocolate depth, and a clean tea-like finish.</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Filter</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PKNI Washed -->
-    <div class="coffee-card reveal reveal-d2" data-tier="core">
-      <div class="coffee-img" style="background:#fff;">
-        <span class="process-badge">Washed</span>
-        <span class="tier-flag tier-core">Core</span>
-        <img src="/PKNI Bags/Pusaka Washed.jpg" alt="PKNI Washed" loading="lazy" style="object-fit:contain;background:#fff;" />
-      </div>
-      <div class="coffee-body">
-        <p class="coffee-producer">Pusat Kopi Nusantara</p>
-        <h3 class="coffee-name">PKNI Washed</h3>
-        <p class="coffee-origin">Cianjur Highlands, West Java</p>
-        <p class="tasting-notes">Cereal and toasted grain fragrance with light cocoa notes. Earthy and structured, finishing with cacao nib bitterness, medium acidity, and a medium body.</p>
-        <div class="coffee-footer">
-          <span class="coffee-use">Espresso · Filter</span>
-          <a href="#contact" class="sample-link">
-            Request Sample
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /coffee-list -->
-
-  <div class="coffees-cta">
-    <a href="#contact" class="btn-red">
-      Request Samples for All Lots
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- WHY AIS -->
-<section class="why-section">
-  <div class="why-img">
-    <img src="/An importer built for serious roasters picture..jpg" alt="AIS team at origin" loading="lazy" />
-  </div>
-  <div class="why-content">
-    <p class="section-tag reveal">Why AIS</p>
-    <h2 class="section-heading reveal reveal-d1">Specialty coffee, taken seriously.</h2>
-    <div class="why-list">
-      <div class="why-item reveal reveal-d2">
-        <div class="why-num">01</div>
-        <div class="why-text">
-          <h4>Deep origin knowledge</h4>
-          <p>We've built lasting relationships in West Java, a region producing exceptional coffees that remain largely invisible to the global specialty market.</p>
-        </div>
-      </div>
-      <div class="why-item reveal reveal-d3">
-        <div class="why-num">02</div>
-        <div class="why-text">
-          <h4>Full supply chain transparency</h4>
-          <p>We know the name of every farmer behind every lot. No middlemen, no ambiguity. Complete documentation from farm gate to your roastery.</p>
-        </div>
-      </div>
-      <div class="why-item reveal reveal-d4">
-        <div class="why-num">03</div>
-        <div class="why-text">
-          <h4>Cupped and verified</h4>
-          <p>Every lot is cupped extensively at origin and again on arrival. Our standards are non-negotiable. If it doesn't pass, it doesn't ship. Cupping scores are available upon request for every lot we carry.</p>
-        </div>
-      </div>
-      <div class="why-item reveal reveal-d5">
-        <div class="why-num">04</div>
-        <div class="why-text">
-          <h4>Relationships, not transactions</h4>
-          <p>You are never a number. Every trade is personal, with responsive support and a genuine commitment to long-term partnership. Our mission is long-term value, not just volume.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -2055,6 +2059,270 @@
   </script>
 </section>
 
+<!-- COFFEES -->
+<section class="coffees-section" id="coffees">
+  <div class="coffees-header">
+    <div>
+      <p class="section-tag reveal">Current Offerings</p>
+      <h2 class="section-heading reveal reveal-d1">Available Lots</h2>
+    </div>
+    <a href="#contact" class="btn-outline-dark reveal reveal-d2">
+      Full Catalogue
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="filter-tabs reveal" id="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All Coffees</button>
+    <button class="filter-tab" data-filter="classic">Classic &amp; Balanced</button>
+    <button class="filter-tab" data-filter="fruit-forward">Fruit-Forward</button>
+    <button class="filter-tab" data-filter="experimental">Experimental</button>
+  </div>
+
+  <div class="coffee-list" id="coffee-list">
+
+    <!-- 015/020 -->
+    <div class="coffee-card reveal" data-tier="experimental">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Natural Lactic</span>
+        <span class="tier-flag tier-experimental">Experimental</span>
+        <img src="/Frinsa Bags/Frinsa Lactic Natural.jpg" alt="Frinsa Estate Natural Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Estate Natural Lactic</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Ripe mango, honeydew, candy-like sweetness</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/019 -->
+    <div class="coffee-card reveal reveal-d1" data-tier="fruit-forward">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Natural</span>
+        <span class="tier-flag tier-fruit-forward">Fruit-Forward</span>
+        <img src="/Frinsa Bags/Frinsa Collective Natural.jpg" alt="Frinsa Collective Natural" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Natural</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Melon, peach strudel, elegant melon acidity</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/024 -->
+    <div class="coffee-card reveal reveal-d2" data-tier="experimental">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Honey Tempe</span>
+        <span class="tier-flag tier-experimental">Experimental</span>
+        <img src="/Frinsa Bags/Frinsa Honey Tempe.jpg" alt="Frinsa Honey Tempe" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Honey Tempe</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Honeydew melon, orange citrus, Earl Grey tea</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/023 -->
+    <div class="coffee-card reveal reveal-d3" data-tier="experimental">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Honey Lactic</span>
+        <span class="tier-flag tier-experimental">Experimental</span>
+        <img src="/Frinsa Bags/Frinsa Honey Lactic.jpg" alt="Frinsa Honey Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Honey Lactic</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Honeydew melon, orange citrus, floral honey, Earl Grey tea, clean finish</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/021 -->
+    <div class="coffee-card reveal reveal-d4" data-tier="classic">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Fully Washed</span>
+        <span class="tier-flag tier-classic">Classic &amp; Balanced</span>
+        <img src="/Frinsa Bags/Frinsa Collective Full Wash.jpg" alt="Frinsa Collective Full Wash" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Fully Washed</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Sweet and fruit forward, bright orange acidity, milk chocolate aftertaste</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Espresso · Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/022 Wet Hulled -->
+    <div class="coffee-card reveal reveal-d5" data-tier="classic">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="process-badge">Wet Hulled</span>
+        <span class="tier-flag tier-classic">Classic &amp; Balanced</span>
+        <img src="/Frinsa Bags/Frinsa Collective Wethulled.jpg" alt="Frinsa Collective Wet Hulled" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Wet Hulled</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Dark chocolate, cedar, earthy body, clean finish</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Natural -->
+    <div class="coffee-card reveal" data-tier="fruit-forward">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Natural</span>
+        <span class="tier-flag tier-fruit-forward">Fruit-Forward</span>
+        <img src="/PKNI Bags/Pusaka Natural.jpg" alt="PKNI Natural" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Natural</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Fig and red apple when hot, transitioning to apple cinnamon as it cools. Medium to full body with a long-lasting, pleasantly sweet aftertaste.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Honey -->
+    <div class="coffee-card reveal reveal-d1" data-tier="classic">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Honey</span>
+        <span class="tier-flag tier-classic">Classic &amp; Balanced</span>
+        <img src="/PKNI Bags/Pusaka Honey.jpg" alt="PKNI Honey" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Honey</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Honey and soft cocoa fragrance with subtle white tea aromatics. Smooth and balanced, with gentle sweetness, light chocolate depth, and a clean tea-like finish.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Washed -->
+    <div class="coffee-card reveal reveal-d2" data-tier="classic">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Washed</span>
+        <span class="tier-flag tier-classic">Classic &amp; Balanced</span>
+        <img src="/PKNI Bags/Pusaka Washed.jpg" alt="PKNI Washed" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Washed</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Cereal and toasted grain fragrance with light cocoa notes. Earthy and structured, finishing with cacao nib bitterness, medium acidity, and a medium body.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Espresso · Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /coffee-list -->
+
+  <div class="coffees-cta">
+    <a href="#contact" class="btn-red">
+      Request Samples for All Lots
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- WHY AIS -->
+<section class="why-section">
+  <div class="why-img">
+    <img src="/newest stairsfikri.jpg" alt="AIS team at origin" loading="lazy" />
+  </div>
+  <div class="why-content">
+    <p class="section-tag reveal">Why AIS</p>
+    <h2 class="section-heading reveal reveal-d1">Built on Indonesian roots.</h2>
+    <div class="why-list">
+      <div class="why-item reveal reveal-d2">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Deep origin knowledge</h4>
+          <p>We've built lasting relationships with farmers and producers across Indonesia, sourcing exceptional goods that remain largely undiscovered by the global market.</p>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-d3">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>Traceable, verified, and accountable</h4>
+          <p>We know the name of every producer behind every lot. No middlemen, no ambiguity. Complete documentation from farm to your door. Every shipment is quality checked at origin and on arrival. If it doesn't meet our standards, it doesn't ship.</p>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-d4">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>Relationships, not transactions</h4>
+          <p>You are never a number. Every trade is personal, with responsive support and a genuine commitment to long-term partnership. Our mission is long-term value, not just volume.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCERS -->
 <section class="producers-section" id="producers">
   <div class="producers-header">
@@ -2209,7 +2477,7 @@
 </section>
 
 <!-- COMMODITIES -->
-<section class="commodities-section">
+<section class="commodities-section" id="beyond-coffee">
   <div class="commodities-header">
     <p class="section-tag reveal">Expanding Sourcing Platform</p>
     <h2 class="section-heading reveal reveal-d1" style="max-width:440px; margin-bottom:16px;">Beyond coffee.</h2>
@@ -2258,7 +2526,7 @@
 
     <div class="article-card reveal">
       <div class="article-img">
-        <img src="/PhotosforArticleplaceholder/AIS Visits the Embassy of the Republic of Indonesia in Ottawa.png" alt="AIS Visits the Embassy of the Republic of Indonesia in Ottawa" loading="lazy" />
+        <img src="/PhotosforArticleplaceholder/new.jpeg" alt="AIS Visits the Embassy of the Republic of Indonesia in Ottawa" loading="lazy" />
       </div>
       <div class="article-body">
         <div class="article-meta">
@@ -2276,7 +2544,7 @@
 
     <div class="article-card reveal reveal-d1">
       <div class="article-img">
-        <img src="/PhotosforArticleplaceholder/AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada.png" alt="AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada" loading="lazy" />
+        <img src="/PhotosforArticleplaceholder/Bumi partnership.jpeg" alt="AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada" loading="lazy" />
       </div>
       <div class="article-body">
         <div class="article-meta">
@@ -2402,16 +2670,121 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA / CONTACT -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
-    <p class="cta-tag reveal">Work With Us</p>
-    <h2 class="reveal reveal-d1">Ready to taste<br /><em>West Java?</em></h2>
-    <p class="reveal reveal-d2">We send sample packs to serious roasters across North America. Tell us what you're looking for and we'll match you to the right lot.</p>
-    <a href="mailto:info@acrossindonesianseas.com" class="btn-red reveal reveal-d3">
-      Request a Sample Pack
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
+
+    <!-- Left: heading + info -->
+    <div class="cta-left reveal">
+      <p class="cta-tag">Get in Touch</p>
+      <h2>Ready to taste<br /><em>West Java?</em></h2>
+      <p class="cta-desc">We send 200g sample packs to roasters worldwide. Fill out the form and we'll get back to you within one business day.</p>
+      <div class="cta-contact-info">
+        <div class="cta-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@acrossindonesianseas.com">info@acrossindonesianseas.com</a>
+        </div>
+        <div class="cta-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Vancouver, BC · Canada
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="reveal reveal-d1">
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mykbozod" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first_name" required />
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last_name" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company / Roastery</label>
+          <input type="text" id="company" name="company" />
+        </div>
+        <div class="form-group">
+          <label>Coffee Selection</label>
+          <div class="coffee-dropdown-wrap" id="coffee-dropdown-wrap">
+            <div class="coffee-dropdown-trigger" id="coffee-trigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="coffee-trigger-label">Select a coffee…</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="coffee-dropdown-list" id="coffee-dropdown-list" role="listbox">
+              <div class="coffee-dropdown-option" data-value="Frinsa Estate Natural Lactic" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Estate Natural Lactic</span><span class="coffee-opt-process">Natural Lactic · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="Frinsa Collective Natural" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Collective Natural</span><span class="coffee-opt-process">Natural · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="Frinsa Collective Fully Washed" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Collective Fully Washed</span><span class="coffee-opt-process">Fully Washed · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="Frinsa Collective Wet Hulled" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Collective Wet Hulled</span><span class="coffee-opt-process">Wet Hulled · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="Frinsa Honey Lactic" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Honey Lactic</span><span class="coffee-opt-process">Honey Lactic · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="Frinsa Honey Tempe" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Honey Tempe</span><span class="coffee-opt-process">Honey Tempe · Bandung Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="PKNI Natural" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">PKNI Natural</span><span class="coffee-opt-process">Natural · Cianjur Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="PKNI Honey" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">PKNI Honey</span><span class="coffee-opt-process">Honey · Cianjur Highlands</span></div>
+              </div>
+              <div class="coffee-dropdown-option" data-value="PKNI Washed" role="option">
+                <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="coffee-opt-text"><span class="coffee-opt-name">PKNI Washed</span><span class="coffee-opt-process">Washed · Cianjur Highlands</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="coffee-tags" id="coffee-tags"></div>
+          <input type="hidden" name="coffee_selection" id="coffee-selection-input" />
+        </div>
+        <div class="form-group">
+          <label>Roast Preference</label>
+          <div class="roast-toggle">
+            <input type="radio" name="roast" id="roast-green" value="Green (Unroasted)" checked />
+            <label for="roast-green">Green (Unroasted)</label>
+            <input type="radio" name="roast" id="roast-roasted" value="Roasted" />
+            <label for="roast-roasted">Roasted</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send Request
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <div class="form-success" id="form-success">
+          Thanks — we'll be in touch within one business day.
+        </div>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -2473,6 +2846,13 @@
     nav.classList.toggle('scrolled', y > 60);
   }, { passive: true });
 
+  // Hero load fade-in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.hero-load').forEach(el => el.classList.add('hero-visible'));
+    });
+  });
+
   // Scroll reveal
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -2509,6 +2889,99 @@
       });
     });
   });
+
+  // Coffee multi-select dropdown
+  (function() {
+    const trigger   = document.getElementById('coffee-trigger');
+    const list      = document.getElementById('coffee-dropdown-list');
+    const tagsWrap  = document.getElementById('coffee-tags');
+    const hidden    = document.getElementById('coffee-selection-input');
+    const options   = list.querySelectorAll('.coffee-dropdown-option');
+    const trigLabel = document.getElementById('coffee-trigger-label');
+    let selected    = [];
+
+    function renderTags() {
+      tagsWrap.innerHTML = '';
+      selected.forEach(val => {
+        const tag = document.createElement('span');
+        tag.className = 'coffee-tag';
+        tag.innerHTML = val + '<button type="button" class="coffee-tag-remove" aria-label="Remove">×</button>';
+        tag.querySelector('.coffee-tag-remove').addEventListener('click', () => {
+          selected = selected.filter(v => v !== val);
+          list.querySelector(`[data-value="${val}"]`).classList.remove('selected');
+          renderTags();
+        });
+        tagsWrap.appendChild(tag);
+      });
+      hidden.value = selected.join(', ');
+      trigLabel.textContent = selected.length ? `${selected.length} coffee${selected.length > 1 ? 's' : ''} selected` : 'Select a coffee…';
+      trigger.classList.toggle('has-selection', selected.length > 0);
+    }
+
+    trigger.addEventListener('click', () => {
+      const open = list.classList.toggle('open');
+      trigger.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', open);
+    });
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.dataset.value;
+        if (opt.classList.contains('selected')) {
+          selected = selected.filter(v => v !== val);
+          opt.classList.remove('selected');
+        } else {
+          selected.push(val);
+          opt.classList.add('selected');
+        }
+        renderTags();
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (!document.getElementById('coffee-dropdown-wrap').contains(e.target)) {
+        list.classList.remove('open');
+        trigger.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  // Formspree AJAX submit
+  (function() {
+    const form    = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          // Reset dropdown
+          document.querySelectorAll('.coffee-dropdown-option').forEach(o => o.classList.remove('selected'));
+          document.getElementById('coffee-tags').innerHTML = '';
+          document.getElementById('coffee-selection-input').value = '';
+          document.getElementById('coffee-trigger-label').textContent = 'Select a coffee…';
+          success.style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          btn.textContent = 'Error — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Error — try again';
+        btn.disabled = false;
+      }
+    });
+  })();
 </script>
 </body>
 </html>

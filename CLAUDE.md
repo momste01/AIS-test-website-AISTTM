@@ -46,6 +46,9 @@
 - **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
 - **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
 
+## GitHub Pushes
+- **Never push to GitHub without explicit user confirmation.** After making local changes, always ask: "Would you like me to push these changes to GitHub?" and wait for a yes before running any `git push` command.
+
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
 - Do not "improve" a reference design — match it
