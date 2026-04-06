@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bringing Indonesian Green Coffee to Canada — Across Indonesian Seas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04; --red-dark: #a01803; --grey: #D9D9D9; --grey-light: #F2F2F2;
+      --white: #FFFFFF; --charcoal: #2A2A2A; --text-dark: #1a1a1a; --text-mid: #555555; --text-light: #888888;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); }
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', Georgia, serif; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 68px; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--grey); }
+    .nav-logo { flex-shrink: 0; min-width: 160px; overflow: hidden; }
+    .nav-logo img { height: 80px; width: auto; transform: scale(2); transform-origin: left center; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta { padding: 8px 20px; background: var(--red); color: #fff !important; border-radius: 2px; white-space: nowrap; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--red-dark) !important; }
+    .article-hero { padding-top: 68px; background: var(--grey-light); }
+    .article-hero-inner { max-width: 800px; margin: 0 auto; padding: 64px 24px 48px; }
+    .back-link { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); text-decoration: none; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--red); }
+    .article-category-badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-hero-title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 20px; }
+    .article-hero-meta { font-size: 13px; color: var(--text-light); letter-spacing: 0.03em; }
+    .article-cover { width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 4/3; overflow: hidden; }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-body-wrapper { max-width: 680px; margin: 0 auto; padding: 56px 24px 96px; }
+    .article-body-wrapper p { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 24px; }
+    .article-body-wrapper h2 { font-size: 1.75rem; font-weight: 500; letter-spacing: -0.02em; color: var(--text-dark); margin: 40px 0 16px; }
+    .article-body-wrapper blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 24px; margin: 32px 0; }
+    .article-body-wrapper blockquote p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-style: italic; line-height: 1.5; color: var(--text-dark); }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#coffees">Coffees</a></li>
+    <li><a href="/#producers">Producers</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/#articles" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Articles
+    </a>
+    <span class="article-category-badge">Trade</span>
+    <h1 class="article-hero-title">Bringing the Richness of Indonesian Green Coffee to Canada</h1>
+    <p class="article-hero-meta">April 28, 2024</p>
+  </div>
+</div>
+
+<div class="article-cover">
+  <img src="https://placehold.co/1440x630/1e2420/1e2420" alt="Indonesian green coffee journey to Canada" />
+</div>
+
+<div class="article-body-wrapper">
+  <p>We are proud to announce our latest milestone: the direct purchase of specialty green coffee from Indonesia, now making its way to Canadian roasters. This shipment represents years of groundwork — relationship-building, sourcing visits, and the deliberate construction of a supply chain built on trust rather than convenience.</p>
+
+  <h2>Why Indonesian Coffee</h2>
+
+  <p>Indonesia is one of the world's most storied coffee origins, yet it remains underrepresented in the North American specialty market. Most of what reaches Canadian shelves is either Sumatra Mandheling processed through conventional channels, or anonymous commodity blends. West Java's highland coffees — dense, complex, and remarkably diverse in processing styles — have been largely invisible to Canadian roasters.</p>
+
+  <p>We saw that gap as an opportunity. Not just commercially, but as a chance to introduce roasters and their customers to flavors and stories that deserve to be known.</p>
+
+  <blockquote>
+    <p>"West Java's highland coffees have been largely invisible to Canadian roasters. We saw that gap as an opportunity."</p>
+  </blockquote>
+
+  <h2>The Journey from Farm to Warehouse</h2>
+
+  <p>Green coffee is a living material. From the moment it leaves the processing station, every decision in the supply chain affects what ends up in the roaster's hands. Our lots travel from Pangalengan in grain-pro-lined bags, staged at a licensed Indonesian exporter, then containerized through the Port of Tanjung Priok before crossing the Pacific to Vancouver.</p>
+
+  <p>Transit time is typically five to seven weeks. We test moisture and water activity at multiple points. On arrival, all lots are warehoused in climate-controlled storage and re-assessed by our team before being made available to roasters.</p>
+
+  <h2>What's Available</h2>
+
+  <p>Our inaugural shipment includes washed and natural lots from Java Frinsa Estate, in both full 60kg bag and partial quantities. We also carry a small selection of lots from Pusat Kopi Nusantara in Cianjur for roasters looking to explore the regional breadth of West Java's terroir.</p>
+
+  <p>To request a cupping sample or ask about current availability, use the contact form on our website. We respond to all roaster inquiries within one business day.</p>
+</div>
+
+<footer>
+  <p>&copy; 2024 Across Indonesian Seas &nbsp;·&nbsp; <a href="/#contact">Contact Us</a></p>
+</footer>
+
+</body>
+</html>

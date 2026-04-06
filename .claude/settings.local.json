@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node screenshot.mjs http://localhost:3000 hero)",
+      "Bash(npm list:*)",
+      "Read(//Users/morganomstead/**)",
+      "Read(//Users/morganomstead/node_modules/.bin/**)",
+      "Bash(node team-screenshot.mjs)",
+      "Bash(xxd)"
+    ]
+  }
+}

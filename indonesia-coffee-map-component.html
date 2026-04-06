@@ -1,0 +1,282 @@
+<!--
+  INDONESIA COFFEE MAP COMPONENT
+  Across Indonesian Seas (AIS)
+  
+  INTEGRATION NOTES FOR CLAUDE CODE:
+  ===================================
+  
+  This is a self-contained HTML/CSS/JS component for an interactive Indonesia 
+  coffee sourcing map. To integrate into the AIS website:
+  
+  1. IMAGE: The map uses "indonesia-map.png" — place it in your images/assets folder
+     and update the src in the <img> tag below (or the JS line that sets it).
+     Currently set via JS: document.getElementById('map-img').src = '...'
+  
+  2. FONTS: Uses Google Fonts (DM Serif Display + DM Sans). If the site already 
+     has these, remove the <link> tags. If the site uses different fonts, update 
+     the font-family declarations in the CSS.
+  
+  3. CSS: All styles are scoped under class names prefixed with common names.
+     For production, consider prefixing classes (e.g., .ais-map-wrap) to avoid 
+     collisions, or extract into a CSS module / scoped styles if using a framework.
+  
+  4. FRAMEWORK CONVERSION: If converting to React/Vue/Svelte:
+     - The `partners` object becomes component state or props
+     - Pin click handler updates the active partner state
+     - Sidebar renders reactively from the active partner
+     - Each pin is a child component receiving position + partner data
+  
+  5. PIN POSITIONS: Pins are positioned with CSS percentage values (left/top) 
+     relative to the map image container. These were placed manually using a 
+     pin placement tool on the exact map image. If you change the map image,
+     you'll need to re-place the pins.
+  
+  6. COLORS:
+     - Background: #f0ebe3
+     - Green accent: #1e4d36
+     - Active pin (red): #c0392b
+     - Hover pin (green): #1e4d36
+     - Dark text: #1f1f1a
+     - Muted text: #5a594f / #7a7968
+
+  7. BUTTONS: "View Available Lots" and "Request Samples" are placeholder buttons.
+     Wire them to your routing/modal/form system.
+  
+  PIN COORDINATE DATA:
+  ====================
+  Partner 1 — Java Frinsa Estate:              left: 29.6%,  top: 73.3%
+  Partner 2 — Pusat Kopi Nusantara Indonesia:   left: 28.02%, top: 73.56%
+  Partner 3 — Jambi Etalase:                    left: 19.11%, top: 53.58%
+  Partner 4 — Agro Tropik Nusantara:            left: 20.55%, top: 53.58%
+  Partner 5 — PT Stovia Garuda Yaksa:           left: 12.36%, top: 42.38%
+  Partner 6 — PT Musfaha Niaga Mandiri:         left: 13.8%,  top: 42.38%
+  Partner 7 — Coffee Nusantara Kita:            left: 8.48%,  top: 31.56%
+  Partner 8 — Coffee Bali:                      left: 45.11%, top: 79.92%
+
+  PARTNER DATA:
+  =============
+  {
+    1: { name: "Java Frinsa Estate", contact: "Fikri", region: "West Java, Bandung Highlands", short: "Well known exporter", flavor: "Clean, bright, fruit forward", process: "Natural, honey, washed", count: "2 in region" },
+    2: { name: "Pusat Kopi Nusantara Indonesia", contact: "Rivo", region: "Cianjur, West Java", short: "~700 tonnes/year output", flavor: "Balanced, sweet, approachable", process: "Natural, washed", count: "2 in region" },
+    3: { name: "Jambi Etalase", contact: "Je Edyanto", region: "Jambi, Sumatra", short: "Collective coffee farmers", flavor: "Structured, deep sweetness, spice", process: "Washed, natural", count: "2 in region" },
+    4: { name: "Agro Tropik Nusantara", contact: "Mulyadi", region: "Jambi, Sumatra", short: "Agroforestry expansion pipeline", flavor: "Chocolate, herbal, layered", process: "Washed, honey", count: "2 in region" },
+    5: { name: "PT Stovia Garuda Yaksa", contact: "Bella Fajar", region: "North Sumatra", short: "Mandheling and Gayo exporter", flavor: "Bold, syrupy, earthy sweet", process: "Wet hulled, washed", count: "2 in region" },
+    6: { name: "PT Musfaha Niaga Mandiri", contact: "Amin", region: "North Sumatra", short: "Pipeline partner network", flavor: "Rounded, dense, classic Sumatra", process: "Wet hulled, washed", count: "2 in region" },
+    7: { name: "Coffee Nusantara Kita", contact: "Arwin", region: "Takengon, Aceh", short: "Agroforestry pipeline", flavor: "Citrus, cocoa, clean finish", process: "Washed, natural", count: "Single pin" },
+    8: { name: "Coffee Bali", contact: "Nyoman Sujiarta", region: "Bali", short: "Agroforestry pipeline", flavor: "Sweet, floral, soft tropical fruit", process: "Natural, honey", count: "Single pin" }
+  }
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Indonesian Coffee by Origin — Across Indonesian Seas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── BASE ── */
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f0ebe3; color: #1f1f1a; }
+
+    /* ── LAYOUT ── */
+    .section { max-width: 1260px; margin: 0 auto; padding: 48px 28px; }
+
+    .topbar { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+    .eyebrow { display: inline-block; padding: 7px 14px; border: 1px solid rgba(30,77,54,0.18); border-radius: 999px; background: rgba(255,255,255,0.6); color: #1e4d36; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: 46px; line-height: 1.08; font-weight: 400; letter-spacing: -0.01em; }
+    .subtext { max-width: 560px; color: #5a594f; line-height: 1.65; margin-top: 14px; font-size: 15px; }
+
+    /* ── STATS ── */
+    .stats { display: grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 10px; min-width: 260px; }
+    .stat { background: rgba(255,255,255,0.82); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; padding: 16px 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+    .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: #7a7968; font-weight: 600; }
+    .stat-value { margin-top: 8px; font-family: 'DM Serif Display', serif; font-size: 32px; font-weight: 400; }
+
+    /* ── GRID ── */
+    .grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 20px; }
+    .map-wrap, .sidebar { border-radius: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.04); }
+
+    /* ── MAP ── */
+    .map-wrap { background: #c5c2bc; padding: 16px; }
+    .map-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; color: #3d3c36; font-size: 13px; font-weight: 600; }
+    .hint { background: rgba(255,255,255,0.7); padding: 6px 12px; border-radius: 999px; font-size: 11px; color: #5a594f; white-space: nowrap; font-weight: 500; }
+    .map-box { position: relative; width: 100%; border-radius: 20px; overflow: hidden; background: #bfbdb8; }
+    .map-box img { display: block; width: 100%; height: auto; }
+
+    /* ── PINS (round pushpin style) ── */
+    .pin { position: absolute; transform: translate(-50%, -100%); background: transparent; border: none; cursor: pointer; padding: 0; z-index: 2; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+    .pin:hover { transform: translate(-50%, -100%) scale(1.18); z-index: 10; }
+    .pin-icon svg { width: 22px; height: 38px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25)); transition: all 0.2s ease; }
+    .pin-icon svg .pin-head { fill: #2a2a24; transition: fill 0.2s; }
+    .pin-icon svg .pin-shine { fill: rgba(255,255,255,0.3); }
+    .pin-icon svg .pin-needle { fill: #999; }
+    .pin.active .pin-icon svg .pin-head { fill: #c0392b; }
+    .pin:hover .pin-icon svg .pin-head { fill: #1e4d36; }
+    .pin.active:hover .pin-icon svg .pin-head { fill: #e74c3c; }
+
+    /* ── PIN TOOLTIPS ── */
+    .pin-label { position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: #1f1f1a; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, bottom 0.2s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.25); font-family: 'DM Sans', sans-serif; }
+    .pin-label::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 8px; height: 8px; background: #1f1f1a; border-radius: 2px; transform: translateX(-50%) rotate(45deg); }
+    .pin:hover .pin-label { opacity: 1; bottom: calc(100% + 8px); }
+
+    /* ── SIDEBAR ── */
+    .sidebar { background: rgba(255,255,255,0.92); padding: 28px 26px; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+    .mini-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: #7a7968; font-weight: 600; }
+    .partner-title { font-family: 'DM Serif Display', serif; font-weight: 400; margin: 8px 0 4px; font-size: 28px; line-height: 1.15; transition: opacity 0.15s ease; }
+    .contact { color: #5a594f; font-size: 13px; }
+    .tag { display: inline-block; margin-top: 10px; background: rgba(30,77,54,0.08); color: #1e4d36; padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+    .detail-block { margin-top: 20px; }
+    .detail-value { margin-top: 6px; line-height: 1.55; color: #2b2a25; font-size: 14px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .card { background: #f0ebe3; border-radius: 16px; padding: 14px; }
+    .callout { margin-top: 16px; background: rgba(30,77,54,0.04); border: 1px solid rgba(30,77,54,0.1); border-radius: 16px; padding: 14px; }
+    .buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
+    .btn { border: none; border-radius: 999px; padding: 13px 18px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: #1f1f1a; color: white; box-shadow: 0 4px 14px rgba(31,31,26,0.2); }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(31,31,26,0.3); }
+    .btn-secondary { background: white; color: #1f1f1a; border: 1px solid rgba(31,31,26,0.1); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 36px; } }
+    @media (max-width: 640px) { .section { padding: 28px 16px; } h1 { font-size: 28px; } .detail-grid { grid-template-columns: 1fr; } .hint { display: none; } }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Across Indonesian Seas</div>
+        <h1>Explore Indonesian<br>Coffee by Origin</h1>
+        <div class="subtext">Our sourcing network spans multiple islands, giving roasters access to distinct flavor profiles, processing styles, and partner relationships across Indonesia.</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Active partners</div><div class="stat-value">8+</div></div>
+        <div class="stat"><div class="stat-label">Islands / regions</div><div class="stat-value">5</div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="map-wrap">
+        <div class="map-head">
+          <div>Direct relationships across Indonesia's key producing regions</div>
+          <div class="hint">Click a pin to explore</div>
+        </div>
+        <div class="map-box" id="map-box">
+          <!-- UPDATE THIS PATH to match your project's asset directory -->
+          <img src="indonesia-map.png" id="map-img" alt="Map of Indonesia" />
+
+          <!-- Pin 1: Java Frinsa Estate — West Java -->
+          <button class="pin active" style="left:29.6%;top:73.3%;" data-id="1">
+            <span class="pin-label">Java Frinsa Estate</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 2: Pusat Kopi Nusantara — Cianjur, West Java -->
+          <button class="pin" style="left:28.02%;top:73.56%;" data-id="2">
+            <span class="pin-label">Pusat Kopi Nusantara</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 3: Jambi Etalase — Jambi, Sumatra -->
+          <button class="pin" style="left:19.11%;top:53.58%;" data-id="3">
+            <span class="pin-label">Jambi Etalase</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 4: Agro Tropik Nusantara — Jambi, Sumatra -->
+          <button class="pin" style="left:20.55%;top:53.58%;" data-id="4">
+            <span class="pin-label">Agro Tropik Nusantara</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 5: PT Stovia Garuda Yaksa — North Sumatra -->
+          <button class="pin" style="left:12.36%;top:42.38%;" data-id="5">
+            <span class="pin-label">PT Stovia Garuda Yaksa</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 6: PT Musfaha Niaga Mandiri — North Sumatra -->
+          <button class="pin" style="left:13.8%;top:42.38%;" data-id="6">
+            <span class="pin-label">PT Musfaha Niaga Mandiri</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 7: Coffee Nusantara Kita — Takengon, Aceh -->
+          <button class="pin" style="left:8.48%;top:31.56%;" data-id="7">
+            <span class="pin-label">Coffee Nusantara Kita</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+
+          <!-- Pin 8: Coffee Bali — Bali -->
+          <button class="pin" style="left:45.11%;top:79.92%;" data-id="8">
+            <span class="pin-label">Coffee Bali</span>
+            <div class="pin-icon"><svg viewBox="0 0 22 38"><circle class="pin-head" cx="11" cy="9" r="8"/><circle class="pin-shine" cx="8.5" cy="6.5" r="2.5"/><polygon class="pin-needle" points="10,16 12,16 11.2,37 10.8,37"/></svg></div>
+          </button>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="mini-label">Partner profile</div>
+        <h2 class="partner-title" id="name">Java Frinsa Estate</h2>
+        <div class="contact" id="contact">Contact: Fikri</div>
+        <div class="tag" id="region-count">2 in region</div>
+        <div class="detail-block"><div class="mini-label">Region</div><div class="detail-value" id="region">West Java, Bandung Highlands</div></div>
+        <div class="detail-block"><div class="mini-label">Network note</div><div class="detail-value" id="short">Well known exporter</div></div>
+        <div class="detail-grid">
+          <div class="card"><div class="mini-label">Flavor direction</div><div class="detail-value" id="flavor">Clean, bright, fruit forward</div></div>
+          <div class="card"><div class="mini-label">Processing</div><div class="detail-value" id="process">Natural, honey, washed</div></div>
+        </div>
+        <div class="callout"><div class="mini-label" style="color:#1e4d36;">Why it matters</div><div class="detail-value">This origin strengthens AIS's ability to offer buyers multiple Indonesian profiles through direct relationships rather than a single source.</div></div>
+        <div class="buttons">
+          <button class="btn btn-primary">View Available Lots</button>
+          <button class="btn btn-secondary">Request Samples</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script>
+    const partners = {
+      1: { name: 'Java Frinsa Estate', contact: 'Fikri', region: 'West Java, Bandung Highlands', short: 'Well known exporter', flavor: 'Clean, bright, fruit forward', process: 'Natural, honey, washed', count: '2 in region' },
+      2: { name: 'Pusat Kopi Nusantara Indonesia', contact: 'Rivo', region: 'Cianjur, West Java', short: '~700 tonnes/year output', flavor: 'Balanced, sweet, approachable', process: 'Natural, washed', count: '2 in region' },
+      3: { name: 'Jambi Etalase', contact: 'Je Edyanto', region: 'Jambi, Sumatra', short: 'Collective coffee farmers', flavor: 'Structured, deep sweetness, spice', process: 'Washed, natural', count: '2 in region' },
+      4: { name: 'Agro Tropik Nusantara', contact: 'Mulyadi', region: 'Jambi, Sumatra', short: 'Agroforestry expansion pipeline', flavor: 'Chocolate, herbal, layered', process: 'Washed, honey', count: '2 in region' },
+      5: { name: 'PT Stovia Garuda Yaksa', contact: 'Bella Fajar', region: 'North Sumatra', short: 'Mandheling and Gayo exporter', flavor: 'Bold, syrupy, earthy sweet', process: 'Wet hulled, washed', count: '2 in region' },
+      6: { name: 'PT Musfaha Niaga Mandiri', contact: 'Amin', region: 'North Sumatra', short: 'Pipeline partner network', flavor: 'Rounded, dense, classic Sumatra', process: 'Wet hulled, washed', count: '2 in region' },
+      7: { name: 'Coffee Nusantara Kita', contact: 'Arwin', region: 'Takengon, Aceh', short: 'Agroforestry pipeline', flavor: 'Citrus, cocoa, clean finish', process: 'Washed, natural', count: 'Single pin' },
+      8: { name: 'Coffee Bali', contact: 'Nyoman Sujiarta', region: 'Bali', short: 'Agroforestry pipeline', flavor: 'Sweet, floral, soft tropical fruit', process: 'Natural, honey', count: 'Single pin' }
+    };
+
+    const pins = document.querySelectorAll('.pin');
+    const nameEl = document.getElementById('name');
+    const contactEl = document.getElementById('contact');
+    const regionEl = document.getElementById('region');
+    const shortEl = document.getElementById('short');
+    const flavorEl = document.getElementById('flavor');
+    const processEl = document.getElementById('process');
+    const countEl = document.getElementById('region-count');
+
+    pins.forEach(pin => {
+      pin.addEventListener('click', () => {
+        pins.forEach(p => p.classList.remove('active'));
+        pin.classList.add('active');
+        const data = partners[pin.dataset.id];
+        const title = document.querySelector('.partner-title');
+        title.style.opacity = '0';
+        setTimeout(() => {
+          nameEl.textContent = data.name;
+          contactEl.textContent = 'Contact: ' + data.contact;
+          regionEl.textContent = data.region;
+          shortEl.textContent = data.short;
+          flavorEl.textContent = data.flavor;
+          processEl.textContent = data.process;
+          countEl.textContent = data.count;
+          title.style.opacity = '1';
+        }, 120);
+      });
+    });
+  </script>
+</body>
+</html>

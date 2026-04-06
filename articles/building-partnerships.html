@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Meaningful Partnerships — Across Indonesian Seas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --grey: #D9D9D9;
+      --grey-light: #F2F2F2;
+      --white: #FFFFFF;
+      --charcoal: #2A2A2A;
+      --text-dark: #1a1a1a;
+      --text-mid: #555555;
+      --text-light: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--grey);
+    }
+
+    .nav-logo {
+      flex-shrink: 0;
+      min-width: 160px;
+      overflow: hidden;
+    }
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+      transform: scale(2);
+      transform-origin: left center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--red);
+      color: #fff !important;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
+
+    .article-hero {
+      padding-top: 68px;
+      background: var(--grey-light);
+    }
+
+    .article-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 48px;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--red); }
+
+    .article-category-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .article-hero-title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .article-hero-meta {
+      font-size: 13px;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+    }
+
+    .article-cover {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-body-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    .article-body-wrapper p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+
+    .article-body-wrapper h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin: 40px 0 16px;
+    }
+
+    .article-body-wrapper blockquote {
+      border-left: 3px solid var(--red);
+      padding: 4px 0 4px 24px;
+      margin: 32px 0;
+    }
+
+    .article-body-wrapper blockquote p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .watch-block { margin: 40px 0; }
+    .watch-block iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#coffees">Coffees</a></li>
+    <li><a href="/#producers">Producers</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/#articles" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Articles
+    </a>
+    <span class="article-category-badge">Partnerships</span>
+    <h1 class="article-hero-title">How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland</h1>
+    <p class="article-hero-meta">October 22, 2024</p>
+  </div>
+</div>
+
+<div class="article-cover">
+  <img src="/PhotosforArticleplaceholder/How Across Indonesian Seas Is Building Meaningful Partnerships in Indonesia%E2%80%99s Coffee Heartland.png" alt="How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland" />
+</div>
+
+<div class="article-body-wrapper">
+  <p>When people think of great coffee, they often picture the cup in their hands, the aroma, the flavor, the warmth. But for us at Across Indonesian Seas (AIS), great coffee begins far before that first sip. It begins with people.</p>
+
+  <h2>Our First Journey to Indonesia</h2>
+
+  <p>This year, our team, led by Akhtar Subandar and Owen McRann, took our first journey to Indonesia, the origin that inspired our name and mission. The heart of the trip was simple yet profound: to connect with the farmers who make everything possible.</p>
+
+  <h2>Building Relationships on the Ground</h2>
+
+  <p>The moment we stepped onto the farm, we were welcomed not as visitors, but as family. There was an unspoken sense of shared purpose, a collective excitement about what we were building together. From early morning conversations over steaming cups to walking through rows of coffee trees heavy with cherries, it was clear that this partnership was about more than trade. It was about trust, respect, and collaboration.</p>
+
+  <h2>The Potential of Indonesian Coffee</h2>
+
+  <p>For years, Indonesian coffee has carried immense potential, with diverse microclimates, complex flavor profiles, and a deep cultural heritage rooted in agriculture. Yet many of these stories remain untold. Our mission at AIS is to bridge that gap, bringing these coffees and the communities behind them closer to roasters and coffee lovers in Canada.</p>
+
+  <h2>Visiting Frinsa Coffee</h2>
+
+  <p>This trip marked the beginning of that journey. We visited our partners at Frinsa Coffee in West Java, whose commitment to quality and innovation has redefined what Indonesian specialty coffee can be. Seeing their meticulous processing methods, from cherry selection to fermentation and drying, reminded us why we chose to work with them. Every step reflected care, precision, and pride.</p>
+
+  <h2>The People Behind the Coffee</h2>
+
+  <p>But beyond the operations, what stood out most was the people. Their hospitality, their stories, and their genuine passion for the craft filled us with energy and purpose. As we shared meals, laughed together, and learned from one another, we realized that these connections are what truly make coffee meaningful.</p>
+
+  <h2>Looking Ahead to Canada</h2>
+
+  <p>Now, just one month away from our first container arriving in Canada, we feel a strong sense of anticipation. Each bag in that shipment represents more than beans. It represents a bond, a shared effort between continents, and a vision for a more transparent and connected supply chain.</p>
+
+  <h2>Our Commitment Moving Forward</h2>
+
+  <p>This is only the beginning. As we continue to grow, our commitment remains clear: to honor the origins of our coffee by building lasting relationships and delivering authentic quality from the heart of Indonesia to cups across North America.</p>
+
+  <p>Because at Across Indonesian Seas, the journey matters just as much as the destination, and the people matter most of all.</p>
+
+  <h2>Watch and Learn More</h2>
+
+  <div class="watch-block">
+    <iframe src="https://www.youtube.com/embed/piiCCSXW8CE" title="How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Across Indonesian Seas &nbsp;·&nbsp; <a href="/#contact">Contact Us</a></p>
+</footer>
+
+</body>
+</html>

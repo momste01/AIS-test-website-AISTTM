@@ -1,0 +1,2514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Across Indonesian Seas — Specialty Green Coffee Importer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --grey: #D9D9D9;
+      --grey-light: #F2F2F2;
+      --white: #FFFFFF;
+      --charcoal: #2A2A2A;
+      --text-dark: #1a1a1a;
+      --text-mid: #555555;
+      --text-light: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      border-bottom-color: var(--grey);
+    }
+    .nav-logo {
+      flex-shrink: 0;
+      min-width: 160px;
+      overflow: hidden;
+    }
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+      transform: scale(2);
+      transform-origin: left center;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s;
+    }
+    nav.scrolled .nav-logo img { filter: none; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text-mid); }
+    .nav-links a:hover { color: #fff; }
+    nav.scrolled .nav-links a:hover { color: var(--red); }
+
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 2px;
+      font-size: 11px !important;
+      letter-spacing: 0.1em !important;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+    .nav-cta:active { transform: translateY(0); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/Hero%20page%20photo.png') center 65% / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,10,4,0.82) 0%,
+        rgba(26,10,4,0.38) 50%,
+        rgba(26,10,4,0.12) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 80px 88px;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-size: clamp(48px, 5.5vw, 78px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: #fff;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+    }
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 13px 28px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+    .btn-red:active { transform: translateY(0); }
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.8);
+      padding: 13px 28px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); color: #fff; transform: translateY(-2px); }
+    .btn-outline-white:active { transform: translateY(0); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      right: 56px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      writing-mode: vertical-rl;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.35} 50%{opacity:.9} }
+
+    /* ── TICKER / STATS ── */
+    .ticker {
+      background: var(--charcoal);
+      padding: 0;
+      overflow: hidden;
+      border-top: 3px solid var(--red);
+    }
+    .ticker-inner {
+      display: flex;
+    }
+    .ticker-item {
+      flex-shrink: 0;
+      padding: 28px 48px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+    .ticker-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+    }
+    .ticker-val span { color: var(--red); font-style: italic; }
+    .ticker-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── SHARED ── */
+    .section-tag {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+    .section-tag::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .section-heading {
+      font-size: clamp(32px, 3.5vw, 50px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+    .section-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-mid);
+    }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--charcoal);
+      color: #fff;
+      padding: 12px 26px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-dark:hover { background: #111; transform: translateY(-2px); }
+    .btn-dark:active { transform: translateY(0); }
+    .btn-outline-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--charcoal);
+      color: var(--charcoal);
+      padding: 12px 26px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline-dark:hover { background: var(--charcoal); color: #fff; transform: translateY(-2px); }
+    .btn-outline-dark:active { transform: translateY(0); }
+
+    /* ── INTRO ── */
+    .intro-section {
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+      background: var(--white);
+    }
+    .intro-img {
+      position: relative;
+      height: 520px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .intro-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(194,28,4,0.12), transparent 60%);
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid var(--grey);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .pill-dot {
+      width: 5px; height: 5px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    /* ── COFFEES ── */
+    .coffees-section {
+      padding: 100px 80px;
+      background: var(--grey-light);
+    }
+    .coffees-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 40px;
+      background: var(--grey);
+      border-radius: 3px;
+      padding: 3px;
+      width: fit-content;
+    }
+    .filter-tab {
+      padding: 7px 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      border-radius: 2px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .filter-tab.active {
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .filter-tab:hover:not(.active) { background: rgba(0,0,0,0.06); }
+
+    .coffee-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .coffee-card {
+      background: var(--white);
+      overflow: hidden;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    .coffee-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 1;
+      position: relative;
+    }
+    .coffee-card[hidden] { display: none; }
+
+    .coffee-img {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--grey-light);
+    }
+    .coffee-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .coffee-card:hover .coffee-img img { transform: scale(1.04); }
+    .coffee-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,10,4,0.5) 0%, transparent 55%);
+    }
+
+    .lot-id {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 1;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', monospace;
+    }
+
+    .process-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1;
+      background: var(--red);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .tier-flag {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      z-index: 1;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .tier-flagship { background: #fff; color: var(--red); }
+    .tier-core { background: rgba(255,255,255,0.85); color: var(--charcoal); }
+    .tier-limited { background: var(--charcoal); color: #fff; }
+
+    .coffee-body {
+      padding: 24px 24px 28px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .coffee-card:hover .coffee-body { border-top-color: var(--red); }
+
+    .coffee-producer {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .coffee-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .coffee-origin {
+      font-size: 11px;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .tasting-notes {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      border-left: 2px solid var(--grey);
+      padding-left: 12px;
+      font-style: italic;
+    }
+    .coffee-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--grey-light);
+    }
+    .coffee-use {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .sample-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--red);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .sample-link:hover { gap: 8px; }
+
+    .coffees-cta {
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    /* ── WHY AIS ── */
+    .why-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .why-img {
+      position: relative;
+      min-height: 580px;
+      overflow: hidden;
+    }
+    .why-img img { width: 100%; height: 100%; object-fit: cover; }
+    .why-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(194,28,4,0.15);
+      mix-blend-mode: multiply;
+    }
+    .why-content {
+      background: var(--charcoal);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .why-content .section-tag { color: rgba(255,255,255,0.35); }
+    .why-content .section-tag::before { background: var(--red); }
+    .why-content .section-heading { color: #fff; margin-bottom: 40px; }
+    .why-list { display: flex; flex-direction: column; gap: 28px; }
+    .why-item { display: flex; gap: 20px; align-items: flex-start; }
+    .why-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--red);
+      opacity: 0.5;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      margin-top: -4px;
+    }
+    .why-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .why-text p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── MAP ── */
+    .map-section {
+      padding: 100px 80px;
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .map-section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 56px;
+      align-items: end;
+    }
+    .map-section .section-tag { color: rgba(255,255,255,0.5); }
+    .map-section .section-tag::before { background: rgba(255,255,255,0.5); }
+    .map-section .section-heading { color: #fff; }
+    .map-section .section-body { color: rgba(255,255,255,0.55); }
+    .map-layout {
+      position: relative;
+    }
+    .map-container {
+      position: relative;
+      background: transparent;
+    }
+    .map-container svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .map-popup {
+      position: absolute;
+      z-index: 20;
+      width: 320px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12), 0 16px 48px rgba(0,0,0,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.94) translateY(8px);
+      transform-origin: top left;
+      transition: opacity 0.3s cubic-bezier(0.34,1.56,0.64,1), transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .map-popup.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+    }
+    .map-popup-accent {
+      height: 3px;
+      background: var(--red);
+      width: 100%;
+    }
+    .map-popup-body {
+      padding: 16px 18px 18px;
+    }
+    .map-popup-close {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 1;
+      padding: 2px;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .map-popup-close:hover { color: var(--text-dark); transform: scale(1.2); }
+    .map-popup-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 5px;
+    }
+    .map-popup-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 3px;
+      padding-right: 20px;
+    }
+    .map-popup-contact {
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .map-popup-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .map-popup-chip {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 4px 9px;
+      border-radius: 2px;
+      background: var(--grey-light);
+      color: var(--text-mid);
+    }
+    .map-popup-row {
+      margin-bottom: 8px;
+    }
+    .map-popup-row-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 2px;
+    }
+    .map-popup-row-value {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--text-mid);
+    }
+    .map-popup-inner {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .map-popup-left {
+      flex: 0 0 auto;
+      width: 140px;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-popup-divider-v {
+      width: 1px;
+      background: var(--grey);
+      flex-shrink: 0;
+    }
+    .map-popup-right {
+      flex: 1;
+    }
+    .map-popup-buttons {
+      display: flex;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+
+    /* ── PULSING DOT PINS ── */
+    @keyframes map-pulse {
+      0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.6; }
+      70%  { transform: translate(-50%,-50%) scale(2.8); opacity: 0; }
+      100% { transform: translate(-50%,-50%) scale(1);   opacity: 0; }
+    }
+    .map-pin {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 2;
+    }
+    .map-pin-dot {
+      position: relative;
+      width: 10px;
+      height: 10px;
+    }
+    .map-pin-dot::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--charcoal);
+      transition: background 0.2s;
+    }
+    .map-pin-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(42,42,42,0.35);
+      animation: map-pulse 2.4s ease-out infinite;
+    }
+    .map-pin.active .map-pin-dot::before { background: var(--red); box-shadow: 0 0 0 2px rgba(194,28,4,0.2); }
+    .map-pin.active .map-pin-dot::after  { background: rgba(194,28,4,0.4); }
+    .map-pin:hover .map-pin-dot::before  { background: var(--red-dark); transform: scale(1.3); }
+    .map-pin-tooltip {
+      position: absolute;
+      bottom: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--charcoal);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .map-pin:hover .map-pin-tooltip { opacity: 1; }
+    .map-panel {
+      background: var(--white);
+      border-radius: 3px;
+      padding: 36px 32px;
+      border-left: 3px solid var(--red);
+      display: flex;
+      flex-direction: column;
+    }
+    .map-panel-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .map-panel-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .map-panel-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      transition: opacity 0.15s ease;
+    }
+    .map-panel-contact {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .map-panel-divider {
+      height: 1px;
+      background: var(--grey);
+      margin-bottom: 24px;
+    }
+    .map-panel-row {
+      margin-bottom: 18px;
+    }
+    .map-panel-row-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .map-panel-row-value {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-mid);
+    }
+    .map-panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .map-panel-cell {
+      background: var(--grey-light);
+      padding: 14px;
+      border-radius: 2px;
+    }
+    .map-panel-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    @media (max-width: 1100px) {
+      .map-layout { grid-template-columns: 1fr; }
+      .map-section-header { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 768px) {
+      .map-section { padding: 60px 24px; }
+    }
+
+    /* ── PRODUCERS ── */
+    .producers-section {
+      padding: 100px 80px;
+      background: var(--white);
+    }
+    .producers-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+    .producer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .producer-card {
+      background: var(--grey-light);
+      border-radius: 3px;
+      overflow: hidden;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    .producer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .producer-img {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      position: relative;
+    }
+    .producer-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .producer-card:hover .producer-img img { transform: scale(1.04); }
+    .producer-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(42,42,42,0.55) 0%, transparent 55%);
+    }
+    .producer-body { padding: 22px 22px 26px; }
+    .producer-region {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .producer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .producer-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+
+    /* ── TEAM ── */
+    .team-section {
+      padding: 100px 80px;
+      background: var(--grey-light);
+    }
+    .team-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+    .team-header .section-tag {
+      justify-content: center;
+    }
+    .team-header .section-tag::before { display: none; }
+    .team-intro {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-top: 16px;
+    }
+    .team-leadership {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 75%;
+      margin: 0 auto 20px;
+    }
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .team-card {
+      background: var(--white);
+      border-radius: 3px;
+      overflow: hidden;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border-bottom-color: var(--red);
+    }
+    .team-photo {
+      position: relative;
+      overflow: hidden;
+      background: var(--grey);
+    }
+    .team-leadership .team-photo { aspect-ratio: 1 / 1; }
+    .team-members .team-photo { aspect-ratio: 1 / 1; }
+    .team-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      object-position: top;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .team-card:hover .team-photo img { transform: scale(1.04); }
+    .team-card--linked { text-decoration: none; display: block; cursor: pointer; }
+    .team-email-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26,10,4,0.72);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 2;
+    }
+    .team-email-overlay span {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-align: center;
+      padding: 0 12px;
+    }
+    .team-card--linked:hover .team-email-overlay { opacity: 1; }
+    .team-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,10,4,0.35) 0%, transparent 50%);
+    }
+    .team-info {
+      padding: 18px 20px 22px;
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .team-members .team-name { font-size: 18px; }
+    .team-role {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── ARTICLES ── */
+    .articles-section {
+      padding: 100px 80px;
+      background: var(--white);
+      border-top: 1px solid var(--grey);
+    }
+    .articles-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .articles-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .article-card {
+      background: var(--grey-light);
+      overflow: hidden;
+      min-width: 0;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 1;
+      position: relative;
+    }
+    .article-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: var(--grey);
+    }
+    .article-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .article-card:hover .article-img img { transform: scale(1.04); }
+    .article-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,10,4,0.45) 0%, transparent 55%);
+    }
+    .article-body {
+      padding: 24px 24px 28px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .article-card:hover .article-body { border-top-color: var(--red); }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .article-category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .article-date {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .article-excerpt {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text-mid);
+      margin-bottom: 18px;
+    }
+    .article-read-more {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: var(--red);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s;
+    }
+    .article-read-more:hover { gap: 9px; }
+
+    /* ── INDONESIA ── */
+    .indonesia-section {
+      background: var(--grey-light);
+      padding: 100px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .indonesia-watermark {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 240px;
+      font-weight: 300;
+      color: rgba(0,0,0,0.04);
+      letter-spacing: -0.04em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .indonesia-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .indonesia-header {
+      max-width: 560px;
+      margin-bottom: 60px;
+    }
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .fact-card {
+      background: var(--white);
+      padding: 40px 36px;
+      transition: background 0.2s;
+    }
+    .fact-card:hover { background: var(--charcoal); }
+    .fact-card:hover .fact-title { color: #fff; }
+    .fact-card:hover .fact-body { color: rgba(255,255,255,0.5); }
+    .fact-icon {
+      width: 36px; height: 36px;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .fact-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .fact-body {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+
+    /* ── COMMODITIES ── */
+    .commodities-section {
+      padding: 80px;
+      background: var(--white);
+      border-top: 1px solid var(--grey);
+    }
+    .commodities-header { margin-bottom: 40px; }
+    .availability-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-mid);
+      background: var(--grey-light);
+      padding: 7px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .commodity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .commodity-card {
+      padding: 28px 24px;
+      border: 1px solid var(--grey);
+      border-radius: 3px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .commodity-card:hover { border-color: var(--charcoal); transform: translateY(-3px); }
+    .commodity-icon { width: 32px; height: 32px; color: var(--text-light); margin-bottom: 16px; }
+    .commodity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .commodity-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+    .commodity-status {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── BUMI ── */
+    .bumi-section {
+      background: #2E2E31;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .bumi-content {
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bumi-content .section-tag { color: rgba(255,255,255,0.3); }
+    .bumi-content .section-tag::before { background: rgba(255,255,255,0.2); }
+    .bumi-content .section-heading { color: #fff; font-size: 38px; margin-bottom: 20px; }
+    .bumi-content p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+    .btn-cream {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #EDE6DC;
+      color: #1A1A1A;
+      padding: 13px 28px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      width: fit-content;
+    }
+    .btn-cream:hover { background: #fff; transform: translateY(-2px); }
+    .btn-cream:active { transform: translateY(0); }
+    .bumi-logo-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2E2E31;
+      padding: 64px;
+    }
+    .bumi-logo-side img {
+      width: 260px;
+      height: auto;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: #fff;
+      padding: 96px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--grey);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .cta-section h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .cta-section h2 em { font-style: italic; color: var(--red); }
+    .cta-section p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--red);
+      padding: 15px 36px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { background: var(--grey-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .btn-white:active { transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 32px 80px 36px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 36px;
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-logo-clip {
+      width: 220px;
+      overflow: hidden;
+      height: 110px;
+      margin-bottom: 10px;
+      margin-left: -38px;
+    }
+    .footer-logo-clip img {
+      width: 220px;
+      height: auto;
+      margin-top: -27px;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.38);
+      font-weight: 300;
+      max-width: 240px;
+    }
+    .footer-col h5 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .footer-col ul a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+    }
+    .footer-loc {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#coffees">Coffees</a></li>
+    <li><a href="#producers">Producers</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    Scroll
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Specialty Green Coffee &nbsp;·&nbsp; Vancouver, BC</p>
+    <h1>West Java,<br /><em>Direct to Your Roastery.</em></h1>
+    <p class="hero-sub">We import traceable green coffee from the Bandung and Cianjur Highlands, working directly with Java Frinsa Estate and Pusat Kopi Nusantara to bring exceptional West Java lots to North American roasters.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-red">
+        Request Samples
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#coffees" class="btn-outline-white">View Coffees</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">
+      <div class="ticker-val">West<span> Java</span></div>
+      <div class="ticker-label">Primary Origin</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">100<span>%</span></div>
+      <div class="ticker-label">Direct Trade</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">24<span>/7</span></div>
+      <div class="ticker-label">Importer Support</div>
+    </div>
+    <div class="ticker-item" style="border-right:none">
+      <div class="ticker-val">2<span>+</span></div>
+      <div class="ticker-label">Producer Partners</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro-section" id="about">
+  <div class="intro-img reveal">
+    <img src="/Brand Photos/Hadi_owen_aki3.jpg" alt="AIS team inspecting coffee at origin" />
+  </div>
+  <div>
+    <p class="section-tag reveal">Who We Are</p>
+    <h2 class="section-heading reveal reveal-d1" style="margin-bottom:20px;">An importer built for serious roasters.</h2>
+    <p class="section-body reveal reveal-d2" style="margin-bottom:18px;">Across Indonesian Seas is a Vancouver-based specialty green coffee importer. We focus exclusively on West Java, one of the world's most underrepresented fine coffee origins, working directly with the farmers producing it.</p>
+    <p class="section-body reveal reveal-d3" style="margin-bottom:32px;">Every lot we carry is fully traceable and available in sample and full-bag quantities for roasters across North America. Cupping scores are available upon request.</p>
+    <div class="pill-list reveal reveal-d4">
+      <span class="pill"><span class="pill-dot"></span>Bandung Highlands</span>
+      <span class="pill"><span class="pill-dot"></span>Cianjur Highlands</span>
+      <span class="pill"><span class="pill-dot"></span>West Java</span>
+      <span class="pill"><span class="pill-dot"></span>Frinsa Estate</span>
+      <span class="pill"><span class="pill-dot"></span>Frinsa Collective</span>
+      <span class="pill"><span class="pill-dot"></span>Pusat Kopi Nusantara</span>
+      <span class="pill"><span class="pill-dot"></span>Natural · Honey · Washed</span>
+    </div>
+  </div>
+</section>
+
+<!-- COFFEES -->
+<section class="coffees-section" id="coffees">
+  <div class="coffees-header">
+    <div>
+      <p class="section-tag reveal">Current Offerings</p>
+      <h2 class="section-heading reveal reveal-d1">Available Lots</h2>
+    </div>
+    <a href="#contact" class="btn-outline-dark reveal reveal-d2">
+      Full Catalogue
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="filter-tabs reveal" id="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All</button>
+    <button class="filter-tab" data-filter="flagship">Flagship</button>
+    <button class="filter-tab" data-filter="core">Core</button>
+    <button class="filter-tab" data-filter="limited">Limited</button>
+  </div>
+
+  <div class="coffee-list" id="coffee-list">
+
+    <!-- 015/020 -->
+    <div class="coffee-card reveal" data-tier="flagship">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/020</span>
+        <span class="process-badge">Natural Lactic</span>
+        <span class="tier-flag tier-flagship">Flagship</span>
+        <img src="/Frinsa Bags/Frinsa Lactic Natural.jpg" alt="Frinsa Estate Natural Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Estate Natural Lactic</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Ripe mango, honeydew, candy-like sweetness</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/019 -->
+    <div class="coffee-card reveal reveal-d1" data-tier="core">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/019</span>
+        <span class="process-badge">Natural</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/Frinsa Bags/Frinsa Collective Natural.jpg" alt="Frinsa Collective Natural" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Natural</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Melon, peach strudel, elegant melon acidity</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/024 -->
+    <div class="coffee-card reveal reveal-d2" data-tier="limited">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/024</span>
+        <span class="process-badge">Honey Tempe</span>
+        <span class="tier-flag tier-limited">Limited</span>
+        <img src="/Frinsa Bags/Frinsa Honey Tempe.jpg" alt="Frinsa Honey Tempe" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Honey Tempe</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Honeydew melon, orange citrus, Earl Grey tea</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/023 -->
+    <div class="coffee-card reveal reveal-d3" data-tier="limited">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/023</span>
+        <span class="process-badge">Honey Lactic</span>
+        <span class="tier-flag tier-limited">Limited</span>
+        <img src="/Frinsa Bags/Frinsa Honey Lactic.jpg" alt="Frinsa Honey Lactic" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Estate</p>
+        <h3 class="coffee-name">Frinsa Honey Lactic</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Honeydew melon, orange citrus, floral honey, Earl Grey tea, clean finish</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/021 -->
+    <div class="coffee-card reveal reveal-d4" data-tier="core">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/021</span>
+        <span class="process-badge">Fully Washed</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/Frinsa Bags/Frinsa Collective Full Wash.jpg" alt="Frinsa Collective Full Wash" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Fully Washed</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Sweet and fruit forward, bright orange acidity, milk chocolate aftertaste</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Espresso · Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 015/022 Wet Hulled -->
+    <div class="coffee-card reveal reveal-d5" data-tier="core">
+      <div class="coffee-img" style="background: #fff;">
+        <span class="lot-id">015/022</span>
+        <span class="process-badge">Wet Hulled</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/Frinsa Bags/Frinsa Collective Wethulled.jpg" alt="Frinsa Collective Wet Hulled" loading="lazy" style="object-fit: contain; background: #fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Java Frinsa Collective</p>
+        <h3 class="coffee-name">Frinsa Collective Wet Hulled</h3>
+        <p class="coffee-origin">Bandung Highlands, West Java</p>
+        <p class="tasting-notes">Dark chocolate, cedar, earthy body, clean finish</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Natural -->
+    <div class="coffee-card reveal" data-tier="core">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Natural</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/PKNI Bags/Pusaka Natural.jpg" alt="PKNI Natural" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Natural</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Fig and red apple when hot, transitioning to apple cinnamon as it cools. Medium to full body with a long-lasting, pleasantly sweet aftertaste.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter · Espresso</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Honey -->
+    <div class="coffee-card reveal reveal-d1" data-tier="core">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Honey</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/PKNI Bags/Pusaka Honey.jpg" alt="PKNI Honey" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Honey</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Honey and soft cocoa fragrance with subtle white tea aromatics. Smooth and balanced, with gentle sweetness, light chocolate depth, and a clean tea-like finish.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PKNI Washed -->
+    <div class="coffee-card reveal reveal-d2" data-tier="core">
+      <div class="coffee-img" style="background:#fff;">
+        <span class="process-badge">Washed</span>
+        <span class="tier-flag tier-core">Core</span>
+        <img src="/PKNI Bags/Pusaka Washed.jpg" alt="PKNI Washed" loading="lazy" style="object-fit:contain;background:#fff;" />
+      </div>
+      <div class="coffee-body">
+        <p class="coffee-producer">Pusat Kopi Nusantara</p>
+        <h3 class="coffee-name">PKNI Washed</h3>
+        <p class="coffee-origin">Cianjur Highlands, West Java</p>
+        <p class="tasting-notes">Cereal and toasted grain fragrance with light cocoa notes. Earthy and structured, finishing with cacao nib bitterness, medium acidity, and a medium body.</p>
+        <div class="coffee-footer">
+          <span class="coffee-use">Espresso · Filter</span>
+          <a href="#contact" class="sample-link">
+            Request Sample
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /coffee-list -->
+
+  <div class="coffees-cta">
+    <a href="#contact" class="btn-red">
+      Request Samples for All Lots
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- WHY AIS -->
+<section class="why-section">
+  <div class="why-img">
+    <img src="/An importer built for serious roasters picture..jpg" alt="AIS team at origin" loading="lazy" />
+  </div>
+  <div class="why-content">
+    <p class="section-tag reveal">Why AIS</p>
+    <h2 class="section-heading reveal reveal-d1">Specialty coffee, taken seriously.</h2>
+    <div class="why-list">
+      <div class="why-item reveal reveal-d2">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Deep origin knowledge</h4>
+          <p>We've built lasting relationships in West Java, a region producing exceptional coffees that remain largely invisible to the global specialty market.</p>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-d3">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>Full supply chain transparency</h4>
+          <p>We know the name of every farmer behind every lot. No middlemen, no ambiguity. Complete documentation from farm gate to your roastery.</p>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-d4">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>Cupped and verified</h4>
+          <p>Every lot is cupped extensively at origin and again on arrival. Our standards are non-negotiable. If it doesn't pass, it doesn't ship. Cupping scores are available upon request for every lot we carry.</p>
+        </div>
+      </div>
+      <div class="why-item reveal reveal-d5">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <h4>Relationships, not transactions</h4>
+          <p>You are never a number. Every trade is personal, with responsive support and a genuine commitment to long-term partnership. Our mission is long-term value, not just volume.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="map-section-header">
+    <div>
+      <p class="section-tag reveal">Our Sourcing Network</p>
+      <h2 class="section-heading reveal reveal-d1">Coffee origins<br />across Indonesia</h2>
+    </div>
+    <p class="section-body reveal reveal-d2">Our network spans multiple islands, giving roasters access to distinct flavor profiles, processing styles, and direct producer relationships across Indonesia's key growing regions.</p>
+  </div>
+
+  <div class="map-layout reveal reveal-d1" id="map-layout">
+    <div class="map-container" id="map-box">
+      <button class="map-pin" style="left:27.22%;top:75.59%;" data-id="1"><span class="map-pin-tooltip">Java Frinsa Estate</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:25.59%;top:73.98%;" data-id="2"><span class="map-pin-tooltip">Pusat Kopi Nusantara</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:18.20%;top:43.02%;" data-id="3"><span class="map-pin-tooltip">Jambi Etalase</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:13.24%;top:44.63%;" data-id="4"><span class="map-pin-tooltip">Agro Tropik Nusantara</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:3.55%;top:7.03%;" data-id="5"><span class="map-pin-tooltip">PT Stovia Garuda Yaksa</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:7.47%;top:19.90%;" data-id="6"><span class="map-pin-tooltip">PT Musfaha Niaga Mandiri</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:8.48%;top:31.56%;" data-id="7"><span class="map-pin-tooltip">Coffee Nusantara Kita</span><div class="map-pin-dot"></div></button>
+      <button class="map-pin" style="left:43.71%;top:84.62%;" data-id="8"><span class="map-pin-tooltip">Coffee Bali</span><div class="map-pin-dot"></div></button>
+
+      <div class="map-popup" id="map-popup">
+        <div class="map-popup-accent"></div>
+        <div class="map-popup-body">
+          <div class="map-popup-inner">
+            <div class="map-popup-left">
+              <p class="map-popup-label">Partner Profile</p>
+              <h3 class="map-popup-name" id="mp-name"></h3>
+              <p class="map-popup-contact" id="mp-contact"></p>
+              <div class="map-popup-buttons">
+                <a href="#coffees" class="btn-red" style="font-size:10px;padding:9px 14px;">View Lots <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              </div>
+            </div>
+            <div class="map-popup-divider-v"></div>
+            <div class="map-popup-right">
+              <div class="map-popup-row">
+                <p class="map-popup-row-label">Region</p>
+                <p class="map-popup-row-value" id="mp-region"></p>
+              </div>
+              <div class="map-popup-row">
+                <p class="map-popup-row-label">Flavor</p>
+                <p class="map-popup-row-value" id="mp-flavor"></p>
+              </div>
+              <div class="map-popup-row">
+                <p class="map-popup-row-label">Processing</p>
+                <p class="map-popup-row-value" id="mp-process"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const partners = {
+        1: { name: 'Java Frinsa Estate',            contact: 'Fikri',           region: 'West Java, Bandung Highlands', flavor: 'Clean, bright, fruit forward',        process: 'Natural, honey, washed' },
+        2: { name: 'Pusat Kopi Nusantara Indonesia', contact: 'Rivo',            region: 'Cianjur, West Java',           flavor: 'Balanced, sweet, approachable',       process: 'Natural, washed' },
+        3: { name: 'Jambi Etalase',                  contact: 'Je Edyanto',      region: 'Jambi, Sumatra',               flavor: 'Structured, deep sweetness, spice',   process: 'Washed, natural' },
+        4: { name: 'Agro Tropik Nusantara',          contact: 'Mulyadi',         region: 'Jambi, Sumatra',               flavor: 'Chocolate, herbal, layered',          process: 'Washed, honey' },
+        5: { name: 'PT Stovia Garuda Yaksa',         contact: 'Bella Fajar',     region: 'North Sumatra',                flavor: 'Bold, syrupy, earthy sweet',          process: 'Wet hulled, washed' },
+        6: { name: 'PT Musfaha Niaga Mandiri',       contact: 'Amin',            region: 'North Sumatra',                flavor: 'Rounded, dense, classic Sumatra',     process: 'Wet hulled, washed' },
+        7: { name: 'Coffee Nusantara Kita',          contact: 'Arwin',           region: 'Takengon, Aceh',               flavor: 'Citrus, cocoa, clean finish',         process: 'Washed, natural' },
+        8: { name: 'Coffee Bali',                    contact: 'Nyoman Sujiarta', region: 'Bali',                         flavor: 'Sweet, floral, soft tropical fruit',  process: 'Natural, honey' }
+      };
+
+      const mapBox    = document.getElementById('map-box');
+      const pins      = document.querySelectorAll('.map-pin');
+      const popup     = document.getElementById('map-popup');
+      const nameEl    = document.getElementById('mp-name');
+      const contactEl = document.getElementById('mp-contact');
+      const regionEl  = document.getElementById('mp-region');
+      const flavorEl  = document.getElementById('mp-flavor');
+      const processEl = document.getElementById('mp-process');
+
+      const PATH_HIGHLIGHTED = '#C21C04';
+      let highlightedPaths = [];
+
+      function resetHighlights() {
+        highlightedPaths.forEach(p => { p.style.fill = ''; p.style.transition = ''; });
+        highlightedPaths = [];
+      }
+
+      function highlightUnderPin(pin) {
+        resetHighlights();
+        const rect = mapBox.getBoundingClientRect();
+        const x = rect.left + (parseFloat(pin.style.left) / 100) * rect.width;
+        const y = rect.top  + (parseFloat(pin.style.top)  / 100) * rect.height;
+        pins.forEach(p => p.style.visibility = 'hidden');
+        const el = document.elementFromPoint(x, y);
+        pins.forEach(p => p.style.visibility = '');
+        if (el && el.tagName === 'path') {
+          el.style.transition = 'fill 0.3s ease';
+          el.style.fill = PATH_HIGHLIGHTED;
+          highlightedPaths.push(el);
+        }
+      }
+
+      function showPopup(pin) {
+        const d = partners[pin.dataset.id];
+        nameEl.textContent    = d.name;
+        contactEl.textContent = 'Contact: ' + d.contact;
+        regionEl.textContent  = d.region;
+        flavorEl.textContent  = d.flavor;
+        processEl.textContent = d.process;
+
+        // Position popup near the pin, keeping it within the map bounds
+        const mapRect  = mapBox.getBoundingClientRect();
+        const pinLeft  = parseFloat(pin.style.left) / 100;
+        const pinTop   = parseFloat(pin.style.top)  / 100;
+        const popupW   = 320;
+        const popupH   = 280;
+        const mapW     = mapBox.offsetWidth;
+        const mapH     = mapBox.offsetHeight;
+
+        let left = pinLeft * mapW + 16;
+        let top  = pinTop  * mapH - popupH / 2;
+
+        // Flip left if too close to right edge
+        if (left + popupW > mapW - 10) left = pinLeft * mapW - popupW - 16;
+        // Clamp vertically
+        top = Math.max(8, Math.min(top, mapH - popupH - 8));
+
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
+        popup.classList.add('visible');
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!popup.contains(e.target) && !e.target.closest('.map-pin')) {
+          popup.classList.remove('visible');
+          pins.forEach(p => p.classList.remove('active'));
+          resetHighlights();
+        }
+      });
+
+      fetch('/Indonesian_cities_and_regencies.svg')
+        .then(r => r.text())
+        .then(svgText => {
+          const parser = new DOMParser();
+          const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+          const svgEl  = svgDoc.querySelector('svg');
+          svgEl.setAttribute('width', '100%');
+          svgEl.removeAttribute('height');
+          svgEl.removeAttribute('enable-background');
+          svgEl.style.display = 'block';
+          svgEl.style.background = 'transparent';
+          mapBox.insertBefore(svgEl, mapBox.firstChild);
+        });
+
+      pins.forEach(pin => {
+        pin.addEventListener('click', () => {
+          if (document.getElementById('map-layout').classList.contains('drag-mode')) return;
+          pins.forEach(p => p.classList.remove('active'));
+          pin.classList.add('active');
+          highlightUnderPin(pin);
+          showPopup(pin);
+        });
+      });
+
+    })();
+  </script>
+</section>
+
+<!-- PRODUCERS -->
+<section class="producers-section" id="producers">
+  <div class="producers-header">
+    <div>
+      <p class="section-tag reveal">Our Partners</p>
+      <h2 class="section-heading reveal reveal-d1">Built on direct producer relationships.</h2>
+    </div>
+    <p class="section-body reveal reveal-d2">Every coffee we import is traceable to a specific farm and farmer. These are not anonymous lots. They are the work of dedicated growers we know by name, visited in person, and are committed to for the long term.</p>
+  </div>
+  <div class="producer-grid">
+    <div class="producer-card reveal">
+      <div class="producer-img">
+        <img src="/Brand Photos/Wildanfikri.png" alt="Java Frinsa Estate" loading="lazy" />
+      </div>
+      <div class="producer-body">
+        <p class="producer-region">West Java · Bandung Highlands</p>
+        <h3 class="producer-name">Java Frinsa Estate</h3>
+        <p class="producer-desc">Founded in 2012 by the Mustofa family in direct response to deforestation in the highland regions. Now led by Fikri Mustofa into its next generation, Frinsa combines meticulous processing with shade-grown cultivation across six West Java growing zones. Cupping scores available upon request.</p>
+      </div>
+    </div>
+    <div class="producer-card reveal reveal-d1">
+      <div class="producer-img">
+        <img src="/Brand Photos/collective.png" alt="Frinsa Collective" loading="lazy" />
+      </div>
+      <div class="producer-body">
+        <p class="producer-region">West Java · Bandung Highlands</p>
+        <h3 class="producer-name">Frinsa Collective</h3>
+        <p class="producer-desc">A network of smallholder farmers working under Frinsa's quality framework, with cherries collected and processed under direct Frinsa supervision. These lots extend Frinsa's standards of agronomy and traceability while providing better market access for partner growers.</p>
+      </div>
+    </div>
+    <div class="producer-card reveal reveal-d2">
+      <div class="producer-img">
+        <img src="/Brand Photos/Rivo_with_coffee.jpg" alt="Pusat Kopi Nusantara" loading="lazy" />
+      </div>
+      <div class="producer-body">
+        <p class="producer-region">West Java · Cianjur Highlands</p>
+        <h3 class="producer-name">Pusat Kopi Nusantara</h3>
+        <p class="producer-desc">Led by Rivo Trie Septiadiguna, PKNI is a community-first specialty coffee operation in the Cianjur highlands of West Java. Rivo supports a network of dedicated farmers with expertise in agronomy and processing, responsible for 700 tonnes of specialty coffee annually. Our connection to PKNI began when our teammate Hadi met Rivo on the ground in Cianjur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="team-header">
+    <p class="section-tag reveal">Our People</p>
+    <h2 class="section-heading reveal reveal-d1">Meet the team.</h2>
+    <p class="team-intro reveal reveal-d2">We are a passionate team of globally minded professionals united by a shared mission: to bridge Indonesia's rich coffee heritage with the North American market. Our team spans continents, bringing together diverse talents and perspectives rooted in trust, transparency, and a genuine love for what we do.</p>
+  </div>
+
+  <div class="team-leadership">
+    <a href="mailto:akhtar@acrossindonesianseas.com" class="team-card team-card--linked reveal">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_Canada_Headshot_Akhtar.png" alt="Akhtar Subandar" loading="lazy" style="object-position: center 25%;" />
+        <div class="team-email-overlay"><span>akhtar@acrossindonesianseas.com</span></div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Akhtar Subandar</div>
+        <div class="team-role">Chief Executive Officer</div>
+      </div>
+    </a>
+    <a href="mailto:owen@acrossindonesianseas.com" class="team-card team-card--linked reveal reveal-d1">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_canada_Headshot_Owen.png" alt="Owen McRann" loading="lazy" style="object-position: center 80%;" />
+        <div class="team-email-overlay"><span>owen@acrossindonesianseas.com</span></div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Owen McRann</div>
+        <div class="team-role">Co-Founder</div>
+      </div>
+    </a>
+    <a href="mailto:morgan@acrossindonesianseas.com" class="team-card team-card--linked reveal reveal-d2">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_Canada_Headshot_Morgan.png" alt="Morgan Omstead" loading="lazy" style="object-position: center 25%;" />
+        <div class="team-email-overlay"><span>morgan@acrossindonesianseas.com</span></div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Morgan Omstead</div>
+        <div class="team-role">Partner</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="team-members">
+    <div class="team-card reveal reveal-d1">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Apriyani.png" alt="Apri Yani" loading="lazy" style="object-position: center 35%;" />
+      </div>
+      <div class="team-info">
+        <div class="team-name">Apri Yani</div>
+        <div class="team-role">Supply Chain</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-d2">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Singgih.png" alt="Singgih Prayoga" loading="lazy" style="object-position: center 15%;" />
+      </div>
+      <div class="team-info">
+        <div class="team-name">Singgih Prayoga</div>
+        <div class="team-role">Legal Counsel</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Odi.png" alt="Odi Pradana" loading="lazy" style="object-position: center 15%;" />
+      </div>
+      <div class="team-info">
+        <div class="team-name">Odi Pradana</div>
+        <div class="team-role">Operations</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-d4">
+      <div class="team-photo">
+        <img src="/Team_Headshots/Internal_indonesia_headshot_Nurul_Hadi.png" alt="Nurul Hadi" loading="lazy" style="object-position: center 15%;" />
+      </div>
+      <div class="team-info">
+        <div class="team-name">Nurul Hadi</div>
+        <div class="team-role">Product Control</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDONESIA -->
+<section class="indonesia-section" id="indonesia">
+  <div class="indonesia-watermark">INDONESIA</div>
+  <div class="indonesia-inner">
+    <div class="indonesia-header">
+      <p class="section-tag reveal">The Origin</p>
+      <h2 class="section-heading reveal reveal-d1" style="margin-bottom:16px;">Why Indonesia.<br />Why West Java.</h2>
+      <p class="section-body reveal reveal-d2">Indonesia is the world's fourth largest coffee producer, yet only a fraction of what it grows reaches specialty buyers. We're changing that.</p>
+    </div>
+    <div class="fact-grid">
+      <div class="fact-card reveal">
+        <svg class="fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <div class="fact-title">1,400–1,800m Altitude</div>
+        <p class="fact-body">West Java's volcanic highlands deliver the elevation, rich soil, and temperature swings that create genuine complexity in the cup.</p>
+      </div>
+      <div class="fact-card reveal reveal-d1">
+        <svg class="fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="fact-title">Underrepresented Origin</div>
+        <p class="fact-body">Despite Indonesia's scale, specialty lots from Java remain rare on roasters' menus. Quality is exceptional and competition for the best lots is low.</p>
+      </div>
+      <div class="fact-card reveal reveal-d2">
+        <svg class="fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="fact-title">Heritage Varietals</div>
+        <p class="fact-body">Bourbon, Typica, Andung Sari, Sigarar Utang. Java's genetic diversity rivals any origin. Coffees with genuine character, not commodity profiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMODITIES -->
+<section class="commodities-section">
+  <div class="commodities-header">
+    <p class="section-tag reveal">Expanding Sourcing Platform</p>
+    <h2 class="section-heading reveal reveal-d1" style="max-width:440px; margin-bottom:16px;">Beyond coffee.</h2>
+    <div class="availability-note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Available upon request. Contact us for details.
+    </div>
+  </div>
+  <div class="commodity-grid">
+    <div class="commodity-card reveal">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="commodity-name">Coco Peat</div>
+      <p class="commodity-desc">Premium coconut husk fibre for horticultural and agricultural applications. Indonesian-sourced, sustainably processed.</p>
+      <span class="commodity-status">Available upon request</span>
+    </div>
+    <div class="commodity-card reveal reveal-d1">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 20.97"/><path d="M21 8C12 10 9.9 16.17 7.82 20.97"/></svg>
+      <div class="commodity-name">Coconut Fibre</div>
+      <p class="commodity-desc">Natural coir fibre for industrial and specialty uses. Long fibre, high tensile strength from mature Indonesian coconuts.</p>
+      <span class="commodity-status">Available upon request</span>
+    </div>
+    <div class="commodity-card reveal reveal-d2">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      <div class="commodity-name">Coconut Charcoal</div>
+      <p class="commodity-desc">Premium activated charcoal from coconut shells. High carbon content, suitable for filtration and specialty applications.</p>
+      <span class="commodity-status">Available upon request</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles-section" id="articles">
+  <div class="articles-inner">
+  <div class="articles-header">
+    <div>
+      <p class="section-tag reveal">Field Notes</p>
+      <h2 class="section-heading reveal reveal-d1">From the source.</h2>
+    </div>
+    <a href="#contact" class="btn-outline-dark reveal reveal-d2">
+      All Articles
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="article-grid">
+
+    <div class="article-card reveal">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/AIS Visits the Embassy of the Republic of Indonesia in Ottawa.png" alt="AIS Visits the Embassy of the Republic of Indonesia in Ottawa" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">News</span>
+          <span class="article-date">March 31, 2026</span>
+        </div>
+        <h3 class="article-title">AIS Visits the Embassy of the Republic of Indonesia in Ottawa</h3>
+        <p class="article-excerpt">On behalf of the entire Across Indonesian Seas team, we want to extend our deepest gratitude to the Embassy of the Republic of Indonesia in Ottawa for welcoming us with such warmth and generosity.</p>
+        <a href="/articles/embassy-ottawa.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d1">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada.png" alt="AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">Partnerships</span>
+          <span class="article-date">March 31, 2026</span>
+        </div>
+        <h3 class="article-title">AIS and Bumi Coffee Join Forces to Bring More Indonesian Coffee to Canada</h3>
+        <p class="article-excerpt">We are proud to announce a new collaboration with Bumi Coffee, a Vancouver-based Indonesian specialty coffee brand, united by a common mission: to bring more of Indonesia's finest coffee to Canadian cups.</p>
+        <a href="/articles/bumi-partnership.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d2">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/How Across Indonesian Seas Is Building Meaningful Partnerships in Indonesia%E2%80%99s Coffee Heartland.png" alt="How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">Partnerships</span>
+          <span class="article-date">October 22, 2024</span>
+        </div>
+        <h3 class="article-title">How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland</h3>
+        <p class="article-excerpt">When people think of great coffee, they often picture the cup in their hands. The aroma, the flavor, the warmth. But for us at AIS, it starts with the people who grow it.</p>
+        <a href="/articles/building-partnerships.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d1">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/soontoarrive:frinsacoffeeacrosstheseas.png" alt="Soon to Arrive: Frinsa Coffee Across the Seas" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">Origin</span>
+          <span class="article-date">September 2, 2024</span>
+        </div>
+        <h3 class="article-title">Soon to Arrive: Frinsa Coffee Across the Seas</h3>
+        <p class="article-excerpt">In the remote highlands of Pangalengan, West Java, coffee is more than a crop. It is a living tradition. Frinsa Coffee is a name synonymous with nuance.</p>
+        <a href="/articles/frinsa-arrival.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d2">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/From Farm to Future: A Conversation with Fikri from Frinsa Estate.png" alt="From Farm to Future: A Conversation with Fikri from Frinsa Estate" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">Producer Stories</span>
+          <span class="article-date">June 9, 2024</span>
+        </div>
+        <h3 class="article-title">From Farm to Future: A Conversation with Fikri from Frinsa Estate</h3>
+        <p class="article-excerpt">At Across Indonesian Seas, we believe every cup of coffee tells a story. Not just about flavor, but about people, place, and purpose.</p>
+        <a href="/articles/fikri-conversation.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d1">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada.png" alt="AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">News</span>
+          <span class="article-date">May 12, 2024</span>
+        </div>
+        <h3 class="article-title">AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada</h3>
+        <p class="article-excerpt">Across Indonesian Seas is proud to announce the formal signing of a direct trade partnership with Java Frinsa Estate, marking a major milestone in our mission.</p>
+        <a href="/articles/ais-frinsa-partnership.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-d2">
+      <div class="article-img">
+        <img src="/PhotosforArticleplaceholder/bringingtherichnessofindonesiangreencoffeetocanada.png" alt="Bringing the Richness of Indonesian Green Coffee to Canada" loading="lazy" />
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-category">Trade</span>
+          <span class="article-date">April 28, 2024</span>
+        </div>
+        <h3 class="article-title">Bringing the Richness of Indonesian Green Coffee to Canada</h3>
+        <p class="article-excerpt">We are proud to announce our latest milestone: the direct purchase of specialty green coffee from Indonesia, now making its way to Canadian roasters.</p>
+        <a href="/articles/bringing-richness.html" class="article-read-more">
+          Read More
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- BUMI -->
+<section class="bumi-section">
+  <div class="bumi-content">
+    <p class="section-tag reveal">Our Partner Roaster</p>
+    <h2 class="section-heading reveal reveal-d1">Want roasted coffee?<br />Meet Bumi.</h2>
+    <p class="reveal reveal-d2">We work closely with Bumi Coffee, a Canadian specialty roaster that brings our Indonesian green coffee to life. If you're a consumer looking for a finished product, Bumi is your destination.</p>
+    <a href="https://bumicoffee.com" target="_blank" rel="noopener noreferrer" class="btn-cream reveal reveal-d3">
+      Visit Bumi Coffee
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+  <div class="bumi-logo-side">
+    <img src="/brand_assets/BUMI_OAT_logo.png" alt="Bumi Coffee" class="reveal reveal-d2" />
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <p class="cta-tag reveal">Work With Us</p>
+    <h2 class="reveal reveal-d1">Ready to taste<br /><em>West Java?</em></h2>
+    <p class="reveal reveal-d2">We send sample packs to serious roasters across North America. Tell us what you're looking for and we'll match you to the right lot.</p>
+    <a href="mailto:info@acrossindonesianseas.com" class="btn-red reveal reveal-d3">
+      Request a Sample Pack
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-clip">
+        <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+      </div>
+      <p>A Vancouver-based specialty green coffee importer. West Java origins. Direct trade with Frinsa Estate, Frinsa Collective and Pusat Kopi Nusantara. North American distribution.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Coffees</h5>
+      <ul>
+        <li><a href="#coffees">Current Lots</a></li>
+        <li><a href="#contact">Request Samples</a></li>
+        <li><a href="#contact">Cupping Notes on Request</a></li>
+        <li><a href="#producers">Producer Profiles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About AIS</a></li>
+        <li><a href="#indonesia">Why Indonesia</a></li>
+        <li><a href="#commodities">Other Products</a></li>
+        <li><a href="https://bumicoffee.com" target="_blank" rel="noopener noreferrer">Bumi Coffee</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@acrossindonesianseas.com">info@acrossindonesianseas.com</a></li>
+        <li><a href="#contact">Request a Sample</a></li>
+        <li><a href="#contact">Trade Enquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Across Indonesian Seas. All rights reserved.</p>
+    <div class="footer-loc">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Vancouver, BC · Canada
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll + scroll direction tracking
+  const nav = document.getElementById('main-nav');
+  let lastScrollY = window.scrollY;
+  let scrollDir = 'down';
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    scrollDir = y > lastScrollY ? 'down' : 'up';
+    lastScrollY = y;
+    nav.classList.toggle('scrolled', y > 60);
+  }, { passive: true });
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else if (scrollDir === 'up') {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Coffee filter tabs
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      document.querySelectorAll('.coffee-card').forEach(card => {
+        if (filter === 'all' || card.dataset.tier === filter) {
+          card.removeAttribute('hidden');
+        } else {
+          card.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

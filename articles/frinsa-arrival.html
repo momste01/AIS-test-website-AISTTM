@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frinsa Coffee Across the Seas — Across Indonesian Seas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --grey: #D9D9D9;
+      --grey-light: #F2F2F2;
+      --white: #FFFFFF;
+      --charcoal: #2A2A2A;
+      --text-dark: #1a1a1a;
+      --text-mid: #555555;
+      --text-light: #888888;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); }
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', Georgia, serif; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px; padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--grey);
+    }
+    .nav-logo { flex-shrink: 0; min-width: 160px; overflow: hidden; }
+    .nav-logo img { height: 80px; width: auto; transform: scale(2); transform-origin: left center; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta { padding: 8px 20px; background: var(--red); color: #fff !important; border-radius: 2px; white-space: nowrap; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
+    .article-hero { padding-top: 68px; background: var(--grey-light); }
+    .article-hero-inner { max-width: 800px; margin: 0 auto; padding: 64px 24px 48px; }
+    .back-link { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); text-decoration: none; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--red); }
+    .article-category-badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-hero-title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 20px; }
+    .article-hero-meta { font-size: 13px; color: var(--text-light); letter-spacing: 0.03em; }
+    .article-cover { width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 4/3; overflow: hidden; }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-body-wrapper { max-width: 680px; margin: 0 auto; padding: 56px 24px 96px; }
+    .article-body-wrapper p { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 24px; }
+    .article-body-wrapper h2 { font-size: 1.75rem; font-weight: 500; letter-spacing: -0.02em; color: var(--text-dark); margin: 40px 0 16px; }
+    .article-body-wrapper blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 24px; margin: 32px 0; }
+    .article-body-wrapper blockquote p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-style: italic; line-height: 1.5; color: var(--text-dark); }
+    .watch-block { margin: 40px 0; }
+    .watch-block iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+    .contact-block { margin-top: 40px; }
+    .contact-block p { margin-bottom: 12px; }
+    .contact-block a { color: var(--red); }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#coffees">Coffees</a></li>
+    <li><a href="/#producers">Producers</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/#articles" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Articles
+    </a>
+    <span class="article-category-badge">Origin</span>
+    <h1 class="article-hero-title">Soon to Arrive: Frinsa Coffee Across the Seas</h1>
+    <p class="article-hero-meta">September 2, 2024</p>
+  </div>
+</div>
+
+<div class="article-cover">
+  <img src="/PhotosforArticleplaceholder/soontoarrive:frinsacoffeeacrosstheseas.png" alt="Soon to Arrive: Frinsa Coffee Across the Seas" />
+</div>
+
+<div class="article-body-wrapper">
+  <p>In the serene highlands of Pangalengan, West Java, coffee is more than a crop. It is a living tradition. FRINSA Coffee, a name synonymous with nuance and care, has become a symbol of connection, culture, and craft. And soon, its story will continue in Vancouver.</p>
+
+  <h2>A Tradition Rooted in People</h2>
+
+  <p>At the heart of FRINSA are the farmers, who see themselves not merely as cultivators, but as stewards of heritage. Each cherry is hand picked at peak ripeness, then processed in facilities designed to elevate the distinct terroir of Pangalengan. Through washed, natural, honey, and experimental methods, FRINSA brings out flavor profiles ranging from citrus brightness to deep chocolate richness.</p>
+
+  <h2>A Philosophy Beyond Processing</h2>
+
+  <p>Yet what sets FRINSA apart is not only its precision, but its philosophy. The company invests in sustainable practices and empowers local farmers, ensuring that the land and the community flourish together. Each cup carries both a taste and a story, one of care, transparency, and culture.</p>
+
+  <h2>Bringing FRINSA to Canada</h2>
+
+  <p>Now, Across Indonesian Seas is proud to bring this story to Canada. The arrival of FRINSA Coffee in Vancouver marks the beginning of a new chapter, where the flavors of West Java connect with roasters, cafés, and coffee lovers here on the Pacific coast.</p>
+
+  <h2>An Invitation in Every Cup</h2>
+
+  <p>Every cup of FRINSA is an invitation to experience Indonesia's richness, bridging cultures one sip at a time.</p>
+
+  <h2>Watch and Connect</h2>
+
+  <div class="watch-block">
+    <iframe src="https://www.youtube.com/embed/orUprg0c6M4?start=4" title="FRINSA Coffee Across the Seas" allowfullscreen></iframe>
+  </div>
+
+  <div class="contact-block">
+    <p>For wholesale inquiries or partnerships, contact us at:</p>
+    <p><a href="mailto:owen@acrossindonesianseas.com">owen@acrossindonesianseas.com</a></p>
+    <p>or send a message to <a href="tel:+12504882294">+1 (250) 488-2294</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Across Indonesian Seas &nbsp;·&nbsp; <a href="/#contact">Contact Us</a></p>
+</footer>
+
+</body>
+</html>
