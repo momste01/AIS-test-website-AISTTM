@@ -648,6 +648,7 @@
       position: relative;
       background: transparent;
       aspect-ratio: 1630.898 / 600;
+      overflow: hidden;
     }
     .map-container svg {
       display: block;
@@ -2059,6 +2060,11 @@
           svgEl.removeAttribute('enable-background');
           svgEl.style.display = 'block';
           svgEl.style.background = 'transparent';
+          svgEl.style.position = 'absolute';
+          svgEl.style.top = '0';
+          svgEl.style.left = '0';
+          svgEl.style.width = '100%';
+          svgEl.style.height = '100%';
           mapBox.insertBefore(svgEl, mapBox.firstChild);
         });
 
