@@ -1123,6 +1123,7 @@
       gap: 2px;
     }
     .article-card {
+      position: relative;
       background: var(--grey-light);
       overflow: hidden;
       min-width: 0;
@@ -1545,9 +1546,26 @@
       border-radius: 4px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       z-index: 50;
-      overflow: hidden;
+      overflow-y: auto;
+      max-height: 260px;
     }
     .coffee-dropdown-list.open { display: block; }
+    .coffee-select-all {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 2px solid #e0ddd8;
+      background: #faf7f4;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      user-select: none;
+    }
+    .coffee-select-all:hover { background: #f5f0eb; color: var(--red); }
     .coffee-dropdown-option {
       display: flex;
       align-items: center;
@@ -2516,10 +2534,6 @@
       <p class="section-tag reveal">Field Notes</p>
       <h2 class="section-heading reveal reveal-d1">From the source.</h2>
     </div>
-    <a href="#contact" class="btn-outline-dark reveal reveal-d2">
-      All Articles
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
   </div>
 
   <div class="article-grid">
@@ -2689,6 +2703,7 @@
           Vancouver, BC · Canada
         </div>
       </div>
+      <p style="margin-top:24px;font-size:13px;line-height:1.65;color:var(--text-light);">For all other inquiries, please reach out to <a href="mailto:info@acrossindonesianseas.com" style="color:var(--text-mid);text-decoration:underline;text-underline-offset:3px;">info@acrossindonesianseas.com</a></p>
     </div>
 
     <!-- Right: form -->
@@ -2721,6 +2736,7 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="coffee-dropdown-list" id="coffee-dropdown-list" role="listbox">
+              <div class="coffee-select-all" id="coffee-select-all">Select All Samples</div>
               <div class="coffee-dropdown-option" data-value="Frinsa Estate Natural Lactic" role="option">
                 <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Estate Natural Lactic</span><span class="coffee-opt-process">Natural Lactic · Bandung Highlands</span></div>
@@ -2853,6 +2869,17 @@
     });
   });
 
+  // Article cards — whole card clickable
+  document.querySelectorAll('.article-card').forEach(card => {
+    const link = card.querySelector('.article-read-more');
+    if (!link) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.article-read-more')) return;
+      window.location.href = link.href;
+    });
+  });
+
   // Scroll reveal
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -2916,6 +2943,8 @@
       hidden.value = selected.join(', ');
       trigLabel.textContent = selected.length ? `${selected.length} coffee${selected.length > 1 ? 's' : ''} selected` : 'Select a coffee…';
       trigger.classList.toggle('has-selection', selected.length > 0);
+      const sab = document.getElementById('coffee-select-all');
+      if (sab) sab.textContent = selected.length === options.length ? 'Deselect All' : 'Select All Samples';
     }
 
     trigger.addEventListener('click', () => {
@@ -2936,6 +2965,21 @@
         }
         renderTags();
       });
+    });
+
+    const selectAllBtn = document.getElementById('coffee-select-all');
+    selectAllBtn.addEventListener('click', () => {
+      const allSelected = selected.length === options.length;
+      if (allSelected) {
+        selected = [];
+        options.forEach(o => o.classList.remove('selected'));
+        selectAllBtn.textContent = 'Select All Samples';
+      } else {
+        selected = Array.from(options).map(o => o.dataset.value);
+        options.forEach(o => o.classList.add('selected'));
+        selectAllBtn.textContent = 'Deselect All';
+      }
+      renderTags();
     });
 
     document.addEventListener('click', e => {
