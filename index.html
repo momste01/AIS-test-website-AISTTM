@@ -1555,6 +1555,9 @@
       user-select: none;
     }
     .coffee-select-all:hover { background: #f5f0eb; color: var(--red); }
+    .coffee-select-all .coffee-opt-check svg { display: none; }
+    .coffee-select-all.all-selected .coffee-opt-check { background: var(--red); border-color: var(--red); }
+    .coffee-select-all.all-selected .coffee-opt-check svg { display: block; }
     .coffee-dropdown-option {
       display: flex;
       align-items: center;
@@ -2730,7 +2733,7 @@
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
-          <label for="company">Company / Roastery</label>
+          <label for="company">Company</label>
           <input type="text" id="company" name="company" />
         </div>
         <div class="form-group">
@@ -2741,7 +2744,7 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="coffee-dropdown-list" id="coffee-dropdown-list" role="listbox">
-              <div class="coffee-select-all" id="coffee-select-all">Select All Samples</div>
+              <div class="coffee-select-all" id="coffee-select-all"><div class="coffee-opt-check" id="select-all-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Select All Samples</div>
               <div class="coffee-dropdown-option" data-value="Frinsa Estate Natural Lactic" role="option">
                 <div class="coffee-opt-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="coffee-opt-text"><span class="coffee-opt-name">Frinsa Estate Natural Lactic</span><span class="coffee-opt-process">Natural Lactic · Bandung Highlands</span></div>
@@ -2786,8 +2789,8 @@
         <div class="form-group">
           <label>Roast Preference</label>
           <div class="roast-toggle">
-            <input type="radio" name="roast" id="roast-green" value="Green (Unroasted)" checked />
-            <label for="roast-green">Green (Unroasted)</label>
+            <input type="radio" name="roast" id="roast-green" value="Unroasted" checked />
+            <label for="roast-green">Unroasted</label>
             <input type="radio" name="roast" id="roast-roasted" value="Roasted" />
             <label for="roast-roasted">Roasted</label>
           </div>
@@ -2949,7 +2952,11 @@
       trigLabel.textContent = selected.length ? `${selected.length} coffee${selected.length > 1 ? 's' : ''} selected` : 'Select a coffee…';
       trigger.classList.toggle('has-selection', selected.length > 0);
       const sab = document.getElementById('coffee-select-all');
-      if (sab) sab.textContent = selected.length === options.length ? 'Deselect All' : 'Select All Samples';
+      if (sab) {
+        const allSel = selected.length === options.length;
+        sab.childNodes[sab.childNodes.length - 1].textContent = allSel ? 'Deselect All' : 'Select All Samples';
+        sab.classList.toggle('all-selected', allSel);
+      }
     }
 
     trigger.addEventListener('click', () => {
@@ -2973,16 +2980,19 @@
     });
 
     const selectAllBtn = document.getElementById('coffee-select-all');
+    const selectAllLabel = selectAllBtn.childNodes[selectAllBtn.childNodes.length - 1];
     selectAllBtn.addEventListener('click', () => {
       const allSelected = selected.length === options.length;
       if (allSelected) {
         selected = [];
         options.forEach(o => o.classList.remove('selected'));
-        selectAllBtn.textContent = 'Select All Samples';
+        selectAllBtn.classList.remove('all-selected');
+        selectAllLabel.textContent = 'Select All Samples';
       } else {
         selected = Array.from(options).map(o => o.dataset.value);
         options.forEach(o => o.classList.add('selected'));
-        selectAllBtn.textContent = 'Deselect All';
+        selectAllBtn.classList.add('all-selected');
+        selectAllLabel.textContent = 'Deselect All';
       }
       renderTags();
     });
@@ -3016,6 +3026,9 @@
           form.reset();
           // Reset dropdown
           document.querySelectorAll('.coffee-dropdown-option').forEach(o => o.classList.remove('selected'));
+          const sab = document.getElementById('coffee-select-all');
+          sab.classList.remove('all-selected');
+          sab.childNodes[sab.childNodes.length - 1].textContent = 'Select All Samples';
           document.getElementById('coffee-tags').innerHTML = '';
           document.getElementById('coffee-selection-input').value = '';
           document.getElementById('coffee-trigger-label').textContent = 'Select a coffee…';
