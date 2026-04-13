@@ -2014,19 +2014,18 @@
         document.getElementById('mp-buttons').style.display = d.showLots ? '' : 'none';
 
         // Position popup near the pin, keeping it within the map bounds
-        const mapRect  = mapBox.getBoundingClientRect();
-        const pinLeft  = parseFloat(pin.style.left) / 100;
-        const pinTop   = parseFloat(pin.style.top)  / 100;
         const popupW   = 320;
         const popupH   = 280;
         const mapW     = mapBox.offsetWidth;
         const mapH     = mapBox.offsetHeight;
+        const pinLeft  = parseFloat(pin.style.left);
+        const pinTop   = parseFloat(pin.style.top);
 
-        let left = pinLeft * mapW + 16;
-        let top  = pinTop  * mapH - popupH / 2;
+        let left = pinLeft + 16;
+        let top  = pinTop  - popupH / 2;
 
         // Flip left if too close to right edge
-        if (left + popupW > mapW - 10) left = pinLeft * mapW - popupW - 16;
+        if (left + popupW > mapW - 10) left = pinLeft - popupW - 16;
         // Clamp vertically
         top = Math.max(8, Math.min(top, mapH - popupH - 8));
 
