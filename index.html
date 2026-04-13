@@ -647,7 +647,6 @@
     .map-container {
       position: relative;
       background: transparent;
-      aspect-ratio: 1630.898 / 600;
       overflow: hidden;
     }
     .map-container svg {
@@ -2052,9 +2051,7 @@
           svgEl.removeAttribute('enable-background');
           svgEl.style.display = 'block';
           svgEl.style.background = 'transparent';
-          svgEl.style.position = 'absolute';
-          svgEl.style.top = '0';
-          svgEl.style.left = '0';
+          svgEl.style.position = 'relative';
           svgEl.style.width = '100%';
           svgEl.style.height = 'auto';
           mapBox.insertBefore(svgEl, mapBox.firstChild);
