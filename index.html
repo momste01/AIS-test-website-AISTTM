@@ -2043,10 +2043,11 @@
         }
       });
 
+      let mapSvgEl = null;
+
       function positionPins() {
-        const injectedSvg = mapBox.querySelector('svg');
-        if (!injectedSvg) return;
-        const svgRect = injectedSvg.getBoundingClientRect();
+        if (!mapSvgEl) return;
+        const svgRect = mapSvgEl.getBoundingClientRect();
         const boxRect = mapBox.getBoundingClientRect();
         pins.forEach(pin => {
           const fx = parseFloat(pin.dataset.fx);
@@ -2076,6 +2077,7 @@
           svgEl.style.width = '100%';
           svgEl.style.height = '100%';
           mapBox.insertBefore(svgEl, mapBox.firstChild);
+          mapSvgEl = svgEl;
           // Position pins after SVG renders
           requestAnimationFrame(() => requestAnimationFrame(positionPins));
         });
