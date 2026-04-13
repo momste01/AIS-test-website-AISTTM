@@ -646,8 +646,11 @@
     }
     .map-container {
       position: relative;
-      background: transparent;
+      width: 100%;
+      padding-bottom: 36.79%; /* 600 / 1630.898 * 100 */
+      height: 0;
       overflow: hidden;
+      background: transparent;
     }
     .map-container svg {
       display: block;
@@ -2047,13 +2050,16 @@
           const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
           const svgEl  = svgDoc.querySelector('svg');
           svgEl.setAttribute('width', '100%');
-          svgEl.removeAttribute('height');
+          svgEl.setAttribute('height', '100%');
+          svgEl.setAttribute('preserveAspectRatio', 'none');
           svgEl.removeAttribute('enable-background');
           svgEl.style.display = 'block';
           svgEl.style.background = 'transparent';
-          svgEl.style.position = 'relative';
+          svgEl.style.position = 'absolute';
+          svgEl.style.top = '0';
+          svgEl.style.left = '0';
           svgEl.style.width = '100%';
-          svgEl.style.height = 'auto';
+          svgEl.style.height = '100%';
           mapBox.insertBefore(svgEl, mapBox.firstChild);
         });
 
