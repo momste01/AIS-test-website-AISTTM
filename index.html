@@ -1992,8 +1992,8 @@
       function highlightUnderPin(pin) {
         resetHighlights();
         const rect = mapBox.getBoundingClientRect();
-        const x = rect.left + (parseFloat(pin.style.left) / 100) * rect.width;
-        const y = rect.top  + (parseFloat(pin.style.top)  / 100) * rect.height;
+        const x = rect.left + parseFloat(pin.style.left);
+        const y = rect.top  + parseFloat(pin.style.top);
         pins.forEach(p => p.style.visibility = 'hidden');
         const el = document.elementFromPoint(x, y);
         pins.forEach(p => p.style.visibility = '');
