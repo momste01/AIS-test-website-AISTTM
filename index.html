@@ -838,7 +838,11 @@
       font-family: 'Inter', sans-serif;
     }
     .map-pin:hover .map-pin-tooltip { opacity: 1; }
+    /* Pins near the top or left edge of the map: tooltip below + left-aligned to avoid overflow:hidden clipping */
     .map-pin[data-id="7"] .map-pin-tooltip { bottom: auto; top: calc(100% + 2px); left: 0; transform: none; }
+    .map-pin[data-id="6"] .map-pin-tooltip { bottom: auto; top: calc(100% + 2px); left: 0; transform: none; }
+    .map-pin[data-id="5"] .map-pin-tooltip { bottom: auto; top: calc(100% + 2px); left: 0; transform: none; }
+    .map-pin[data-id="4"] .map-pin-tooltip { left: 0; transform: none; }
 
     /* Mobile map popup backdrop */
     .map-popup-backdrop {
