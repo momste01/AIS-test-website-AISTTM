@@ -850,7 +850,7 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    .map-popup-backdrop.visible { opacity: 1; }
+    .map-popup-backdrop.visible { display: block; opacity: 1; }
     .map-panel {
       background: var(--white);
       border-radius: 3px;
@@ -1955,10 +1955,6 @@
       .map-popup.visible {
         transform: translateY(0) !important;
       }
-      .map-popup-backdrop {
-        display: block;
-      }
-
       /* COFFEES */
       .coffees-section { padding: 60px 24px; }
       .coffees-header { flex-direction: column; align-items: flex-start; gap: 20px; }
