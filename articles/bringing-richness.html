@@ -46,6 +46,21 @@
     footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
     footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
     footer a:hover { color: #fff; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px 4px; color: var(--text-dark); flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0 24px; border-top: 1px solid var(--grey); overflow-y: auto; z-index: 99; }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 14px 24px; color: var(--text-mid) !important; font-size: 14px; letter-spacing: 0.06em; border-bottom: 1px solid var(--grey-light); transition: background 0.15s, color 0.15s; }
+      .nav-links a:hover { color: var(--red) !important; background: var(--grey-light); }
+      .nav-cta { margin: 12px 20px 0 !important; display: block !important; width: calc(100% - 40px) !important; text-align: center; border-bottom: none !important; padding: 13px 20px !important; font-size: 12px !important; }
+    }
   </style>
 </head>
 <body>
@@ -54,7 +69,10 @@
   <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
     <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
   </a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="/#coffees">Coffees</a></li>
     <li><a href="/#producers">Producers</a></li>
     <li><a href="/#team">Team</a></li>
@@ -119,5 +137,17 @@
   <p>&copy; 2024 Across Indonesian Seas &nbsp;·&nbsp; <a href="/#contact">Contact Us</a></p>
 </footer>
 
+<script>
+  (function() {
+    var hamburger = document.getElementById('nav-hamburger');
+    var navLinks  = document.getElementById('nav-links');
+    if (!hamburger || !navLinks) return;
+    function closeMenu() { hamburger.classList.remove('open'); navLinks.classList.remove('mobile-open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', function() { var open = navLinks.classList.toggle('mobile-open'); hamburger.classList.toggle('open', open); hamburger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function(e) { if (!e.target.closest('nav')) closeMenu(); });
+    window.addEventListener('resize', function() { if (window.innerWidth > 768) closeMenu(); });
+  })();
+</script>
 </body>
 </html>

@@ -1822,6 +1822,247 @@
     .reveal-d4 { transition-delay: 0.32s; }
     .reveal-d5 { transition-delay: 0.40s; }
     .reveal-d6 { transition-delay: 0.48s; }
+
+    /* ── MOBILE NAV HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 4px;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.3s;
+      flex-shrink: 0;
+    }
+    nav.scrolled .nav-hamburger { color: var(--text-dark); }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── RESPONSIVE: MOBILE (≤ 768px) ── */
+    @media (max-width: 768px) {
+      /* NAV */
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 68px; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 8px 0 24px;
+        border-top: 1px solid var(--grey);
+        overflow-y: auto;
+        z-index: 99;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 14px 24px;
+        color: var(--text-mid) !important;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid var(--grey-light);
+        transition: background 0.15s, color 0.15s;
+      }
+      .nav-links a:hover { color: var(--red) !important; background: var(--grey-light); }
+      .nav-cta {
+        margin: 12px 20px 0 !important;
+        display: block !important;
+        width: calc(100% - 40px) !important;
+        text-align: center;
+        border-bottom: none !important;
+        padding: 13px 20px !important;
+        font-size: 12px !important;
+        border-radius: 2px;
+      }
+
+      /* HERO */
+      .hero-content { padding: 0 24px 64px; max-width: 100%; }
+      .hero-sub { max-width: 100%; font-size: 14px; }
+      .hero-btns { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .btn-red, .btn-outline-white { width: 100%; justify-content: center; }
+      .scroll-hint { display: none; }
+
+      /* TICKER */
+      .ticker-inner { flex-wrap: wrap; }
+      .ticker-item {
+        flex: 1 1 50%;
+        min-width: 0;
+        padding: 20px 24px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .ticker-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .ticker-val { font-size: 28px; }
+
+      /* INTRO */
+      .intro-section {
+        padding: 60px 24px;
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .intro-img { height: 260px; order: 2; }
+      .intro-section > div:not(.intro-img) { order: 1; }
+
+      /* MAP */
+      .map-section { padding: 60px 24px; }
+      .map-section-header { grid-template-columns: 1fr; gap: 16px; }
+      .map-container { padding-bottom: 68%; }
+      .map-popup { width: min(300px, calc(100vw - 32px)); }
+
+      /* COFFEES */
+      .coffees-section { padding: 60px 24px; }
+      .coffees-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .filter-tabs {
+        overflow-x: auto;
+        width: 100%;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filter-tabs::-webkit-scrollbar { display: none; }
+      .coffee-list { grid-template-columns: 1fr; gap: 2px; }
+
+      /* WHY */
+      .why-section { grid-template-columns: 1fr; }
+      .why-img { min-height: 260px; }
+      .why-content { padding: 48px 24px; }
+
+      /* PRODUCERS */
+      .producers-section { padding: 60px 24px; }
+      .producers-header { grid-template-columns: 1fr; gap: 20px; }
+      .producer-grid { grid-template-columns: 1fr; }
+
+      /* TEAM */
+      .team-section { padding: 60px 24px; }
+      .team-leadership { grid-template-columns: 1fr; max-width: 100%; gap: 14px; }
+      .team-members { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+      /* ARTICLES */
+      .articles-section { padding: 60px 24px; }
+      .articles-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .article-grid { grid-template-columns: 1fr; }
+
+      /* INDONESIA */
+      .indonesia-section { padding: 60px 24px; }
+      .fact-grid { grid-template-columns: 1fr; }
+
+      /* COMMODITIES */
+      .commodities-section { padding: 60px 24px; }
+      .commodities-top-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+      .commodity-grid { grid-template-columns: 1fr; }
+
+      /* BUMI */
+      .bumi-section { grid-template-columns: 1fr; }
+      .bumi-content { padding: 48px 24px; order: 2; }
+      .bumi-logo-side { padding: 36px 24px; order: 1; }
+      .bumi-logo-side img { width: 160px; }
+
+      /* CTA already has media query; reinforce padding */
+      .cta-section { padding: 60px 24px; }
+
+      /* FOOTER */
+      footer { padding: 48px 24px 28px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 32px; margin-bottom: 24px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-logo-clip { margin-left: -14px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    /* ── RESPONSIVE: SMALL PHONES (≤ 480px) ── */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: clamp(26px, 8vw, 38px); }
+      .team-members { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .ticker-item { flex: 1 1 50%; }
+      .bumi-logo-side img { width: 130px; }
+    }
+
+    /* ── RESPONSIVE: TABLET (769px – 1024px) ── */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      nav { padding: 0 32px; }
+
+      /* HERO */
+      .hero-content { padding: 0 48px 80px; }
+
+      /* INTRO */
+      .intro-section { padding: 80px 48px; gap: 60px; }
+      .intro-img { height: 420px; }
+
+      /* MAP */
+      .map-section { padding: 80px 48px; }
+      .map-section-header { grid-template-columns: 1fr; gap: 20px; }
+
+      /* COFFEES */
+      .coffees-section { padding: 80px 48px; }
+      .coffee-list { grid-template-columns: repeat(2, 1fr); }
+
+      /* WHY */
+      .why-content { padding: 60px 48px; }
+
+      /* PRODUCERS */
+      .producers-section { padding: 80px 48px; }
+      .producers-header { grid-template-columns: 1fr; gap: 24px; }
+      .producer-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* TEAM */
+      .team-section { padding: 80px 48px; }
+      .team-leadership { max-width: 100%; }
+      .team-members { grid-template-columns: repeat(2, 1fr); }
+
+      /* ARTICLES */
+      .articles-section { padding: 80px 48px; }
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* INDONESIA */
+      .indonesia-section { padding: 80px 48px; }
+      .fact-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* COMMODITIES */
+      .commodities-section { padding: 60px 48px; }
+      .commodities-top-grid { gap: 40px !important; }
+      .commodity-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* BUMI */
+      .bumi-content { padding: 60px 48px; }
+      .bumi-logo-side { padding: 48px; }
+
+      /* FOOTER */
+      footer { padding: 48px 48px 36px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    /* ── RESPONSIVE: SMALL DESKTOP (1025px – 1280px) ── */
+    @media (min-width: 1025px) and (max-width: 1280px) {
+      nav { padding: 0 40px; }
+      .intro-section { padding: 80px 60px; gap: 72px; }
+      .coffees-section { padding: 80px 60px; }
+      .producers-section { padding: 80px 60px; }
+      .team-section { padding: 80px 60px; }
+      .articles-section { padding: 80px 60px; }
+      .indonesia-section { padding: 80px 60px; }
+      .commodities-section { padding: 80px 60px; }
+      .map-section { padding: 80px 60px; }
+      footer { padding: 40px 60px 36px; }
+    }
   </style>
 </head>
 <body>
@@ -1831,7 +2072,10 @@
   <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
     <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
   </a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#coffees">Coffees</a></li>
     <li><a href="#producers">Producers</a></li>
@@ -2518,7 +2762,7 @@
 <!-- COMMODITIES -->
 <section class="commodities-section" id="beyond-coffee">
   <div style="margin-bottom:40px;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end;">
+    <div class="commodities-top-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end;">
       <div>
         <p class="section-tag reveal">Expanding Sourcing Platform</p>
         <h2 class="section-heading reveal reveal-d1">More from Indonesia</h2>
@@ -2874,6 +3118,42 @@
 </footer>
 
 <script>
+  // Mobile nav hamburger
+  (function() {
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    if (!hamburger || !navLinks) return;
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('mobile-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('mobile-open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (!e.target.closest('nav')) closeMenu();
+    });
+
+    // Close on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
+  })();
+
   // Nav scroll + scroll direction tracking
   const nav = document.getElementById('main-nav');
   let lastScrollY = window.scrollY;
