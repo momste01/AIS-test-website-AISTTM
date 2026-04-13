@@ -839,6 +839,18 @@
     }
     .map-pin:hover .map-pin-tooltip { opacity: 1; }
     .map-pin[data-id="7"] .map-pin-tooltip { bottom: auto; top: calc(100% + 2px); left: 0; transform: none; }
+
+    /* Mobile map popup backdrop */
+    .map-popup-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 199;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .map-popup-backdrop.visible { opacity: 1; }
     .map-panel {
       background: var(--white);
       border-radius: 3px;
@@ -1925,7 +1937,27 @@
       .map-section { padding: 60px 24px; }
       .map-section-header { grid-template-columns: 1fr; gap: 16px; }
       .map-container { padding-bottom: 68%; }
-      .map-popup { width: min(300px, calc(100vw - 32px)); }
+      /* On mobile the popup becomes a fixed bottom sheet */
+      .map-popup {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        max-height: 70vh;
+        overflow-y: auto;
+        border-radius: 10px 10px 0 0;
+        transform-origin: bottom center !important;
+        transform: translateY(100%) !important;
+        z-index: 200 !important;
+      }
+      .map-popup.visible {
+        transform: translateY(0) !important;
+      }
+      .map-popup-backdrop {
+        display: block;
+      }
 
       /* COFFEES */
       .coffees-section { padding: 60px 24px; }
@@ -2160,6 +2192,7 @@
     <p class="section-body reveal reveal-d2">Our network spans multiple islands, giving roasters access to distinct flavor profiles, processing styles, and direct producer relationships across Indonesia's key growing regions.</p>
   </div>
 
+  <div id="map-popup-backdrop" class="map-popup-backdrop"></div>
   <div class="map-layout reveal reveal-d1" id="map-layout">
     <div class="map-container" id="map-box">
       <button class="map-pin" data-id="1" data-fx="0.2722" data-fy="0.7559"><span class="map-pin-tooltip">Ciwidey Hills, West Java</span><div class="map-pin-dot"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle class="compass-ring" cx="12" cy="12" r="7"/><path class="compass-main" d="M12 1 L13.2 10.8 L22 12 L13.2 13.2 L12 23 L10.8 13.2 L1 12 L10.8 10.8 Z"/><circle class="compass-main" cx="12" cy="12" r="1.8"/></svg></div></button>
@@ -2171,32 +2204,34 @@
       <button class="map-pin" data-id="7" data-fx="0.0408" data-fy="0.0832"><span class="map-pin-tooltip">Gayo Highlands, Aceh</span><div class="map-pin-dot"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle class="compass-ring" cx="12" cy="12" r="7"/><path class="compass-main" d="M12 1 L13.2 10.8 L22 12 L13.2 13.2 L12 23 L10.8 13.2 L1 12 L10.8 10.8 Z"/><circle class="compass-main" cx="12" cy="12" r="1.8"/></svg></div></button>
       <button class="map-pin" data-id="8" data-fx="0.4371" data-fy="0.8462"><span class="map-pin-tooltip">Kintamani Highlands, Bali</span><div class="map-pin-dot"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle class="compass-ring" cx="12" cy="12" r="7"/><path class="compass-main" d="M12 1 L13.2 10.8 L22 12 L13.2 13.2 L12 23 L10.8 13.2 L1 12 L10.8 10.8 Z"/><circle class="compass-main" cx="12" cy="12" r="1.8"/></svg></div></button>
 
-      <div class="map-popup" id="map-popup">
-        <div class="map-popup-accent"></div>
-        <div class="map-popup-body">
-          <div class="map-popup-inner">
-            <div class="map-popup-left">
-              <p class="map-popup-label">Growing Region</p>
-              <h3 class="map-popup-name" id="mp-name"></h3>
-              <p class="map-popup-contact" id="mp-contact"></p>
-              <div class="map-popup-buttons" id="mp-buttons">
-                <a href="#coffees" class="btn-red" style="font-size:10px;padding:9px 14px;">View Lots <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-              </div>
+    </div>
+
+    <div class="map-popup" id="map-popup">
+      <div class="map-popup-accent"></div>
+      <button class="map-popup-close" id="map-popup-close" aria-label="Close">✕</button>
+      <div class="map-popup-body">
+        <div class="map-popup-inner">
+          <div class="map-popup-left">
+            <p class="map-popup-label">Growing Region</p>
+            <h3 class="map-popup-name" id="mp-name"></h3>
+            <p class="map-popup-contact" id="mp-contact"></p>
+            <div class="map-popup-buttons" id="mp-buttons">
+              <a href="#coffees" class="btn-red" style="font-size:10px;padding:9px 14px;">View Lots <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <div class="map-popup-divider-v"></div>
-            <div class="map-popup-right">
-              <div class="map-popup-row">
-                <p class="map-popup-row-label">Region</p>
-                <p class="map-popup-row-value" id="mp-region"></p>
-              </div>
-              <div class="map-popup-row">
-                <p class="map-popup-row-label">Flavor</p>
-                <p class="map-popup-row-value" id="mp-flavor"></p>
-              </div>
-              <div class="map-popup-row">
-                <p class="map-popup-row-label">Processing</p>
-                <p class="map-popup-row-value" id="mp-process"></p>
-              </div>
+          </div>
+          <div class="map-popup-divider-v"></div>
+          <div class="map-popup-right">
+            <div class="map-popup-row">
+              <p class="map-popup-row-label">Region</p>
+              <p class="map-popup-row-value" id="mp-region"></p>
+            </div>
+            <div class="map-popup-row">
+              <p class="map-popup-row-label">Flavor</p>
+              <p class="map-popup-row-value" id="mp-flavor"></p>
+            </div>
+            <div class="map-popup-row">
+              <p class="map-popup-row-label">Processing</p>
+              <p class="map-popup-row-value" id="mp-process"></p>
             </div>
           </div>
         </div>
@@ -2249,6 +2284,15 @@
         }
       }
 
+      const backdrop = document.getElementById('map-popup-backdrop');
+
+      function closePopup() {
+        popup.classList.remove('visible');
+        if (backdrop) backdrop.classList.remove('visible');
+        pins.forEach(p => p.classList.remove('active'));
+        resetHighlights();
+      }
+
       function showPopup(pin) {
         const d = partners[pin.dataset.id];
         nameEl.textContent    = d.name;
@@ -2258,19 +2302,30 @@
         processEl.textContent = d.process;
         document.getElementById('mp-buttons').style.display = d.showLots ? '' : 'none';
 
-        // Position popup near the pin, keeping it within the map bounds
-        const popupW   = 320;
-        const popupH   = 280;
-        const mapW     = mapBox.offsetWidth;
-        const mapH     = mapBox.offsetHeight;
-        const pinLeft  = parseFloat(pin.style.left);
-        const pinTop   = parseFloat(pin.style.top);
+        // On mobile: show as fixed bottom sheet — no positioning needed
+        if (window.innerWidth <= 768) {
+          popup.style.left = '';
+          popup.style.top  = '';
+          popup.classList.add('visible');
+          if (backdrop) backdrop.classList.add('visible');
+          return;
+        }
+
+        // Desktop: position popup near pin, clamped within map bounds
+        const popupW  = popup.offsetWidth  || 320;
+        const popupH  = popup.offsetHeight || 280;
+        const mapW    = mapBox.offsetWidth;
+        const mapH    = mapBox.offsetHeight;
+        const pinLeft = parseFloat(pin.style.left);
+        const pinTop  = parseFloat(pin.style.top);
 
         let left = pinLeft + 16;
         let top  = pinTop  - popupH / 2;
 
-        // Flip left if too close to right edge
+        // Flip to left of pin if too close to right edge
         if (left + popupW > mapW - 10) left = pinLeft - popupW - 16;
+        // Clamp horizontally so it never goes off the left edge either
+        left = Math.max(8, Math.min(left, mapW - popupW - 8));
         // Clamp vertically
         top = Math.max(8, Math.min(top, mapH - popupH - 8));
 
@@ -2279,11 +2334,16 @@
         popup.classList.add('visible');
       }
 
+      // Close on backdrop tap (mobile)
+      if (backdrop) backdrop.addEventListener('click', closePopup);
+
+      // Close button inside popup
+      const closeBtn = document.getElementById('map-popup-close');
+      if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
       document.addEventListener('click', (e) => {
-        if (!popup.contains(e.target) && !e.target.closest('.map-pin')) {
-          popup.classList.remove('visible');
-          pins.forEach(p => p.classList.remove('active'));
-          resetHighlights();
+        if (!popup.contains(e.target) && !e.target.closest('.map-pin') && !e.target.closest('#map-popup-backdrop')) {
+          closePopup();
         }
       });
 
