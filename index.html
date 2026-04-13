@@ -2084,17 +2084,77 @@
       // Reposition on resize
       new ResizeObserver(positionPins).observe(mapBox);
 
-      // Restore any saved pin positions
-      try {
-        const saved = JSON.parse(localStorage.getItem('ais-map-pin-positions') || '{}');
+      // ── Drag-to-reposition mode ──────────────────────────────────────
+      let dragMode = false;
+      let dragging = null, dragOffX = 0, dragOffY = 0, didDrag = false;
+
+      const dragBtn = document.createElement('button');
+      dragBtn.textContent = '📍 Edit Pin Positions';
+      dragBtn.style.cssText = 'position:absolute;top:10px;right:10px;z-index:100;background:#fff;border:1px solid #ccc;border-radius:4px;padding:6px 10px;font-size:12px;cursor:pointer;';
+      mapBox.appendChild(dragBtn);
+
+      const coordsBox = document.createElement('pre');
+      coordsBox.style.cssText = 'position:absolute;bottom:10px;right:10px;z-index:100;background:rgba(0,0,0,0.75);color:#fff;font-size:11px;padding:8px 10px;border-radius:4px;display:none;line-height:1.6;';
+      mapBox.appendChild(coordsBox);
+
+      function updateCoordsBox() {
+        if (!mapSvgEl) return;
+        const svgRect = mapSvgEl.getBoundingClientRect();
+        const lines = ['Copy these to Claude:'];
         pins.forEach(pin => {
-          const id = pin.dataset.id;
-          if (saved[id]) { pin.style.left = saved[id].left; pin.style.top = saved[id].top; }
+          const fx = (parseFloat(pin.style.left) / svgRect.width).toFixed(4);
+          const fy = (parseFloat(pin.style.top)  / svgRect.height).toFixed(4);
+          lines.push(`pin ${pin.dataset.id}: fx=${fx} fy=${fy}`);
         });
-      } catch(e) {}
+        coordsBox.textContent = lines.join('\n');
+      }
+
+      dragBtn.addEventListener('click', () => {
+        dragMode = !dragMode;
+        dragBtn.textContent = dragMode ? '✅ Done Editing' : '📍 Edit Pin Positions';
+        dragBtn.style.background = dragMode ? '#C21C04' : '#fff';
+        dragBtn.style.color = dragMode ? '#fff' : '#000';
+        coordsBox.style.display = dragMode ? 'block' : 'none';
+        pins.forEach(p => { p.style.cursor = dragMode ? 'grab' : 'pointer'; });
+        if (dragMode) updateCoordsBox();
+      });
+
+      mapBox.addEventListener('pointerdown', e => {
+        if (!dragMode) return;
+        const pin = e.target.closest('.map-pin');
+        if (!pin) return;
+        e.preventDefault();
+        dragging = pin;
+        didDrag = false;
+        const rect = mapBox.getBoundingClientRect();
+        dragOffX = e.clientX - rect.left - parseFloat(pin.style.left);
+        dragOffY = e.clientY - rect.top  - parseFloat(pin.style.top);
+        pin.style.cursor = 'grabbing';
+        pin.setPointerCapture(e.pointerId);
+      });
+
+      mapBox.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const rect = mapBox.getBoundingClientRect();
+        const x = Math.max(0, Math.min(e.clientX - rect.left - dragOffX, rect.width));
+        const y = Math.max(0, Math.min(e.clientY - rect.top  - dragOffY, rect.height));
+        dragging.style.left = x + 'px';
+        dragging.style.top  = y + 'px';
+        didDrag = true;
+        updateCoordsBox();
+      });
+
+      mapBox.addEventListener('pointerup', e => {
+        if (!dragging) return;
+        dragging.style.cursor = 'grab';
+        dragging = null;
+      });
+      // ─────────────────────────────────────────────────────────────────
 
       pins.forEach(pin => {
         pin.addEventListener('click', () => {
+          if (didDrag) { didDrag = false; return; }
+          if (dragMode) return;
           pins.forEach(p => p.classList.remove('active'));
           pin.classList.add('active');
           highlightUnderPin(pin);
