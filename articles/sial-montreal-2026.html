@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIS Joins the Indonesian Pavilion at SIAL Montreal 2026 &mdash; Across Indonesian Seas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04; --red-dark: #a01803; --grey: #D9D9D9; --grey-light: #F2F2F2;
+      --white: #FFFFFF; --charcoal: #2A2A2A; --text-dark: #1a1a1a; --text-mid: #555555; --text-light: #888888;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); }
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', Georgia, serif; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 68px; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--grey); }
+    .nav-logo { flex-shrink: 0; min-width: 160px; overflow: hidden; }
+    .nav-logo img { height: 80px; width: auto; transform: scale(2); transform-origin: left center; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta { padding: 8px 20px; background: var(--red); color: #fff !important; border-radius: 2px; white-space: nowrap; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--red-dark) !important; }
+    .article-hero { padding-top: 68px; background: var(--grey-light); }
+    .article-hero-inner { max-width: 800px; margin: 0 auto; padding: 64px 24px 48px; }
+    .back-link { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); text-decoration: none; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--red); }
+    .article-category-badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .article-hero-title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 20px; }
+    .article-hero-meta { font-size: 13px; color: var(--text-light); letter-spacing: 0.03em; }
+    .article-cover { width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 4/3; overflow: hidden; }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-body-wrapper { max-width: 680px; margin: 0 auto; padding: 56px 24px 96px; }
+    .article-body-wrapper p { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 24px; }
+    .article-body-wrapper h2 { font-size: 1.75rem; font-weight: 500; letter-spacing: -0.02em; color: var(--text-dark); margin: 40px 0 16px; }
+    .article-body-wrapper blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 24px; margin: 32px 0; }
+    .article-body-wrapper blockquote p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-style: italic; line-height: 1.5; color: var(--text-dark); }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px 4px; color: var(--text-dark); flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0 24px; border-top: 1px solid var(--grey); overflow-y: auto; z-index: 99; }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 14px 24px; color: var(--text-mid) !important; font-size: 14px; letter-spacing: 0.06em; border-bottom: 1px solid var(--grey-light); transition: background 0.15s, color 0.15s; }
+      .nav-links a:hover { color: var(--red) !important; background: var(--grey-light); }
+      .nav-cta { margin: 12px 20px 0 !important; display: block !important; width: calc(100% - 40px) !important; text-align: center; border-bottom: none !important; padding: 13px 20px !important; font-size: 12px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/#coffees">Coffees</a></li>
+    <li><a href="/#producers">Producers</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/#articles" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Articles
+    </a>
+    <span class="article-category-badge">News</span>
+    <h1 class="article-hero-title">AIS Joins the Indonesian Pavilion at SIAL Montreal 2026</h1>
+    <p class="article-hero-meta">May 1, 2026</p>
+  </div>
+</div>
+
+<div class="article-cover">
+  <img src="/PhotosforArticleplaceholder/sial-montreal-2026.jpg" alt="Across Indonesian Seas at SIAL Montreal 2026 with the Embassy of Indonesia in Canada" />
+</div>
+
+<div class="article-body-wrapper">
+  <p>A couple of weeks ago, Akhtar and Morgan had the privilege of attending SIAL Montreal 2026 alongside the Embassy of the Republic of Indonesia in Canada. It was a meaningful few days at one of North America's most influential food and beverage trade shows, and a powerful reminder of what becomes possible when private enterprise and institutional partners share the same vision.</p>
+
+  <h2>The Indonesian Pavilion</h2>
+
+  <p>SIAL Montreal brings together exhibitors, buyers, and industry leaders from around the world, and being part of the Indonesian Pavilion this year was a meaningful opportunity to represent the depth and diversity of Indonesian agriculture on a truly global stage.</p>
+
+  <p>We are incredibly grateful for the continued support from the Embassy and the chance to stand alongside fellow Indonesian businesses at this year's event. In particular, we sincerely appreciate the support of His Excellency Muhsin Syihab and Trade Attach&eacute; Ibu Silky, whose belief in our work and tireless advocacy for Indonesian enterprise abroad made our participation possible.</p>
+
+  <h2>Strengthening the Bridge Between Indonesia and Canada</h2>
+
+  <p>Events like SIAL Montreal continue to support our broader goal of strengthening trade relationships between Indonesia and Canada while also creating real opportunities to introduce Indonesian products to new markets. Every conversation at the Pavilion reinforced something we already believe deeply: there is genuine appetite in Canada for what Indonesia has to offer.</p>
+
+  <p>From coffee to cocoa and beyond, the quality and character of Indonesian agriculture continues to resonate with people who are tasting it for the first time. Watching that recognition unfold over three days, person by person, sample by sample, is exactly the kind of momentum we set out to build.</p>
+
+  <h2>Bumi Coffee on the Floor</h2>
+
+  <p>Alongside Across Indonesian Seas was Bumi Coffee, who served coffee sourced through AIS throughout the event. It was a special thing to see Indonesian green coffee, traced from the highlands of Indonesia to a cup in Montreal, being shared and experienced by attendees from around the world.</p>
+
+  <p>This collaboration with Bumi continues to embody what we set out to do as a company. We bring the coffee across the seas. Our roasting partners bring it to life in the cup. The result is an honest and complete story of Indonesian coffee that anyone in Canada can taste for themselves.</p>
+
+  <h2>Looking Ahead</h2>
+
+  <p>SIAL Montreal was filled with meaningful conversations, inspiring moments, and strong new connections. We are grateful to everyone we had the opportunity to speak with and look forward to continuing to build on these relationships moving forward.</p>
+
+  <p>To the Embassy team, to His Excellency Muhsin Syihab, to Ibu Silky, and to the entire community that made the Indonesian Pavilion possible: thank you. Your support and partnership continue to mean everything to our work, and we are excited for what the months ahead will bring.</p>
+
+  <p>For inquiries or partnership opportunities, contact us at: <a href="mailto:info@acrossindonesianseas.com" style="color: var(--red);">info@acrossindonesianseas.com</a> or send a message to +1 (250) 488-2294</p>
+</div>
+
+<footer>
+  <p>&copy; 2026 Across Indonesian Seas &nbsp;&middot;&nbsp; <a href="/#contact">Contact Us</a></p>
+</footer>
+
+<script>
+  (function() {
+    var hamburger = document.getElementById('nav-hamburger');
+    var navLinks  = document.getElementById('nav-links');
+    if (!hamburger || !navLinks) return;
+    function closeMenu() { hamburger.classList.remove('open'); navLinks.classList.remove('mobile-open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', function() { var open = navLinks.classList.toggle('mobile-open'); hamburger.classList.toggle('open', open); hamburger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function(e) { if (!e.target.closest('nav')) closeMenu(); });
+    window.addEventListener('resize', function() { if (window.innerWidth > 768) closeMenu(); });
+  })();
+</script>
+</body>
+</html>
