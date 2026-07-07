@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cocopeat · Across Indonesian Seas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --grey: #D9D9D9;
+      --grey-light: #F2F2F2;
+      --white: #FFFFFF;
+      --charcoal: #2A2A2A;
+      --text-dark: #1a1a1a;
+      --text-mid: #555555;
+      --text-light: #888888;
+      --husk: #6b4423;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    /* ── NAV (matches site) ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      border-bottom-color: var(--grey);
+    }
+    .nav-logo { flex-shrink: 0; min-width: 160px; overflow: hidden; }
+    .nav-logo img {
+      height: 80px; width: auto;
+      transform: scale(2);
+      transform-origin: left center;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s;
+    }
+    nav.scrolled .nav-logo img { filter: none; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; color: rgba(255,255,255,0.8);
+      transition: color 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text-mid); }
+    .nav-links a:hover { color: #fff; }
+    nav.scrolled .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: #fff; }
+    nav.scrolled .nav-links a.active { color: var(--red); }
+
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 2px;
+      font-size: 11px !important;
+      letter-spacing: 0.1em !important;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+    .nav-cta:active { transform: translateY(0); }
+
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px 4px; color: #fff; flex-shrink: 0; }
+    nav.scrolled .nav-hamburger { color: var(--text-dark); }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 92vh;
+      min-height: 640px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('/Brand%20Photos/cocopeat-grove.jpg') center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,12,4,0.82) 0%, rgba(20,12,4,0.38) 55%, rgba(20,12,4,0.12) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 0 80px 88px;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #fff; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 300; line-height: 1.05;
+      color: #fff; letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.72); }
+    .hero-sub {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.75; color: rgba(255,255,255,0.7);
+      max-width: 540px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn-red {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red); color: #fff;
+      padding: 13px 28px;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+    .btn-red:active { transform: translateY(0); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.85);
+      padding: 13px 28px;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); color: #fff; transform: translateY(-2px); }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--charcoal);
+      overflow: hidden;
+      border-top: 3px solid var(--red);
+    }
+    .ticker-inner { display: flex; }
+    .ticker-item {
+      flex: 1; flex-shrink: 0;
+      padding: 28px 48px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .ticker-item:last-child { border-right: none; }
+    .ticker-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300;
+      color: #fff; line-height: 1;
+    }
+    .ticker-val span { color: var(--red); font-style: italic; }
+    .ticker-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── SHARED ── */
+    .section-tag {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+    }
+    .section-tag::before {
+      content: ''; display: inline-block;
+      width: 20px; height: 1px;
+      background: var(--red); flex-shrink: 0;
+    }
+    .section-heading {
+      font-size: clamp(32px, 3.5vw, 50px);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+    .section-body {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.75; color: var(--text-mid);
+    }
+
+    /* ── INTRO / WHAT IS COCOPEAT ── */
+    .intro-section {
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 96px;
+      align-items: center;
+      background: var(--white);
+    }
+    .intro-img {
+      position: relative;
+      height: 540px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .intro-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .intro-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(194,28,4,0.10), transparent 60%);
+    }
+    .intro-img .img-caption {
+      position: absolute;
+      left: 20px; bottom: 16px;
+      z-index: 1;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.35);
+      padding: 6px 10px; border-radius: 2px;
+      backdrop-filter: blur(4px);
+    }
+    .intro-copy p + p { margin-top: 18px; }
+    .pill-list {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 30px;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid var(--grey);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-dark);
+    }
+    .pill-dot { width: 5px; height: 5px; background: var(--red); border-radius: 50%; }
+
+    /* ── SPECS TABLE ── */
+    .specs-section {
+      padding: 100px 80px;
+      background: var(--white);
+      scroll-margin-top: 68px;
+      border-top: 1px solid var(--grey);
+    }
+    .specs-header {
+      max-width: 1160px;
+      margin: 0 auto 56px;
+    }
+    .specs-header .section-body { margin-top: 22px; max-width: 720px; }
+    .specs-wrap {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px; align-items: stretch;
+    }
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .specs-table tr {
+      border-bottom: 1px solid var(--grey-light);
+    }
+    .specs-table tr:first-child { border-top: 1px solid var(--grey); }
+    .specs-table tr:last-child { border-bottom: 1px solid var(--grey); }
+    .specs-table th, .specs-table td {
+      padding: 18px 0; text-align: left;
+      vertical-align: top;
+    }
+    .specs-table th {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-light);
+      width: 38%;
+    }
+    .specs-table td {
+      font-size: 15px; color: var(--text-dark);
+      font-weight: 400;
+    }
+    .specs-table td .spec-sub {
+      display: block;
+      font-size: 12px; color: var(--text-light);
+      font-weight: 300; margin-top: 4px;
+    }
+    .specs-image {
+      position: relative;
+      width: 100%;
+      min-height: 100%;
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--grey-light);
+    }
+    .specs-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .specs-image::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(194,28,4,0.08), transparent 60%);
+    }
+    .specs-image .img-caption {
+      position: absolute;
+      left: 20px; bottom: 16px;
+      z-index: 1;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.35);
+      padding: 6px 10px; border-radius: 2px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ── PROCESS STRIP ── */
+    .process-section {
+      padding: 100px 80px;
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .process-section .section-tag { color: #ff5a3c; }
+    .process-section .section-tag::before { background: #ff5a3c; }
+    .process-section .section-heading { color: #fff; }
+    .process-intro {
+      max-width: 640px; margin-bottom: 64px;
+    }
+    .process-intro p {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.75; color: rgba(255,255,255,0.65);
+      margin-top: 18px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+    }
+    .process-step {
+      position: relative;
+    }
+    .process-step + .process-step::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 0; bottom: 40px;
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .process-figure {
+      position: relative;
+      width: 100%;
+      height: 172px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(130% 120% at 50% 0%, rgba(194,28,4,0.12), transparent 62%),
+        rgba(255,255,255,0.015);
+    }
+    .process-figure .p-ghost {
+      position: absolute;
+      right: 12px; bottom: -26px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 128px; line-height: 1;
+      font-style: italic;
+      color: rgba(255,255,255,0.05);
+      pointer-events: none;
+      user-select: none;
+    }
+    .process-figure .p-icon {
+      position: relative;
+      color: rgba(255,255,255,0.82);
+    }
+    .process-figure .p-icon svg { display: block; }
+
+    /* ── process animation scenes ── */
+    .process-figure .scene { position: relative; z-index: 1; }
+    .scene .ln{ fill:none; stroke:rgba(255,255,255,0.85); stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+    .scene .ln-soft{ fill:none; stroke:rgba(255,255,255,0.42); stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+    .scene .fillw{ fill:rgba(255,255,255,0.85); stroke:none; }
+    .scene .fills{ fill:rgba(255,255,255,0.4); stroke:none; }
+    .scene .ground{ stroke:rgba(255,255,255,0.22); }
+
+    /* 01 husk -> fiber + peat */
+    .scene .husk{ transform-box:fill-box; transform-origin:center bottom; animation:phuskPulse 3.4s ease-in-out infinite; }
+    @keyframes phuskPulse{ 0%,100%{transform:scale(1);} 45%{transform:scale(1.05);} }
+    .scene .emit-fiber{ transform-box:fill-box; transform-origin:left center; opacity:0; animation:pemitFiber 3.4s ease-out infinite; }
+    .scene .emit-fiber.b{ animation-delay:.12s; }
+    @keyframes pemitFiber{ 0%,30%{transform:scaleX(0);opacity:0;} 52%{transform:scaleX(1);opacity:.85;} 85%{opacity:.85;} 100%{transform:scaleX(1);opacity:0;} }
+    .scene .emit-peat{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pemitPeat 3.4s ease-in infinite; }
+    .scene .emit-peat.p2{ animation-delay:.16s; } .scene .emit-peat.p3{ animation-delay:.32s; }
+    @keyframes pemitPeat{ 0%,32%{transform:translate(0,0);opacity:0;} 46%{opacity:.9;} 76%{transform:translate(6px,14px);opacity:.9;} 88%,100%{transform:translate(6px,14px);opacity:0;} }
+
+    /* 02 rinse peat heap */
+    .scene .rinse{ transform-box:fill-box; transform-origin:center; opacity:0; animation:prinse 1.9s ease-in infinite; }
+    .scene .rinse.r2{ animation-delay:.32s; } .scene .rinse.r3{ animation-delay:.64s; }
+    @keyframes prinse{ 0%{transform:translateY(0);opacity:0;} 15%{opacity:1;} 70%{transform:translateY(20px);opacity:1;} 82%,100%{transform:translateY(20px);opacity:0;} }
+    .scene .washout{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pwashout 1.9s ease-in infinite; }
+    .scene .washout.w2{ animation-delay:.3s; } .scene .washout.w3{ animation-delay:.6s; }
+    @keyframes pwashout{ 0%,45%{transform:translate(0,0);opacity:0;} 58%{opacity:.55;} 100%{transform:translate(2px,12px);opacity:0;} }
+
+    /* 03 dry: mound shrinks, steam rises */
+    .scene .dry-mound{ transform-box:fill-box; transform-origin:center bottom; animation:pdryShrink 3.4s ease-in-out infinite; }
+    @keyframes pdryShrink{ 0%,15%{transform:scaleY(1);} 58%,72%{transform:scaleY(.78);} 95%,100%{transform:scaleY(1);} }
+    .scene .rise{ transform-box:fill-box; transform-origin:center; opacity:0; animation:prise 2.2s ease-out infinite; }
+    .scene .rise.r2{ animation-delay:.5s; } .scene .rise.r3{ animation-delay:1s; }
+    @keyframes prise{ 0%{transform:translateY(0);opacity:0;} 25%{opacity:.6;} 100%{transform:translateY(-16px);opacity:0;} }
+    .scene .heat{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pheat 3s ease-out infinite; }
+    .scene .heat.h2{ animation-delay:.6s; }
+    @keyframes pheat{ 0%{transform:translateY(0);opacity:0;} 30%{opacity:.4;} 100%{transform:translateY(-10px);opacity:0;} }
+
+    /* 04 bale: loose peat -> block */
+    .scene .plate{ transform-box:fill-box; transform-origin:center; animation:pplate 3.2s ease-in-out infinite; }
+    @keyframes pplate{ 0%,15%{transform:translateY(0);} 42%,72%{transform:translateY(14px);} 90%,100%{transform:translateY(0);} }
+    .scene .loose{ transform-box:fill-box; transform-origin:center bottom; animation:plooseOut 3.2s ease-in-out infinite; }
+    @keyframes plooseOut{ 0%,15%{transform:scaleY(1);opacity:.85;} 46%,72%{transform:scaleY(.28);opacity:0;} 90%,100%{transform:scaleY(1);opacity:.85;} }
+    .scene .block{ transform-box:fill-box; transform-origin:center bottom; opacity:0; animation:pblockIn 3.2s ease-in-out infinite; }
+    @keyframes pblockIn{ 0%,32%{opacity:0;transform:scaleY(.6);} 48%,80%{opacity:1;transform:scaleY(1);} 92%,100%{opacity:0;transform:scaleY(1);} }
+
+    @media (prefers-reduced-motion: reduce){
+      .scene *{ animation:none !important; }
+      .scene .emit-fiber,.scene .emit-peat,.scene .rinse,.scene .washout,.scene .rise,.scene .heat{ opacity:0 !important; }
+      .scene .dry-mound,.scene .husk{ transform:none !important; }
+      .scene .loose{ opacity:.85 !important; transform:none !important; }
+      .scene .block{ opacity:0 !important; }
+    }
+    .process-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-style: italic;
+      color: var(--red);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .process-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 500;
+      color: #fff; line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .process-desc {
+      font-size: 13px; font-weight: 300;
+      line-height: 1.65; color: rgba(255,255,255,0.55);
+    }
+
+    /* ── APPLICATIONS ── */
+    .apps-section {
+      padding: 100px 80px;
+      background: var(--white);
+    }
+    .apps-header { max-width: 720px; margin-bottom: 56px; }
+    .apps-header p.section-body { margin-top: 16px; }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .app-tile {
+      padding: 36px 24px 32px;
+      border: 1px solid var(--grey);
+      border-radius: 3px;
+      background: var(--white);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .app-tile:hover {
+      border-color: var(--red);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(194,28,4,0.06);
+    }
+    .app-icon {
+      width: 38px; height: 38px;
+      color: var(--red);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 500;
+      color: var(--charcoal); line-height: 1.2;
+    }
+    .app-desc {
+      font-size: 12.5px; font-weight: 300;
+      line-height: 1.65; color: var(--text-mid);
+    }
+
+    /* ── SOURCING ── */
+    .sourcing-section {
+      padding: 100px 80px;
+      background: var(--grey-light);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+    .sourcing-img {
+      position: relative;
+      height: 560px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sourcing-img img { width: 100%; height: 100%; object-fit: cover; }
+    .sourcing-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 50%, rgba(194,28,4,0.12));
+    }
+    .sourcing-copy p + p { margin-top: 18px; }
+    .sourcing-stats {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 28px;
+      border-top: 1px solid var(--grey);
+    }
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 400;
+      color: var(--charcoal); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-val span { color: var(--red); font-style: italic; }
+    .stat-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 120px 80px;
+      background: var(--charcoal);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(90% 120% at 50% 0%, rgba(194,28,4,0.14), transparent 60%),
+        radial-gradient(70% 100% at 82% 110%, rgba(107,68,35,0.14), transparent 55%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .cta-section .section-tag { color: #ff5a3c; justify-content: center; }
+    .cta-section .section-tag::before { background: #ff5a3c; }
+    .cta-section h2 {
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 300; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-section h2 em { font-style: italic; color: rgba(255,255,255,0.72); }
+    .cta-section p {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.75; color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+    }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── COMMODITIES / CROSS-SELL ── */
+    .commodities-section {
+      padding: 100px 80px;
+      background: var(--white);
+      border-top: 1px solid var(--grey);
+    }
+    .commodities-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+    .commodity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .commodity-card {
+      padding: 28px 24px;
+      border: 1px solid var(--grey);
+      border-radius: 3px;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .commodity-card:hover { border-color: var(--charcoal); transform: translateY(-3px); }
+    .commodity-icon { width: 32px; height: 32px; color: var(--text-light); margin-bottom: 16px; }
+    .commodity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .commodity-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+    .commodity-status {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a1a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ── HERO LOAD FADE-IN ── */
+    .hero-load {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .hero-load.hero-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-load-d1 { transition-delay: 0.12s; }
+    .hero-load-d2 { transition-delay: 0.24s; }
+    .hero-load-d3 { transition-delay: 0.36s; }
+    .hero-load-d4 { transition-delay: 0.48s; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .apps-grid { grid-template-columns: repeat(3, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 48px; }
+      .process-step + .process-step::before { display: none; }
+      .commodity-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .intro-section, .sourcing-section {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 80px 32px;
+      }
+      .intro-img, .sourcing-img { height: 380px; }
+      .specs-wrap { grid-template-columns: 1fr; gap: 40px; padding: 0 32px; }
+      .specs-section { padding: 80px 0; }
+      .apps-section, .process-section { padding: 80px 32px; }
+      .ticker-inner { flex-wrap: wrap; }
+      .ticker-item { flex: 1 1 50%; padding: 22px 28px; }
+      .commodities-section { padding: 80px 32px; }
+      .commodities-top-grid { grid-template-columns: 1fr; gap: 24px; }
+      .commodity-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none; position: fixed;
+        top: 68px; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        flex-direction: column; align-items: flex-start;
+        gap: 0; padding: 8px 0 24px;
+        border-top: 1px solid var(--grey);
+        overflow-y: auto; z-index: 99;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block; padding: 14px 24px;
+        color: var(--text-mid) !important;
+        font-size: 14px; letter-spacing: 0.06em;
+        border-bottom: 1px solid var(--grey-light);
+        transition: background 0.15s, color 0.15s;
+      }
+      .nav-links a:hover { color: var(--red) !important; background: var(--grey-light); }
+      .nav-cta {
+        margin: 12px 20px 0 !important;
+        display: block !important;
+        width: calc(100% - 40px) !important;
+        text-align: center; border-bottom: none !important;
+        padding: 13px 20px !important; font-size: 12px !important;
+      }
+      .hero-content { padding: 0 24px 56px; }
+      .hero { height: auto; min-height: 580px; padding-top: 120px; }
+      .apps-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: 1fr; gap: 36px; }
+      .sourcing-stats { grid-template-columns: 1fr 1fr; }
+      .cta-section { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/coffee.html">Coffee</a></li>
+    <li><a href="/cocopeat.html" class="active">Cocopeat</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow hero-load">Coconut Coir Pith &nbsp;·&nbsp; Sourced from Indonesia</p>
+    <h1 class="hero-load hero-load-d1">The growing medium<br /><em>Indonesia's coconuts left behind.</em></h1>
+    <p class="hero-sub hero-load hero-load-d2">Washed, buffered, and pressed into a consistent soilless substrate for greenhouses, nurseries, and hydroponic farms worldwide.</p>
+    <div class="hero-btns hero-load hero-load-d3">
+      <a href="#contact" class="btn-red">
+        Request a Sample
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#specs" class="btn-outline-white">View Specs</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER / QUICK FACTS -->
+<section class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">
+      <div class="ticker-val">5<span>kg</span></div>
+      <div class="ticker-label">Standard Block · ±0.2 kg</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">30 × 30 × <span>15</span></div>
+      <div class="ticker-label">cm · China-standard size</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">&lt; <span>0.8</span></div>
+      <div class="ticker-label">EC mS/cm · Low-EC washed</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">15 <span>L/kg</span></div>
+      <div class="ticker-label">Expansion Ratio</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-val">≤ <span>20</span>%</div>
+      <div class="ticker-label">Moisture Content</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS COCOPEAT -->
+<section class="intro-section">
+  <div class="intro-img reveal">
+    <img src="/brand_assets/cocopeat/cocopeat-greenhouse.jpg" alt="Berry crops growing in cocopeat substrate inside a commercial glass greenhouse" />
+    <span class="img-caption">Cocopeat-grown crops under glass</span>
+  </div>
+  <div class="intro-copy">
+    <p class="section-tag reveal">What is Cocopeat</p>
+    <h2 class="section-heading reveal reveal-d1">A natural growing medium, <em style="font-style: italic; color: var(--text-mid);">made from what the coconut leaves behind.</em></h2>
+    <div style="margin-top: 28px;">
+      <p class="section-body reveal reveal-d2">Cocopeat, also called coir pith, is the fine, spongy material recovered from the husk of the coconut. Once a waste stream, it's now one of the most sought-after soilless growing media in the world: lightweight, high water retention, and entirely renewable.</p>
+      <p class="section-body reveal reveal-d3">We work directly with processors across Indonesia's coconut belt to wash, buffer, and compress the pith into formats ready for greenhouse, nursery, and hydroponic operations. Each container ships traceably from source to dock.</p>
+    </div>
+    <div class="pill-list reveal reveal-d4">
+      <span class="pill"><span class="pill-dot"></span>Renewable byproduct</span>
+      <span class="pill"><span class="pill-dot"></span>High water retention</span>
+      <span class="pill"><span class="pill-dot"></span>Peat-moss alternative</span>
+      <span class="pill"><span class="pill-dot"></span>Low EC, buffered</span>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIFICATIONS -->
+<section class="specs-section" id="specs">
+  <div class="specs-header">
+    <p class="section-tag reveal">Specifications</p>
+    <h2 class="section-heading reveal reveal-d1">Consistent batch to batch, <em style="font-style: italic; color: var(--text-mid);">tested at the source.</em></h2>
+    <p class="section-body reveal reveal-d2">Our standard offering is the Cocopeat Block Low EC, double-washed for low salt levels and compressed to the China-standard 30 × 30 × 15 cm format used widely in commercial hydroponics. Each container ships with a batch certificate.</p>
+  </div>
+  <div class="specs-wrap">
+    <div class="specs-image reveal">
+      <img src="/brand_assets/cocopeat/cocopeat-blocks.jpg" alt="Palletised, shrink-wrapped compressed cocopeat blocks ready for export" />
+      <span class="img-caption">Compressed blocks, palletised for export</span>
+    </div>
+    <table class="specs-table reveal reveal-d1">
+      <tr>
+        <th>Product</th>
+        <td>Cocopeat Block Low EC <span class="spec-sub">low EC, washed quality</span></td>
+      </tr>
+      <tr>
+        <th>Dimensions</th>
+        <td>30 × 30 × 15 cm <span class="spec-sub">China-standard block size for hydroponics</span></td>
+      </tr>
+      <tr>
+        <th>Weight</th>
+        <td>5 kg <span class="spec-sub">±0.2 kg tolerance</span></td>
+      </tr>
+      <tr>
+        <th>Electrical Conductivity (EC)</th>
+        <td>&lt; 0.8 mS/cm (1:2.5) <span class="spec-sub">double-washed or rinsed to achieve low salt levels</span></td>
+      </tr>
+      <tr>
+        <th>Particle Size</th>
+        <td>5 – 20 mm <span class="spec-sub">balanced peat and chip blend</span></td>
+      </tr>
+      <tr>
+        <th>Expansion Ratio</th>
+        <td>15 L/kg <span class="spec-sub">indicates good compression and purity</span></td>
+      </tr>
+      <tr>
+        <th>Moisture Content</th>
+        <td>Max 20% <span class="spec-sub">lower is better for export; prevents microbial growth</span></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-intro">
+    <p class="section-tag reveal">From Husk to Export Block</p>
+    <h2 class="section-heading reveal reveal-d1">A four-step journey<br /><em style="color: rgba(255,255,255,0.55);">from raw husk to export-grade block.</em></h2>
+    <p class="reveal reveal-d2">Every container of AIS cocopeat runs the same automated line: shredded and screened, washed to low EC, pressed and dried, then baled into stackable export blocks.</p>
+  </div>
+  <div class="process-grid">
+
+    <div class="process-step reveal">
+      <div class="process-figure">
+        <span class="p-ghost">01</span>
+        <svg class="scene" width="150" height="130" viewBox="0 0 150 130" aria-hidden="true">
+          <g class="husk">
+            <path class="ln" style="fill:rgba(255,255,255,0.08)" d="M28 88 Q26 60 44 60 Q62 60 60 88 Z"/>
+            <path class="ln-soft" d="M30 61 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0"/>
+            <line class="ln-soft" x1="37" y1="66" x2="37" y2="85"/>
+            <line class="ln-soft" x1="44" y1="64" x2="44" y2="86"/>
+            <line class="ln-soft" x1="51" y1="66" x2="51" y2="85"/>
+          </g>
+          <path class="ln-soft" d="M66 76 L76 76 M72.5 73 L76 76 L72.5 79"/>
+          <path class="ln emit-fiber"   d="M82 68 Q99 62 117 58"/>
+          <path class="ln emit-fiber b" d="M82 73 Q100 70 119 66"/>
+          <path class="ln-soft" d="M84 97 Q96 90 108 97"/>
+          <circle class="fillw emit-peat"    cx="90" cy="84" r="1.7"/>
+          <circle class="fillw emit-peat p2" cx="96" cy="82" r="1.7"/>
+          <circle class="fillw emit-peat p3" cx="101" cy="84" r="1.7"/>
+          <line class="ln ground" x1="16" y1="106" x2="134" y2="106"/>
+        </svg>
+      </div>
+      <p class="process-num">Step 01</p>
+      <h3 class="process-name">Shred &amp; Screen</h3>
+      <p class="process-desc">A 110&nbsp;kW shredder tears the whole husk into two streams: long cocofiber and fine cocopeat. A vibrating screen then separates them.</p>
+    </div>
+
+    <div class="process-step reveal reveal-d1">
+      <div class="process-figure">
+        <span class="p-ghost">02</span>
+        <svg class="scene" width="150" height="130" viewBox="0 0 150 130" aria-hidden="true">
+          <line class="ln rinse"    x1="60" y1="50" x2="60" y2="56"/>
+          <line class="ln rinse r2" x1="75" y1="48" x2="75" y2="54"/>
+          <line class="ln rinse r3" x1="90" y1="50" x2="90" y2="56"/>
+          <path class="ln" style="fill:rgba(255,255,255,0.09)" d="M46 92 Q48 72 75 70 Q102 72 104 92 Z"/>
+          <circle class="fills washout"    cx="66" cy="95" r="1.4"/>
+          <circle class="fills washout w2" cx="75" cy="96" r="1.4"/>
+          <circle class="fills washout w3" cx="84" cy="95" r="1.4"/>
+          <line class="ln ground" x1="16" y1="106" x2="134" y2="106"/>
+        </svg>
+      </div>
+      <p class="process-num">Step 02</p>
+      <h3 class="process-name">Wash &amp; Lower EC</h3>
+      <p class="process-desc">Spray-nozzle wash belts flush sodium and potassium salts out of the peat over two passes, bringing EC down to export grade.</p>
+    </div>
+
+    <div class="process-step reveal reveal-d2">
+      <div class="process-figure">
+        <span class="p-ghost">03</span>
+        <svg class="scene" width="150" height="130" viewBox="0 0 150 130" aria-hidden="true">
+          <path class="ln-soft rise"    d="M64 70 q3 -3 0 -6 q-3 -3 0 -6"/>
+          <path class="ln-soft rise r2" d="M75 68 q3 -3 0 -6 q-3 -3 0 -6"/>
+          <path class="ln-soft rise r3" d="M86 70 q3 -3 0 -6 q-3 -3 0 -6"/>
+          <path class="dry-mound ln" style="fill:rgba(255,255,255,0.09)" d="M50 92 Q52 70 75 68 Q98 70 100 92 Z"/>
+          <path class="ln-soft heat"    d="M66 100 q3 -4 6 0 q3 4 6 0"/>
+          <path class="ln-soft heat h2" d="M80 102 q3 -4 6 0 q3 4 6 0"/>
+          <line class="ln ground" x1="16" y1="106" x2="134" y2="106"/>
+        </svg>
+      </div>
+      <p class="process-num">Step 03</p>
+      <h3 class="process-name">Press &amp; Dry</h3>
+      <p class="process-desc">Belt presses squeeze out the free water, then a biomass-fired rotary drum dries the peat down to a steady 15% moisture.</p>
+    </div>
+
+    <div class="process-step reveal reveal-d3">
+      <div class="process-figure">
+        <span class="p-ghost">04</span>
+        <svg class="scene" width="150" height="130" viewBox="0 0 150 130" aria-hidden="true">
+          <g class="plate"><line class="ln" x1="52" y1="58" x2="98" y2="58"/><line class="ln" x1="75" y1="52" x2="75" y2="58"/></g>
+          <path class="loose fills" d="M54 92 Q56 76 75 74 Q94 76 96 92 Z"/>
+          <rect class="block ln" style="fill:rgba(255,255,255,0.10)" x="56" y="80" width="38" height="12" rx="1"/>
+          <line class="ln ground" x1="16" y1="106" x2="134" y2="106"/>
+        </svg>
+      </div>
+      <p class="process-num">Step 04</p>
+      <h3 class="process-name">Bale for Export</h3>
+      <p class="process-desc">A 1000&nbsp;kN block press compresses the dry peat into 5&nbsp;kg blocks at around 200 an hour, stacked compact for low freight cost.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="apps-section">
+  <div class="apps-header">
+    <p class="section-tag reveal">Applications</p>
+    <h2 class="section-heading reveal reveal-d1">Wherever roots need to breathe.</h2>
+    <p class="section-body reveal reveal-d2">Cocopeat replaces or supplements peat moss across a wide range of growing environments. The most common uses we supply for:</p>
+  </div>
+  <div class="apps-grid">
+
+    <div class="app-tile reveal">
+      <div class="app-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 8 8h8L12 2zM5 22V10h14v12"/><path d="M9 22v-6h6v6"/></svg>
+      </div>
+      <h3 class="app-name">Hydroponics</h3>
+      <p class="app-desc">Slab and bag systems for tomato, cucumber, pepper, and strawberry production.</p>
+    </div>
+
+    <div class="app-tile reveal reveal-d1">
+      <div class="app-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21V12h6v9"/></svg>
+      </div>
+      <h3 class="app-name">Greenhouse</h3>
+      <p class="app-desc">Bulk substrate for year-round indoor production at commercial scale.</p>
+    </div>
+
+    <div class="app-tile reveal reveal-d2">
+      <div class="app-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M5 14c0-3.87 3.13-7 7-7s7 3.13 7 7"/><path d="M3 22h18"/></svg>
+      </div>
+      <h3 class="app-name">Nurseries</h3>
+      <p class="app-desc">Seed-starting and propagation mixes for ornamentals, vegetables, and tree stock.</p>
+    </div>
+
+    <div class="app-tile reveal reveal-d3">
+      <div class="app-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14c-2 0-7 1-7 5v2h14v-2c0-4-5-5-7-5z"/><circle cx="12" cy="8" r="6"/></svg>
+      </div>
+      <h3 class="app-name">Mushroom</h3>
+      <p class="app-desc">Substrate base for oyster and shiitake production, blended with supplements.</p>
+    </div>
+
+    <div class="app-tile reveal reveal-d4">
+      <div class="app-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v6a6 6 0 0 0 12 0V2"/><path d="M6 8h12"/><path d="M9 22h6"/><path d="M12 14v8"/></svg>
+      </div>
+      <h3 class="app-name">Retail Garden</h3>
+      <p class="app-desc">Briquettes and bagged peat for garden-center private label and DTC brands.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOURCING & SUSTAINABILITY -->
+<section class="sourcing-section">
+  <div class="sourcing-copy">
+    <p class="section-tag reveal">Sourcing &amp; Sustainability</p>
+    <h2 class="section-heading reveal reveal-d1">Indonesia produces more coconut <em style="font-style: italic; color: var(--text-mid);">than almost anywhere on earth.</em></h2>
+    <div style="margin-top: 28px;">
+      <p class="section-body reveal reveal-d2">Our cocopeat is recovered from coconuts already harvested for copra, oil, and water. It's a byproduct stream that would otherwise be burned or left to decompose. Every block we ship is, in effect, a piece of the coconut economy that's been kept out of a fire.</p>
+      <p class="section-body reveal reveal-d3">We work with processors who run closed-loop wash water systems and source coconut husks from smallholder farms in Sumatra, Java, and Sulawesi. The result is a peat-moss alternative with a fraction of the carbon footprint, and a payment that flows back to coastal villages instead of into bog mining.</p>
+    </div>
+    <div class="sourcing-stats reveal reveal-d4">
+      <div>
+        <div class="stat-val">#<span>2</span></div>
+        <div class="stat-label">World coconut producer</div>
+      </div>
+      <div>
+        <div class="stat-val"><span>100</span>%</div>
+        <div class="stat-label">Byproduct sourced</div>
+      </div>
+      <div>
+        <div class="stat-val">3 <span>islands</span></div>
+        <div class="stat-label">Sumatra · Java · Sulawesi</div>
+      </div>
+    </div>
+  </div>
+  <div class="sourcing-img reveal reveal-d1">
+    <img src="/brand_assets/cocopeat/cocopeat-application.jpg" alt="Strawberries growing in cocopeat substrate under a commercial greenhouse" />
+  </div>
+</section>
+
+<!-- MORE FROM INDONESIA / CROSS-SELL -->
+<section class="commodities-section" id="beyond-cocopeat">
+  <div class="commodities-top-grid">
+    <div>
+      <p class="section-tag reveal">Expanding Sourcing Platform</p>
+      <h2 class="section-heading reveal reveal-d1">More from Indonesia</h2>
+    </div>
+    <div>
+      <p class="section-body reveal reveal-d1">Cocopeat is one of several Indonesian commodities we ship to growers and roasters across North America. In partnership with our subsidiary Astra Askara Adiluhung (AAA), we transform Indonesian raw materials into high-value, globally competitive products, creating sustainable benefits for local communities.</p>
+    </div>
+  </div>
+  <div class="commodity-grid">
+    <a class="commodity-card reveal" href="/coffee.html">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      <div class="commodity-name">Specialty Green Coffee</div>
+      <p class="commodity-desc">Traceable, direct trade Indonesian green coffee from Java Frinsa Estate and Pusat Kopi Nusantara in West Java. Sample and full-bag quantities.</p>
+      <span class="commodity-status">View available lots</span>
+    </a>
+    <a class="commodity-card reveal reveal-d1" href="mailto:akhtar@acrossindonesianseas.com?subject=Inquiry%3A%20Coconut%20Fibre&body=Hi%20Akhtar%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20your%20Coconut%20Fibre%20offering.%0A%0A">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6c0 0 2-1 5-1s6 2 8 2 5-1 5-1"/><path d="M3 10c0 0 2-1 5-1s6 2 8 2 5-1 5-1"/><path d="M3 14c0 0 2-1 5-1s6 2 8 2 5-1 5-1"/><path d="M3 18c0 0 2-1 5-1s6 2 8 2 5-1 5-1"/></svg>
+      <div class="commodity-name">Coconut Fibre</div>
+      <p class="commodity-desc">Natural coir fibre for industrial and specialty uses. Long fibre, high tensile strength from mature Indonesian coconuts.</p>
+      <span class="commodity-status">Available upon request</span>
+    </a>
+    <a class="commodity-card reveal reveal-d2" href="mailto:akhtar@acrossindonesianseas.com?subject=Inquiry%3A%20Coconut%20Charcoal&body=Hi%20Akhtar%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20your%20Coconut%20Charcoal%20offering.%0A%0A">
+      <svg class="commodity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-6 6-6 12a6 6 0 0 0 12 0c0-6-6-12-6-12z"/><path d="M12 12c0 0-3 3-3 5a3 3 0 0 0 6 0c0-2-3-5-3-5z"/></svg>
+      <div class="commodity-name">Coconut Charcoal</div>
+      <p class="commodity-desc">Premium activated charcoal from coconut shells. High carbon content, suitable for filtration and specialty applications.</p>
+      <span class="commodity-status">Available upon request</span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <p class="section-tag reveal">Request a Sample</p>
+    <h2 class="reveal reveal-d1">Tell us what you grow,<br /><em>we'll match the spec.</em></h2>
+    <p class="reveal reveal-d2">Reach out with your operation type, volume requirements, and target specs. We'll send a sample, a batch certificate, and a freight quote to your nearest port.</p>
+    <div class="cta-btns reveal reveal-d3">
+      <a href="mailto:info@acrossindonesianseas.com?subject=Cocopeat%20Inquiry" class="btn-red">
+        Email Us
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Across Indonesian Seas &nbsp;&middot;&nbsp; <a href="/#contact">Contact Us</a></p>
+</footer>
+
+<script>
+  // Nav scroll + scroll direction tracking
+  var nav = document.getElementById('main-nav');
+  var lastScrollY = window.scrollY;
+  var scrollDir = 'down';
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    scrollDir = y > lastScrollY ? 'down' : 'up';
+    lastScrollY = y;
+    nav.classList.toggle('scrolled', y > 32);
+  }, { passive: true });
+  nav.classList.toggle('scrolled', window.scrollY > 32);
+
+  // Hero load fade-in
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.querySelectorAll('.hero-load').forEach(function(el) {
+        el.classList.add('hero-visible');
+      });
+    });
+  });
+
+  // Scroll reveal
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else if (scrollDir === 'up') {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // Mobile nav
+  (function() {
+    var hamburger = document.getElementById('nav-hamburger');
+    var navLinks  = document.getElementById('nav-links');
+    if (!hamburger || !navLinks) return;
+    function closeMenu() { hamburger.classList.remove('open'); navLinks.classList.remove('mobile-open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', function() { var open = navLinks.classList.toggle('mobile-open'); hamburger.classList.toggle('open', open); hamburger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function(e) { if (!e.target.closest('nav')) closeMenu(); });
+    window.addEventListener('resize', function() { if (window.innerWidth > 768) closeMenu(); });
+  })();
+</script>
+</body>
+</html>
