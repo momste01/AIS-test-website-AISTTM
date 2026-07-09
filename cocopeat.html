@@ -301,6 +301,45 @@
       font-size: 12px; color: var(--text-light);
       font-weight: 300; margin-top: 4px;
     }
+    .spec-adj {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-left: 10px;
+      padding: 2px 9px 2px 7px;
+      border-radius: 999px;
+      background: rgba(194,28,4,0.07);
+      border: 1px solid rgba(194,28,4,0.18);
+      color: var(--red);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      vertical-align: middle; white-space: nowrap;
+    }
+    .spec-adj svg { width: 11px; height: 11px; }
+    .spec-callout {
+      max-width: 1160px; margin: 44px auto 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 36px; flex-wrap: wrap;
+      padding: 30px 34px;
+      border: 1px solid rgba(194,28,4,0.20);
+      border-radius: 4px;
+      background:
+        radial-gradient(120% 180% at 0% 0%, rgba(194,28,4,0.05), transparent 60%),
+        var(--white);
+    }
+    .spec-callout-copy { flex: 1 1 420px; }
+    .spec-callout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px; font-weight: 500; line-height: 1.2;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+    .spec-callout-body {
+      font-size: 14px; font-weight: 300; line-height: 1.65;
+      color: var(--text-mid); max-width: 640px;
+    }
+    .spec-callout .btn-red { flex: 0 0 auto; }
+    @media (max-width: 640px){
+      .spec-callout { padding: 24px; }
+      .spec-adj { margin-left: 0; margin-top: 6px; }
+    }
     .specs-image {
       position: relative;
       width: 100%;
@@ -828,8 +867,8 @@
 <section class="specs-section" id="specs">
   <div class="specs-header">
     <p class="section-tag reveal">Specifications</p>
-    <h2 class="section-heading reveal reveal-d1">Consistent batch to batch, <em style="font-style: italic; color: var(--text-mid);">tested at the source.</em></h2>
-    <p class="section-body reveal reveal-d2">Our standard offering is the Cocopeat Block Low EC, double-washed for low salt levels and compressed to the China-standard 30 × 30 × 15 cm format used widely in commercial hydroponics. Each container ships with a batch certificate.</p>
+    <h2 class="section-heading reveal reveal-d1">Built to your spec, <em style="font-style: italic; color: var(--text-mid);">tested at the source.</em></h2>
+    <p class="section-body reveal reveal-d2">The figures below are our standard Cocopeat Block Low EC. Because we run the production line ourselves, most of them are adjustable: give us your target dimensions, EC, particle size, or moisture and we form the block to match. Every container still ships with a batch certificate.</p>
   </div>
   <div class="specs-wrap">
     <div class="specs-image reveal">
@@ -843,29 +882,39 @@
       </tr>
       <tr>
         <th>Dimensions</th>
-        <td>30 × 30 × 15 cm <span class="spec-sub">China-standard block size for hydroponics</span></td>
+        <td>30 × 30 × 15 cm <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Standard size; formed to your dimensions on request</span></td>
       </tr>
       <tr>
         <th>Weight</th>
-        <td>5 kg <span class="spec-sub">±0.2 kg tolerance</span></td>
+        <td>5 kg <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Any target block weight, ±0.2 kg</span></td>
       </tr>
       <tr>
         <th>Electrical Conductivity (EC)</th>
-        <td>&lt; 0.8 mS/cm (1:2.5) <span class="spec-sub">double-washed or rinsed to achieve low salt levels</span></td>
+        <td>&lt; 0.8 mS/cm (1:2.5) <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Washed to your target EC for export</span></td>
       </tr>
       <tr>
         <th>Particle Size</th>
-        <td>5 – 20 mm <span class="spec-sub">balanced peat and chip blend</span></td>
+        <td>5 – 20 mm <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Peat and chip blend, ratio to your requirement</span></td>
       </tr>
       <tr>
         <th>Expansion Ratio</th>
-        <td>15 L/kg <span class="spec-sub">indicates good compression and purity</span></td>
+        <td>15 L/kg <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Set by compression to your target ratio</span></td>
       </tr>
       <tr>
         <th>Moisture Content</th>
-        <td>Max 20% <span class="spec-sub">lower is better for export; prevents microbial growth</span></td>
+        <td>Max 20% <span class="spec-adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>Adjustable</span><span class="spec-sub">Set to your target; lower is better for export</span></td>
       </tr>
     </table>
+  </div>
+  <div class="spec-callout reveal reveal-d2">
+    <div class="spec-callout-copy">
+      <p class="spec-callout-title">These are starting points, not limits.</p>
+      <p class="spec-callout-body">We control the line from husk to bale, so the block is formed to your operation: dimensions, EC, particle blend, and moisture, supplied as blocks, briquettes, grow bags, or bulk. Send us your target and we build to it.</p>
+    </div>
+    <a href="mailto:info@acrossindonesianseas.com?subject=Custom%20Cocopeat%20Spec&body=Hi%20AIS%2C%0A%0AWe%27d%20like%20to%20discuss%20a%20custom%20cocopeat%20spec.%20Our%20target%3A%0A%0A-%20Dimensions%3A%0A-%20EC%3A%0A-%20Particle%20size%3A%0A-%20Moisture%3A%0A-%20Format%20%28block%2Fbriquette%2Fgrow%20bag%2Fbulk%29%3A%0A-%20Volume%3A%0A%0AThank%20you." class="btn-red">
+      Request a custom spec
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </div>
 </section>
 
