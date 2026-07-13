@@ -6,7 +6,16 @@
       "Read(//Users/morganomstead/**)",
       "Read(//Users/morganomstead/node_modules/.bin/**)",
       "Bash(node team-screenshot.mjs)",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "Bash(git commit -m ':*)",
+      "Bash(git fetch:*)",
+      "Bash(python3 -)",
+      "Bash(lsof -ti:3000)",
+      "Bash(node screenshot.mjs http://localhost:3000 mobile-375)",
+      "Bash(node screenshot.mjs http://localhost:3000 desktop-1440)",
+      "Bash(git -C /Users/morganomstead/Desktop/Website status)",
+      "Bash(git -C /Users/morganomstead/Desktop/Website log --oneline -5)",
+      "Bash(git -C /Users/morganomstead/Desktop/Website push origin main)"
     ]
   }
 }
