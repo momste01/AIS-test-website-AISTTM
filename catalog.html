@@ -321,22 +321,6 @@
 
     .toolbar-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
-    .btn-offer-list {
-      background: var(--red);
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 10px 16px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 2px 8px -2px rgba(194,28,4,0.45), 0 1px 2px rgba(194,28,4,0.25);
-    }
-    .btn-offer-list:hover { background: var(--red-dark); }
-    .btn-offer-list:active { transform: translateY(1px); }
-    .btn-offer-list:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
-
     .sort-select {
       padding: 9px 34px 9px 12px;
       border: 1px solid #c9c5be;
@@ -995,7 +979,6 @@
     <div class="catalog-toolbar">
       <span class="results-count" id="results-count">Showing 9 of 9 lots</span>
       <div class="toolbar-right">
-        <a href="/coffee.html#contact" class="btn-offer-list">Email My Offer List</a>
         <select class="sort-select" id="sort-select" aria-label="Sort products">
           <option value="default">Default sorting</option>
           <option value="name-asc">Sort by name: A–Z</option>
