@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MH8YYYKH5R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MH8YYYKH5R');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIS Europe · Traceable Indonesian Fashion & Furniture</title>
+  <meta name="description" content="AIS Europe imports sustainable Indonesian fashion, furniture, and materials — traced to source — to buyers across the UK and EU from our London desk." />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#C21C04; --red-dark:#a01803; --ink:#252525; --paper:#FFFFFF; --grey:#D9D9D9; --grey-light:#F2F2F2; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+    a { color: var(--red); text-decoration: none; }
+    @keyframes ais-load-sweep{0%{left:-42%}100%{left:100%}}
+    @keyframes ais-drift{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
+    @keyframes ais-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    @keyframes ais-dot-pulse{0%,80%,100%{opacity:.25}40%{opacity:1}}
+    @keyframes ais-line-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
+
+    /* ── SHARED AIS NAV (white over dark hero, solid on scroll) ── */
+    nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+    nav#main-nav.scrolled{background:rgba(255,255,255,.97);border-bottom-color:var(--grey)}
+    .nav-logo{flex-shrink:0;min-width:160px;overflow:hidden}
+    .nav-logo img{height:80px;width:auto;transform:scale(2);transform-origin:left center;filter:brightness(0) invert(1);transition:filter .3s}
+    nav#main-nav.scrolled .nav-logo img{filter:none}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.85);transition:color .2s}
+    nav#main-nav.scrolled .nav-links a{color:#555}
+    .nav-links a:hover{color:#fff}
+    nav#main-nav.scrolled .nav-links a:hover{color:var(--red)}
+    .nav-links a.active{color:#fff}
+    nav#main-nav.scrolled .nav-links a.active{color:var(--red)}
+    .nav-cta{background:var(--red)!important;color:#fff!important;padding:9px 20px;border-radius:2px;font-size:11px!important;letter-spacing:.1em!important;white-space:nowrap;transition:background .2s,transform .15s!important}
+    .nav-cta:hover{background:var(--red-dark)!important;transform:translateY(-1px)}
+    .nav-cta.active{color:#fff!important}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px 4px;color:rgba(255,255,255,.9);transition:color .3s;flex-shrink:0}
+    nav#main-nav.scrolled .nav-hamburger{color:#252525}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:900px){
+      nav#main-nav{padding:0 20px}
+      .nav-hamburger{display:flex}
+      .nav-links{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(255,255,255,.98);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);flex-direction:column;align-items:flex-start;gap:0;padding:8px 0 24px;border-top:1px solid var(--grey);overflow-y:auto;z-index:99}
+      .nav-links.mobile-open{display:flex}
+      .nav-links li{width:100%}
+      .nav-links a{display:block;padding:14px 24px;color:#555!important;font-size:14px;letter-spacing:.06em;border-bottom:1px solid var(--grey-light)}
+      .nav-links a:hover{color:var(--red)!important;background:var(--grey-light)}
+      .nav-cta{margin:12px 20px 0!important;display:block!important;width:calc(100% - 40px)!important;text-align:center;border-bottom:none!important;color:#fff!important}
+    }
+
+    /* ── SHARED AIS FOOTER ── */
+    footer.site-footer{background:#2A2A2A;padding:32px 80px 36px;font-family:'Inter',sans-serif;border-top:1px solid rgba(255,255,255,.14)}
+    .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:36px}
+    .footer-brand{display:flex;flex-direction:column}
+    .footer-logo-clip{width:220px;overflow:hidden;height:110px;margin-bottom:10px;margin-left:-38px}
+    .footer-logo-clip img{width:220px;height:auto;margin-top:-27px;filter:brightness(0) invert(1);opacity:.7;display:block}
+    .footer-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.38);font-weight:300;max-width:240px}
+    .footer-col h5{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+    .footer-col ul a{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+    .footer-col ul a:hover{color:#fff}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center}
+    .footer-bottom p{font-size:11px;color:rgba(255,255,255,.25);font-weight:300}
+    .footer-loc{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.25)}
+    @media(max-width:768px){
+      footer.site-footer{padding:48px 24px 28px}
+      .footer-top{grid-template-columns:1fr 1fr;gap:28px;padding-bottom:32px;margin-bottom:24px}
+      .footer-brand{grid-column:1 / -1}
+      .footer-logo-clip{margin-left:-14px}
+      .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+    }
+    @media(max-width:560px){.footer-top{grid-template-columns:1fr}}
+
+    .europe-root{position:relative;background:#FFFFFF;color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16.5px;line-height:1.6}
+    /* Hero pop-in on load/reload (re-triggerable on scroll-back via .hero-play) */
+    @keyframes heroRise { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+    header#top > div > div > * { opacity:0; }
+    header#top.hero-play > div > div > * { animation: heroRise .85s cubic-bezier(.22,.61,.36,1) both; }
+    header#top.hero-play > div > div > *:nth-child(1){ animation-delay:.05s; }
+    header#top.hero-play > div > div > *:nth-child(2){ animation-delay:.16s; }
+    header#top.hero-play > div > div > *:nth-child(3){ animation-delay:.27s; }
+    header#top.hero-play > div > div > *:nth-child(4){ animation-delay:.38s; }
+    @media(prefers-reduced-motion:reduce){ header#top > div > div > *{ opacity:1; animation:none; } }
+  </style>
+  <link rel="preload" as="image" href="/europe-assets/pexels-fandymuch-34465333-mrn0uxnl-rt1y.webp" fetchpriority="high" />
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/coffee.html">Coffee</a></li>
+    <li><a href="/cocopeat.html">Cocopeat</a></li>
+    <li><a href="/europe.html" class="active">Fashion &amp; Furniture</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<div class="europe-root">
+
+
+  
+
+  
+
+  
+
+  <header id="top" style="position: relative; z-index: 1; padding: clamp(64px,10vw,124px) 0 clamp(56px,8vw,104px); background: linear-gradient(90deg, rgba(15,12,10,0.82) 0%, rgba(15,12,10,0.66) 42%, rgba(15,12,10,0.28) 100%), url(&quot;/europe-assets/pexels-fandymuch-34465333-mrn0uxnl-rt1y.webp&quot;) center / cover no-repeat">
+    
+  <div style="max-width: 1500px; margin: 0 auto; padding: 0 clamp(20px,5vw,64px); display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: clamp(28px,5vw,60px); align-items: center; position: relative">
+      
+      <div>
+        <p style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 22px; text-shadow: 0 1px 4px rgba(0,0,0,0.6)">Fashion &amp; Furniture&nbsp;·&nbsp;London, UK</p>
+        <h1 style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.05; letter-spacing: -.025em; font-size: clamp(36px,4vw,58px); max-width: 15ch; display: block; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.45), 0 4px 22px rgba(0,0,0,0.55)">Woven in Indonesia, <em style="font-style: italic; color: rgba(255,255,255,0.7); font-weight: 300; text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 4px 22px rgba(0,0,0,0.6)">Finished in Europe</em></h1>
+        <div style="margin-top:24px;max-width:52ch;font-size:clamp(16.5px,1.6vw,19px);color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)"><div><span style="font-size: 18px; line-height: 1.65; color: #CBC8C5; text-shadow: 0 1px 3px rgba(0,0,0,0.65); font-weight: 400">AIS has reached London. We import sustainable apparel and home goods directly from our partners across Indonesia. From the lush farms and artisan workshops of Java, we oversee every step of the production process. Our current collection features timeless clothing made from materials already woven into the land of Indonesia.&nbsp;</span></div></div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+          <a href="#contact" style="display: inline-block; padding: 13px 22px; font-size: 14px; letter-spacing: .05em; text-decoration: none; border: 1px solid var(--red); color: var(--paper); transition: transform .15s ease,background .15s ease,border-color .15s ease; background: var(--red)" style-hover="transform:translateY(-2px);background:#a3160c;border-color:#a3160c"><b><span style="font-weight: normal;">Request Samples</span></b></a>
+          <a href="#chain" style="display: inline-block; padding: 13px 22px; font-size: 14px; letter-spacing: .05em; text-decoration: none; border: 1px solid var(--paper); color: #FFFFFF; transition: transform .15s ease,background .15s ease,color .15s ease; background: transparent" style-hover="transform:translateY(-2px);background:var(--paper);color:var(--ink)"><b style="color: inherit"><span style="font-weight: normal;">Our Material Selection</span></b></a>
+        </div>
+      </div>
+      <div style="position:relative;display:flex;justify-content:flex-end;align-items:center">
+    <aside aria-label="Example provenance record" style="background: var(--paper); border: 1px solid color-mix(in srgb,var(--ink,#252525) 38%,transparent); padding: 20px; box-shadow: 6px 6px 0 color-mix(in srgb,var(--ink,#252525) 12%,transparent); transform: rotate(-1.1deg); position: relative; width: min(340px,100%)">
+          
+          <h3 style="font-size:14px;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);padding-left:26px;position:relative"><span style="position:absolute;top:2px;left:0;width:13px;height:13px;border:1px solid color-mix(in srgb,var(--ink,#252525) 45%,transparent);border-radius:50%"></span>Provenance</h3><div style="height:1px;background:color-mix(in srgb,var(--ink,#252525) 16%,transparent);margin:14px 0"></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);letter-spacing:.06em">Maker</span><span style="text-align:right">Indonesian Artisans</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);letter-spacing:.06em">Origin</span><span style="text-align:right">West Java (Primary)</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);letter-spacing:.06em">Material</span><span style="text-align:right">Sustainable, and made to last.</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);letter-spacing:.06em">Lot</span><span style="text-align:right">AIS-EU-0000</span></div>
+          <div style="margin-top:16px;display:inline-block;border:1.5px solid var(--red);color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;padding:5px 9px;transform:rotate(-2deg)">TRACED TO SOURCE</div>
+        </aside></div></div></header>
+
+  
+
+  <section id="about" style="position:relative;z-index:1;padding:clamp(52px,7vw,88px) 0;border-top:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
+    <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:14px;flex-wrap:wrap"><span style="font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--red)">WHO WE ARE</span></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:clamp(40px,6vw,96px);align-items:start">
+        <article style="order:2;border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:flex;flex-direction:column;background:#F0F0F0;box-shadow:0 6px 22px 0 #FF000026">
+          <div style="position:relative;aspect-ratio:3/4;overflow:hidden">
+            
+          <img loading="lazy" decoding="async" src="/europe-assets/img_4670-mrvk1wib-0jxz.webp" alt="Rayya Subandar" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="padding:22px">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 55%,transparent);margin-bottom:14px">The Team</p>
+            <h3 style="font-family: 'EB Garamond',Georgia,serif; font-weight: 500; font-size: 27px; line-height: 1.15; margin-bottom: 6px">Rayya Subandar</h3>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Head of Fashion and Furniture</p>
+          </div>
+          
+        </article>
+        <div style="order: 1; display: flex; flex-direction: column; gap: 22px; border-radius: 8px">
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;line-height:1.1;letter-spacing:-0.02em;font-size:clamp(32px,3.5vw,50px);color:#2A2A2A;max-width:18ch">We Bridge Markets, <em style="font-style:italic;color:#555555">Elevating Conscious Creation</em></h2>
+          
+          <p style="font-size:clamp(16px,1.5vw,18px);color:color-mix(in srgb,var(--ink,#252525) 78%,transparent);max-width:60ch">Across Indonesian Sea's Fashion &amp; Furniture expansion sector is headquartered in London. We manage trade, logistics, and partnerships to bring you the best of Indonesian craftsmanship. Specializing in sustainable exports, we connect buyers with timeless, high-quality clothing and furniture directly from Indonesian producers.</p><p style="font-size: clamp(16px,1.5vw,18px); color: color-mix(in srgb,var(--ink,#252525) 78%,transparent); max-width: 60ch; position: relative">Our partners offer a diverse range of eco-conscious materials including vegan leather made of coffee waste, handwoven fabrics, naturally dyed organic cotton, and upcycled textiles. Buyers can purchase raw fabrics and materials, or choose from ready-to-wear designs by our partners. Every piece is traceable—from cotton growth and coffee waste collection, to the moment it's carefully packed and shipped across oceans. Material samples are available upon request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Brand statement" style="position:relative;z-index:1;padding:clamp(88px,13vw,150px) clamp(20px,5vw,64px);text-align:center;background:linear-gradient(rgba(15,12,10,0.6),rgba(15,12,10,0.6)),url('/europe-assets/pexels-jauhar-musthofal-qulub-2159484322-mrnpxmda-rxd6.webp') center/cover no-repeat">
+    <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.18em; color: var(--red);">Our Focus</span><div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(32px,4vw,48px);flex-wrap:wrap"></div><blockquote style="margin: 0 auto; max-width: 16ch; font-family: 'EB Garamond',Georgia,serif; font-style: italic; font-weight: 400; font-size: clamp(34px,5.5vw,60px); line-height: 1.12; letter-spacing: -.01em; color: #fff; text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,0.45); width: 473px; height: 214px">Expanding the Horizon of <span style="color:#C21C04">Ethical Luxury</span></blockquote>
+  </section>
+
+  <section id="goods" style="position:relative;z-index:1;padding:clamp(52px,7vw,88px) 0;border-top:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
+    <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+      <div style="margin-bottom:38px"><span style="display:block;font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--red);margin-bottom:14px">WHAT WE SHIP</span><h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;line-height:1.1;letter-spacing:-0.02em;font-size:clamp(32px,3.5vw,50px);color:#2A2A2A">Indonesia’s finest craftsmanship,<br /><em style="font-style:italic;color:#555555">Weaving the threads of a sustainable future.</em></h2></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(20px,3vw,34px)">
+        <article style="border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:flex;flex-direction:column;background:#F0F0F0;box-shadow:0px 4px 12px 0px #FF000026;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:translateY(-6px) scale(1.015);box-shadow:0 26px 52px -18px rgba(0,0,0,.3)">
+          <div style="position:relative;aspect-ratio:5/4;background:color-mix(in srgb,var(--ink,#252525) 5%,transparent);border-bottom:1px dashed color-mix(in srgb,var(--ink,#252525) 30%,transparent);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img loading="lazy" decoding="async" src="/europe-assets/masbebet-batik-2463139_1920-mrnqrafm-cj7o.webp" alt="masbebet-batik-2463139_1920-1-" width="1280" height="1920" style="max-width: 100%; height: auto; display: block; object-fit: cover; width: 1280px; aspect-ratio: 1280 / 1920">
+          </div>
+          <div style="padding: 24px; box-shadow: 0px 4px 12px 0px #FF000026">
+            <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:24px;margin-bottom:10px">Fashion</h3>
+            <p style="font-size:15.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);max-width:46ch">Woven and dyed apparel and accessories from Indonesian producers are supplied to European retailers and brand buyers by the run.&nbsp;Woven by nature to be worn with pride.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:18px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Leather</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Women's Apparel</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Men's Apparel</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Accessories</span>
+            </div>
+          </div>
+        </article>
+        <article style="border: 1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent); display: flex; flex-direction: column; background: #F0F0F0; box-shadow: 0px 4px 12px 0px #FF000026; transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:translateY(-6px) scale(1.015);box-shadow:0 26px 52px -18px rgba(0,0,0,.3)">
+          <div style="position:relative;aspect-ratio:5/4;background:color-mix(in srgb,var(--ink,#252525) 5%,transparent);border-bottom:1px dashed color-mix(in srgb,var(--ink,#252525) 30%,transparent);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            
+          <img loading="lazy" decoding="async" src="/europe-assets/pexels-noursakina-37848173-mrnq4ip8-puga.webp" alt="pexels-noursakina-37848173" width="3595" height="4982" style="max-width: 100%; height: auto; display: block; object-fit: cover; width: 3595px; aspect-ratio: 3595 / 4982"></div>
+          <div style="padding:24px">
+            <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:24px;margin-bottom:10px">Furniture</h3>
+            <p style="font-size:15.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);max-width:46ch">Craftsmanship made from coffee husks, or renewable materials, shipped by container or consolidated, with certification documents travelling alongside the goods.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:18px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Coffee-Shops</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Home Goods</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Comfort</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Made to order</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="chain" style="position:relative;z-index:1;padding:clamp(52px,7vw,88px) 0;border-top:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
+    <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+      <div style="margin-bottom:38px"><span style="display:block;font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--red);margin-bottom:14px">OUR PRODUCERS' MATERIALS</span><h2 style="font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; font-size: clamp(32px,3.5vw,50px); color: #2A2A2A">From raw materials, <em style="font-style: italic; color: #555555;">to products with purpose</em></h2></div>
+      <div style="display:flex;flex-direction:column;gap:clamp(20px,3vw,34px)">
+        <article style="border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:grid;grid-template-columns:minmax(240px,320px) 1fr;background:#F0F0F0;box-shadow:0 6px 22px 0 #FF000026">
+          <div style="padding:clamp(20px,2.4vw,30px);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:flex;flex-direction:column;gap:16px">
+            
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-38-26-mrvpoemm-o18f.webp" alt="screenshot-2026-07-22-at-13-38-26" width="1000" height="1076" style="max-width: 100%; height: 268px; display: block; object-fit: cover; width: 258px; aspect-ratio: 1000 / 1076"><a href="https://www.belllivinglab.com/products/m-tex-coffee-leather" class="scp3" style="padding: 13px 22px; letter-spacing: 0.05em; text-decoration: none; border: 1px solid var(--paper); color: rgb(0, 0, 0); transition: transform 0.15s, background 0.15s, color 0.15s; display: inline !important; box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15); border-color: #C21C04"><h3 style="margin: 0px 0px 8px; outline-offset: 3px; color: rgb(37, 37, 37); letter-spacing: normal; background-color: color(srgb 1 1 1 / 0.4); font-family: &quot;EB Garamond&quot;, Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.1; display: inline !important;">M-Tex Leather</h3></a><div>
+              
+              
+            </div>
+            <div style="font-size: 12px; color: #000000DC">M-Tex is a leather-like material made from fermented coffee skin waste. M-Tex is a solid, durable sheet material with a smooth surface that can be shaped and finished for different design needs.<br style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66);"><br style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66);"></div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:auto">
+              
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Bell Living Lab</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">West Java</span>
+            </div>
+          </div><div style="padding:clamp(20px,2.4vw,30px)">
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-53-04-mrvo1ysf-5qw0.png" alt="screenshot-2026-07-22-at-12-53-04" width="228" height="96" style="max-width: 100%; height: 30px; display: block; object-fit: cover; width: 48px; aspect-ratio: 228 / 96"><p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:18px">WHAT IT CAN BE</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:clamp(14px,1.6vw,20px)">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-06-06-mrvoisyc-kw7q.webp" alt="screenshot-2026-07-22-at-13-06-06" width="1248" height="1252" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Aglo Chair<br></figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-09-00-mrvomiyg-6vro.webp" alt="screenshot-2026-07-22-at-13-09-00" width="444" height="458" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Trace</figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-13-00-mrvormfi-cq48.webp" alt="screenshot-2026-07-22-at-13-13-00" width="1380" height="1200" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Travel Organizer</figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-06-45-mrvojlet-cof6.webp" alt="screenshot-2026-07-22-at-13-06-45" width="1436" height="1292" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kove 3.0</figcaption>
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><br></div><div>Made from: Coffee skin waste through bacterial fermentation<br><div>Applications: Furniture surfaces, interior panels, fashion accessories, and customisable product design<br>Key features: Plant-based, biodegradable, and a unique alternative to leather with a modern, sustainable touch<br><div>Strength: 13,25 MPa</div><div>Color available: Black, Brown, Red</div></div><div>Certification: PETA Vegan Approved, USDA Biobased Product<br><br><br></div></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">Standard sheets: 90 × 90 cm<br>Maximum: up to 6 meters long<br></p>
+          </div>
+          
+        </article>
+        <article style="border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:grid;grid-template-columns:minmax(240px,320px) 1fr;background:#F0F0F0;box-shadow:0 6px 22px 0 #FF000026">
+          <div style="padding:clamp(20px,2.4vw,30px);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:flex;flex-direction:column;gap:16px">
+            
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-14-22-41-mrvr98ns-insf.webp" alt="screenshot-2026-07-22-at-14-22-41" width="1184" height="912" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 254px; aspect-ratio: 1184 / 912"><a href="https://www.belllivinglab.com/products/desk-tray" class="scp3" style="padding: 13px 22px; letter-spacing: 0.05em; text-decoration: none; border: 1px solid var(--paper); color: rgb(0, 0, 0); transition: transform 0.15s, background 0.15s, color 0.15s; display: inline !important; box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15); border-color: #C21C04"><h3 style="margin: 0px 0px 8px; outline-offset: 3px; color: rgb(37, 37, 37); letter-spacing: normal; background-color: color(srgb 1 1 1 / 0.4); font-family: &quot;EB Garamond&quot;, Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.1; display: inline !important;">C-Foam</h3></a><div style="font-size: 12px; color: #000000DC"><font color="color(srgb 0.145098 0.145098 0.145098 / 0.66)" style="position: relative">C-Foam is a cork-like material made from coffee husk and spent coffee grounds. With its warm, natural texture, C-Foam not only looks organic but also functions as an effective sound absorber. It has a sound absorption coefficient of 0.4–0.7, performing on par with conventional acoustic foam panels—making it a smart, sustainable option for interior applications.</font></div><div>
+              
+              
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:auto">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Bell Living Lab</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">West Java</span>
+            </div>
+          </div><div style="padding: clamp(20px,2.4vw,30px); position: relative">
+            
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-53-04-mrvo1ysf-5qw0.png" alt="screenshot-2026-07-22-at-12-53-04" width="228" height="96" style="max-width: 100%; height: 30px; display: block; object-fit: cover; width: 48px; aspect-ratio: 228 / 96"><p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:18px">WHAT IT CAN BE</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:clamp(14px,1.6vw,20px)">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-54-39-mrvo418b-hhlj.webp" alt="screenshot-2026-07-22-at-12-54-39" width="716" height="700" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kubo 2.0</figcaption>
+            </figure>
+            
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-57-21-mrvo7h17-6h75.webp" alt="screenshot-2026-07-22-at-12-57-21" width="892" height="860" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">C-Foam Desk Tray</figcaption>
+            </figure><figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-59-11-mrvo9uo7-pdgc.webp" alt="screenshot-2026-07-22-at-12-59-11" width="980" height="1030" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Espresso Chair</figcaption>
+              
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-03-04-mrvoeu87-m12p.webp" alt="screenshot-2026-07-22-at-13-03-04" width="1408" height="1306" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Mudra Side Table</figcaption>
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66);"><br>Made from: Coffee husk and spent coffee grounds<br></span>Sound absorption: Coefficient 0.4 – 0.7 (similar to acoustic foam panels)</div><div>Applications: Acoustic wall panels, interior elements, design accents, and furniture inserts</div><div>Key features: Customizable shapes, organic texture, eco-friendly, combines beauty with function</div><div><br>The forming process enables precise edge definition, clean molds, and unique profiles that meet your design or functional requirements. This opens new possibilities for designers, brands, and architects to craft their own material stories.<br></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">fully customizable shapes<br><br></p>
+          </div>
+          
+        </article>
+        <article style="border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:grid;grid-template-columns:minmax(240px,320px) 1fr;background:#F0F0F0;box-shadow:0 6px 22px 0 #FF000026">
+          <div style="padding:clamp(20px,2.4vw,30px);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);display:flex;flex-direction:column;gap:16px">
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-49-31-mrvnxean-oyn6.webp" alt="screenshot-2026-07-22-at-12-49-31" width="1388" height="1358" style="max-width: 100%; height: 255px; display: block; object-fit: cover; width: 270px; aspect-ratio: 1388 / 1358">
+            <img loading="lazy" decoding="async" src="/europe-assets/kalpa-swatches.webp" alt="Kalpa colour options" width="1054" height="240" style="max-width: 100%; height: 47px; display: block; object-fit: contain; object-position: left; width: 265px; aspect-ratio: 1054 / 240"><a class="scp3" style="padding: 13px 22px; letter-spacing: 0.05em; text-decoration: none; border: 1px solid var(--paper); color: rgb(0, 0, 0); transition: transform 0.15s, background 0.15s, color 0.15s; display: inline !important; box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15); border-color: #C21C04" href="https://iddc.kemendag.go.id/gdi/product/2401011716108883"><h3 style="margin: 0px 0px 8px; outline-offset: 3px; color: rgb(37, 37, 37); letter-spacing: normal; background-color: color(srgb 1 1 1 / 0.4); font-family: &quot;EB Garamond&quot;, Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.1; display: inline !important;">Kalpa</h3></a><div>
+              
+              
+            </div>
+            <font color="color(srgb 0.145098 0.145098 0.145098 / 0.66)" style="font-size: 14.5px">Kalpa is a board-like material made from agricultural waste, combining coffee husk and coffee grounds into a strong yet natural-looking surface. Each sheet features a warm, earthy tone with a grainy texture, bringing an organic character that adds depth and comfort to modern spaces.</font><div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:auto">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Bell Living Lab</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid color-mix(in srgb,var(--ink,#252525) 30%,transparent);padding:4px 8px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">West Java</span>
+            </div>
+          </div>
+          <div style="padding:clamp(20px,2.4vw,30px)">
+            <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-12-53-04-mrvo1ysf-5qw0.png" alt="screenshot-2026-07-22-at-12-53-04" width="228" height="96" style="max-width: 100%; height: 30px; display: block; object-fit: cover; width: 48px; aspect-ratio: 228 / 96"><p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:18px">WHAT IT CAN BE</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:clamp(14px,1.6vw,20px)">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-15-13-mrvouh4j-ayic.webp" alt="screenshot-2026-07-22-at-13-15-13" width="1454" height="1310" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kalpa Pegboard</figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-14-12-57-mrvqwra8-qzun.webp" alt="screenshot-2026-07-22-at-14-12-57" width="1254" height="1256" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Natura Coffee Table</figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/kalpa-lamp-gray.webp" alt="Tongkonan table lamp" width="996" height="946" style="max-width: 100%; height: 202px; display: block; object-fit: cover; width: 208px; aspect-ratio: 996 / 946"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Tongkonan Table Lamp</figcaption>
+            </figure>
+            <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+              
+              <img loading="lazy" decoding="async" src="/europe-assets/kalpa-tiles-gray.webp" alt="Kalpa wall panels" width="1244" height="1066" style="max-width: 100%; height: 202px; display: block; object-fit: cover; width: 207px; aspect-ratio: 1244 / 1066"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kalpa Wall Panels</figcaption>
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div>Made from: Coffee husk, coffee grounds, and other upcycled plant-based fibers</div><div>Applications: Wall panels, tiles, decorative surfaces, furniture components, and creative packaging</div><div>Key features: Natural earthy aesthetics, modular and pattern-combinable, adaptable shapes<br><br><br></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">STANDARD SHEETS: 20 × 20 CM SHEETS</p><table style="width:100%;border-collapse:collapse;border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);table-layout:fixed">
+              <thead>
+                <tr>
+                  <th style="width:18%;text-align:left;vertical-align:middle;padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Size</th>
+                  <th style="width:20%;text-align:left;vertical-align:middle;padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Coffee waste converted</th>
+                  <th style="width:18%;text-align:left;vertical-align:middle;padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Color</th>
+                  <th style="text-align:left;vertical-align:middle;padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">20×20×0.6 cm</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">5.62 kg/m²</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Natural / Dark</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Flexible tiles available in a flat surface finish. Suitable for application on curved platforms.</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">20×20×0.9 cm</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">8.44 kg/m²</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Natural / Dark</td>
+                  <td style="vertical-align:top;padding:16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Flexible tiles available in a flat surface finish and limited surface pattern customization.</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;padding:16px;border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">20×20×1.2 cm</td>
+                  <td style="vertical-align:top;padding:16px;border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)">11.25 kg/m²</td>
+                  <td style="vertical-align:top;padding:16px;border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Natural / Dark</td>
+                  <td style="vertical-align:top;padding:16px;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Sturdy tiles available in a flat surface finish and surface pattern customization. This variant offers limited flexibility.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article></div>
+
+      <div style="margin-top:clamp(28px,3.5vw,44px);border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);background:#F0F0F0;padding:clamp(24px,3vw,36px) clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="display:inline-flex;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:var(--red);animation:ais-dot-pulse 1.4s ease-in-out infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:var(--red);animation:ais-dot-pulse 1.4s ease-in-out .2s infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:var(--red);animation:ais-dot-pulse 1.4s ease-in-out .4s infinite"></span></span>
+            <h3 style="font-family:'EB Garamond',Georgia,serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.1">More materials on the way</h3>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">In sourcing</span>
+        </div>
+        <p style="font-size:15.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);max-width:64ch">We're onboarding new partner mills and workshops across Indonesia. Additional sustainable materials and ready-to-wear lines are being verified and traced to source now.</p>
+        <div aria-label="Sourcing in progress" role="progressbar" style="position:relative;height:4px;border-radius:99px;overflow:hidden;background:color-mix(in srgb,var(--ink,#252525) 12%,transparent)">
+          <span style="position:absolute;top:0;bottom:0;width:42%;border-radius:99px;background:linear-gradient(90deg,transparent,var(--red),transparent);animation:ais-load-sweep 1.9s cubic-bezier(.65,.05,.36,1) infinite"></span>
+        </div>
+      </div>
+    </div>
+  </section><section id="terms" style="position:relative;z-index:1;padding:clamp(52px,7vw,88px) 0;border-top:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
+    <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+      <div style="margin-bottom:38px"><span style="display:block;font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--red);margin-bottom:14px">FOR BUYERS</span><h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;line-height:1.1;letter-spacing:-0.02em;font-size:clamp(32px,3.5vw,50px);color:#2A2A2A">Trade terms, <em style="font-style:italic;color:#555555">stated plainly</em></h2></div>
+      <dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:color-mix(in srgb,var(--ink,#252525) 16%,transparent);border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
+        <div style="background:var(--paper);padding:26px 20px;position:relative;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:scale(1.05);z-index:2;outline:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);box-shadow:0 20px 44px -16px rgba(0,0,0,.3)"><div style="margin-bottom:16px"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block"><g style="transform-box:fill-box;transform-origin:center;animation:ais-float 3.4s ease-in-out infinite"><path d="M10 4 L10 19 M10 19 L23 19 M23 19 L23 27 M10 19 L10 27 M10 10 L17 10"></path></g></svg></div><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);margin-bottom:10px">Minimum order</dt><dd style="font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,2.4vw,27px);font-weight:400">50 furniture pieces<br><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66); font-family: Inter, system-ui, sans-serif; font-size: 13px;">At lower margins. Per style, per line.</span></dd></div>
+        <div style="background:var(--paper);padding:26px 20px;position:relative;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:scale(1.05);z-index:2;outline:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);box-shadow:0 20px 44px -16px rgba(0,0,0,.3)"><div style="margin-bottom:16px"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block"><g style="transform-box:fill-box;transform-origin:center;animation:ais-float 3.4s ease-in-out infinite"><path d="M16 7 a2.2 2.2 0 0 1 2.2 2.2 M16 9.2 L16 11 M6 21 L16 11 L26 21 M5 21 L27 21"></path></g></svg></div><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);margin-bottom:10px">MINIMUM ORDER</dt><dd style="font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,2.4vw,27px);font-weight:400">200 clothing pieces<br><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66); font-family: Inter, system-ui, sans-serif; font-size: 13px;">At lower margins. Per style, per line.</span><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66); font-family: Inter, system-ui, sans-serif; font-size: 13px;"></span></dd></div>
+        <div style="background:var(--paper);padding:26px 20px;position:relative;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:scale(1.05);z-index:2;outline:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);box-shadow:0 20px 44px -16px rgba(0,0,0,.3)"><div style="margin-bottom:16px"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block"><g style="transform-box:fill-box;transform-origin:center;animation:ais-float 3.4s ease-in-out infinite"><circle cx="16" cy="16" r="10.5"></circle><path d="M16 16 L16 9 M16 16 L20.5 18"></path></g></svg></div><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);margin-bottom:10px">LEAD TIME</dt><dd style="font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,2.4vw,27px);font-weight:400">2-4 weeks<br><small style="margin: 6px 0px 0px; display: block; font-family: Inter, system-ui, sans-serif; font-size: 13px; color: color(srgb 0.145098 0.145098 0.145098 / 0.66);">Materials can be produced in 2 weeks, products take up to one month to be designed and crafted. Excludes shipping time.&nbsp;</small></dd></div>
+        <div style="background:var(--paper);padding:26px 20px;position:relative;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease" style-hover="transform:scale(1.05);z-index:2;outline:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);box-shadow:0 20px 44px -16px rgba(0,0,0,.3)"><div style="margin-bottom:16px"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block"><g style="transform-box:fill-box;transform-origin:center;animation:ais-float 3.4s ease-in-out infinite"><path d="M7 15 L16 6 L26 6 L26 16 L17 25 Z"></path><circle cx="21.5" cy="10.5" r="1.8"></circle></g></svg></div><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);margin-bottom:10px">Samples</dt><dd style="font-family: 'Fraunces',Georgia,serif; font-size: clamp(21px,2.4vw,27px); font-weight: 400; position: relative">Available<br><small style="display: block; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 400; color: color-mix(in srgb,var(--ink,#252525) 66%,transparent); margin-top: 6px;">Free of charge. Can be requested upon online contact or at in-person events or meetings.&nbsp;</small></dd></div>
+      </dl>
+    </div>
+  </section><section id="contact" style="position: relative; z-index: 1; padding: clamp(72px,10vw,128px) 0; background: linear-gradient(180deg, #3E2424, #2B2B2F); color: var(--paper)">
+    <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,56px);align-items:center">
+      <div>
+        <p style="font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:22px;display:flex;align-items:center;gap:12px">Get in Touch</p>
+        <h2 style="font-family:'EB Garamond',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.01em;font-size:clamp(26px,3.3vw,40px);color:#FFFFFF;max-width:18ch">Tell us the line <em style="font-style:italic">you're buying for.</em></h2>
+        <p style="color:color-mix(in srgb,var(--paper,#F0F0F0) 62%,transparent);max-width:48ch;margin-top:18px">Send us the category, volume and delivery market. You get the line sheet, indicative pricing and lead times back, plus sample provenance records for the pieces you're considering.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+          <a href="mailto:rayya@acrossindonesianseas.com?subject=Line%20Sheet%20Request%20%E2%80%93%20AIS%20Europe" style="display: inline-block; padding: 13px 22px; font-size: 14px; letter-spacing: .05em; text-decoration: none; border: 1px solid var(--red); background: var(--red); color: var(--paper); transition: transform .15s ease" style-hover="transform:translateY(-2px)">Email the London Desk</a>
+          <a href="https://www.acrossindonesianseas.com" style="display:inline-block;padding:13px 22px;font-size:14px;letter-spacing:.05em;text-decoration:none;border:1px solid var(--paper);color:var(--paper);transition:transform .15s ease,background .15s ease,color .15s ease" style-hover="transform:translateY(-2px);background:var(--paper);color:var(--ink)">About AIS</a>
+        </div>
+      </div>
+      <div style="border:1px solid color-mix(in srgb,var(--paper,#F0F0F0) 30%,transparent);padding:24px">
+        <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--paper,#F0F0F0) 62%,transparent);letter-spacing:.06em">Office</span><span style="text-align:right;color:#FFFFFF">London, United Kingdom</span></div>
+        <div style="height:1px;background:color-mix(in srgb,var(--paper,#F0F0F0) 28%,transparent);margin:14px 0"></div>
+        <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--paper,#F0F0F0) 62%,transparent);letter-spacing:.06em">Email</span><span style="text-align:right;color:#FFFFFF">rayya@acrossindonesianseas.com</span></div>
+        
+        <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color:color-mix(in srgb,var(--paper,#F0F0F0) 62%,transparent);letter-spacing:.06em">Markets</span><span style="text-align:right;color:#FFFFFF">UK · EU</span></div>
+        <div style="display:flex;justify-content:space-between;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:5px 0"><span style="color: color-mix(in srgb,var(--paper,#F0F0F0) 62%,transparent); letter-spacing: 0.06em;">Group</span><span style="text-align: right; color: rgb(255, 255, 255);">AIS Trading &amp; Logistics Corp., Vancouver</span></div>
+      </div>
+    </div>
+    
+  </section>
+
+  
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-clip"><img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" /></div>
+      <p>A Vancouver-based importer of Indonesian goods, with a London desk for fashion &amp; furniture. Direct trade with producers across the archipelago.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="/coffee.html">Specialty Coffee</a></li>
+        <li><a href="/cocopeat.html">Cocopeat</a></li>
+        <li><a href="/europe.html">Fashion &amp; Furniture</a></li>
+        <li><a href="#contact">Request Samples</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/#about">About AIS</a></li>
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#articles">Articles</a></li>
+        <li><a href="https://bumicoffee.com" target="_blank" rel="noopener noreferrer">Bumi Coffee</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:rayya@acrossindonesianseas.com">rayya@acrossindonesianseas.com</a></li>
+        <li><a href="#contact">Europe Inquiries</a></li>
+        <li><a href="/coffee.html#contact">Coffee Inquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Across Indonesian Seas. All rights reserved.</p>
+    <div class="footer-loc">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      London, UK · Vancouver, BC
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  (function(){
+    var nav=document.getElementById('main-nav');
+    var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>60);};
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+    var h=document.getElementById('nav-hamburger'),l=document.getElementById('nav-links');
+    function close(){h.classList.remove('open');l.classList.remove('mobile-open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    h.addEventListener('click',function(){var o=l.classList.toggle('mobile-open');h.classList.toggle('open',o);h.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';if(o)nav.classList.add('scrolled');else onScroll();});
+    l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    window.addEventListener('resize',function(){if(window.innerWidth>900)close();});
+  })();
+
+  // style-hover support (from the draft) — capture base fresh on hover so it
+  // coexists with the scroll-reveal's inline opacity/transform below
+  document.querySelectorAll('[style-hover]').forEach(function(el){
+    var hov=el.getAttribute('style-hover'); if(!hov) return;
+    el.addEventListener('mouseenter',function(){el._base=el.getAttribute('style')||'';el.setAttribute('style',el._base+';'+hov);});
+    el.addEventListener('mouseleave',function(){if(el._base!=null)el.setAttribute('style',el._base);});
+  });
+
+  // Scroll reveal — gradual fade-in as sections enter the viewport,
+  // matching the rest of the site. Sets opacity via JS so content stays
+  // visible if JS is disabled.
+  (function(){
+    var root=document.querySelector('.europe-root');
+    if(!root) return;
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var all=[].slice.call(root.querySelectorAll('h1,h2,h3,p,article,aside,figure,blockquote,dl'));
+    var set=new Set(all);
+    var targets=all.filter(function(el){
+      if(el.closest('header#top')) return false; // hero handled by its own CSS pop-in
+      var pp=el.parentElement;
+      while(pp && pp!==root){ if(set.has(pp)) return false; pp=pp.parentElement; }
+      return true;
+    });
+
+    // Hero pop-in: play on load, and re-play when you scroll back up to the top
+    var hero=root.querySelector('header#top');
+    if(hero){
+      hero.classList.add('hero-play');
+      var heroPlayed=true;
+      window.addEventListener('scroll', function(){
+        var y=window.scrollY;
+        if(y>700){ heroPlayed=false; }
+        else if(y<80 && !heroPlayed){
+          heroPlayed=true;
+          hero.classList.remove('hero-play');
+          requestAnimationFrame(function(){ requestAnimationFrame(function(){ hero.classList.add('hero-play'); }); });
+        }
+      }, {passive:true});
+    }
+    function hide(el){ el.style.opacity='0'; if(!el._hoverT) el.style.transform='translateY(28px)'; }
+    function show(el){ el.style.opacity='1'; if(!el._hoverT) el.style.transform='none'; }
+    targets.forEach(function(el){
+      var sibs=[].slice.call(el.parentElement.children).filter(function(c){return set.has(c);});
+      var i=Math.max(0,sibs.indexOf(el));
+      var hoverT=(el.getAttribute('style-hover')||'').indexOf('transform')>-1;
+      el._hoverT=hoverT;
+      var existing=el.style.transition;
+      var add=hoverT
+        ? 'opacity .7s cubic-bezier(.22,.61,.36,1)'
+        : 'opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)';
+      el.style.transition=(existing?existing+', ':'')+add;
+      el.style.transitionDelay=(i*70)+'ms';
+      hide(el);
+    });
+    // Track scroll direction so elements re-animate each time they re-enter
+    // the viewport (and the hero re-pops when you scroll back to the top).
+    var lastY=window.scrollY, dir='down';
+    window.addEventListener('scroll', function(){ var y=window.scrollY; dir=(y>lastY)?'down':'up'; lastY=y; }, {passive:true});
+    // Paint the hidden state first, then start observing on the next frames —
+    // this makes the hero pop up on load/reload instead of appearing instantly.
+    void root.offsetHeight;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      var io=new IntersectionObserver(function(ents){
+        ents.forEach(function(e){
+          if(e.isIntersecting) show(e.target);
+          else if(dir==='up') hide(e.target);
+        });
+      },{threshold:0.12});
+      targets.forEach(function(el){io.observe(el);});
+    }); });
+  })();
+
+</script>
+
+</body>
+</html>

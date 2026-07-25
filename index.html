@@ -18,7 +18,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -98,7 +97,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('/Brand%20Photos/hero-ship.png') center 40% / cover no-repeat;
+      background: url('/Brand%20Photos/hero-ship.webp') center 40% / cover no-repeat;
     }
     .hero-bg::after {
       content: '';
@@ -162,11 +161,6 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--red); margin-bottom: 14px;
     }
-    .section-tag::before {
-      content: ''; display: inline-block;
-      width: 20px; height: 1px;
-      background: var(--red); flex-shrink: 0;
-    }
     .section-heading {
       font-size: clamp(32px, 3.5vw, 50px);
       font-weight: 300; line-height: 1.1;
@@ -196,13 +190,16 @@
       text-align: center;
     }
     .products-header .section-tag { justify-content: center; margin-bottom: 10px; }
-    .products-header .section-tag::before { display: none; }
     .products-header .section-heading { font-size: clamp(28px, 3vw, 42px); }
     .products-header p.section-body { margin-top: 12px; font-size: 14px; }
     .products-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .products-grid .product-card { aspect-ratio: 16 / 9; max-height: 460px; }
     }
     .product-card {
       position: relative;
@@ -212,7 +209,7 @@
       overflow: hidden;
       border-radius: 3px;
       background: var(--charcoal);
-      aspect-ratio: 16 / 11;
+      aspect-ratio: 3 / 4;
       transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
     .product-card:hover { transform: translateY(-4px); }
@@ -256,12 +253,6 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.7);
       margin-bottom: 14px;
-    }
-    .product-eyebrow::before {
-      content: ''; display: inline-block;
-      width: 20px; height: 1px;
-      background: rgba(255,255,255,0.7);
-      flex-shrink: 0;
     }
     .product-name {
       font-family: 'Cormorant Garamond', serif;
@@ -316,7 +307,6 @@
       display: flex; flex-direction: column; justify-content: center;
     }
     .why-content .section-tag { color: rgba(255,255,255,0.35); }
-    .why-content .section-tag::before { background: var(--red); }
     .why-content .section-heading { color: #fff; margin-bottom: 40px; }
     .why-list { display: flex; flex-direction: column; gap: 28px; }
     .why-item { display: flex; gap: 20px; align-items: flex-start; }
@@ -351,7 +341,6 @@
     .team-header .section-tag {
       justify-content: center;
     }
-    .team-header .section-tag::before { display: none; }
     .team-intro {
       font-size: 15px;
       font-weight: 300;
@@ -686,6 +675,7 @@
       .footer-top { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="preload" as="image" href="/Brand%20Photos/hero-ship.webp" fetchpriority="high" />
 </head>
 <body>
 
@@ -701,6 +691,7 @@
     <li><a href="/" class="active">Home</a></li>
     <li><a href="/coffee.html">Coffee</a></li>
     <li><a href="/cocopeat.html">Cocopeat</a></li>
+    <li><a href="/europe.html">Fashion & Furniture</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#articles">Articles</a></li>
@@ -730,14 +721,14 @@
   <div class="products-inner">
     <div class="products-header">
       <p class="section-tag reveal">What We Ship</p>
-      <h2 class="section-heading reveal reveal-d1">Two products. <em style="color: var(--text-mid);">One source.</em></h2>
-      <p class="section-body reveal reveal-d2">From West Java's coffee highlands to the coconut belt across Sumatra, Java, and Sulawesi, we source and export Indonesian goods directly to growers and roasters in North America. Pick the line you're here for.</p>
+      <h2 class="section-heading reveal reveal-d1">Traceable goods. <em style="color: var(--text-mid);">One source.</em></h2>
+      <p class="section-body reveal reveal-d2">From West Java's coffee highlands to the coconut belt and the workshops of the archipelago, we source and export Indonesian goods directly to buyers across North America and Europe. Pick the line you're here for.</p>
     </div>
     <div class="products-grid">
 
       <a class="product-card reveal" href="/coffee.html">
         <div class="product-img">
-          <img src="/Brand%20Photos/Wildanfikri.png" alt="Specialty Green Coffee from West Java" />
+          <img src="/Brand%20Photos/Wildanfikri.webp" alt="Specialty Green Coffee from West Java" />
         </div>
         <div class="product-body">
           <p class="product-eyebrow">West Java · Direct Trade</p>
@@ -754,7 +745,7 @@
 
       <a class="product-card reveal reveal-d2" href="/cocopeat.html">
         <div class="product-img">
-          <img src="/Brand%20Photos/cocopeat-grove.jpg" alt="Indonesian Cocopeat" />
+          <img src="/Brand%20Photos/cocopeat-grove-card.webp" alt="Indonesian Cocopeat" />
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Sumatra · Java · Sulawesi</p>
@@ -769,6 +760,21 @@
         </div>
       </a>
 
+      <a class="product-card reveal reveal-d3" href="/europe.html">
+        <div class="product-img"><img src="/europe-assets/pexels-noursakina-37848173-mrnq4ip8-puga.webp" alt="Indonesian fashion and furniture craftsmanship" /></div>
+        <div class="product-body">
+          <p class="product-eyebrow">Indonesian Workshops · Europe</p>
+          <h3 class="product-name">Fashion &amp;<br /><em>Furniture</em></h3>
+          <p class="product-desc">Traceable apparel, textiles, and made-to-order timber and rattan furniture from Indonesian workshops, supplied to European buyers by our London desk.</p>
+          <span class="product-cta">
+            View Fashion &amp; Furniture
+            <span class="product-cta-arrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -776,7 +782,7 @@
 <!-- WHY AIS -->
 <section class="why-section" id="about">
   <div class="why-img">
-    <img src="/newest stairsfikri.jpg" alt="AIS team at origin" loading="lazy" />
+    <img src="/newest stairsfikri.webp" alt="AIS team at origin" loading="lazy" />
   </div>
   <div class="why-content">
     <p class="section-tag reveal">Why AIS</p>
@@ -818,7 +824,7 @@
   <div class="team-leadership">
     <a href="mailto:akhtar@acrossindonesianseas.com" class="team-card team-card--linked reveal">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_Canada_Headshot_Akhtar.png" alt="Akhtar Subandar" loading="lazy" style="object-position: center 25%;" />
+        <img src="/Team_Headshots/Internal_Canada_Headshot_Akhtar.webp" alt="Akhtar Subandar" loading="lazy" style="object-position: center 25%;" />
         <div class="team-email-overlay"><span>akhtar@acrossindonesianseas.com</span></div>
       </div>
       <div class="team-info">
@@ -828,7 +834,7 @@
     </a>
     <a href="mailto:owen@acrossindonesianseas.com" class="team-card team-card--linked reveal reveal-d1">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_canada_Headshot_Owen.png" alt="Owen McRann" loading="lazy" style="object-position: center 80%;" />
+        <img src="/Team_Headshots/Internal_canada_Headshot_Owen.webp" alt="Owen McRann" loading="lazy" style="object-position: center 80%;" />
         <div class="team-email-overlay"><span>owen@acrossindonesianseas.com</span></div>
       </div>
       <div class="team-info">
@@ -838,7 +844,7 @@
     </a>
     <a href="mailto:morgan@acrossindonesianseas.com" class="team-card team-card--linked reveal reveal-d2">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_Canada_Headshot_Morgan.png" alt="Morgan Omstead" loading="lazy" style="object-position: center 25%;" />
+        <img src="/Team_Headshots/Internal_Canada_Headshot_Morgan.webp" alt="Morgan Omstead" loading="lazy" style="object-position: center 25%;" />
         <div class="team-email-overlay"><span>morgan@acrossindonesianseas.com</span></div>
       </div>
       <div class="team-info">
@@ -851,7 +857,7 @@
   <div class="team-members">
     <div class="team-card reveal reveal-d1">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Apriyani.png" alt="Apri Yani" loading="lazy" style="object-position: center 35%;" />
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Apriyani.webp" alt="Apri Yani" loading="lazy" style="object-position: center 35%;" />
       </div>
       <div class="team-info">
         <div class="team-name">Apri Yani</div>
@@ -860,7 +866,7 @@
     </div>
     <div class="team-card reveal reveal-d2">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Singgih.png" alt="Singgih Prayoga" loading="lazy" style="object-position: center 15%;" />
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Singgih.webp" alt="Singgih Prayoga" loading="lazy" style="object-position: center 15%;" />
       </div>
       <div class="team-info">
         <div class="team-name">Singgih Prayoga</div>
@@ -869,7 +875,7 @@
     </div>
     <div class="team-card reveal reveal-d3">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Odi.png" alt="Odi Pradana" loading="lazy" style="object-position: center 15%;" />
+        <img src="/Team_Headshots/Internal_Indonesia_Headshot_Odi.webp" alt="Odi Pradana" loading="lazy" style="object-position: center 15%;" />
       </div>
       <div class="team-info">
         <div class="team-name">Odi Pradana</div>
@@ -878,7 +884,7 @@
     </div>
     <div class="team-card reveal reveal-d4">
       <div class="team-photo">
-        <img src="/Team_Headshots/Internal_indonesia_headshot_Nurul_Hadi.png" alt="Nurul Hadi" loading="lazy" style="object-position: center 15%;" />
+        <img src="/Team_Headshots/Internal_indonesia_headshot_Nurul_Hadi.webp" alt="Nurul Hadi" loading="lazy" style="object-position: center 15%;" />
       </div>
       <div class="team-info">
         <div class="team-name">Nurul Hadi</div>
@@ -902,7 +908,7 @@
 
       <div class="article-card reveal">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/sial-montreal-2026.jpg" alt="AIS Joins the Indonesian Pavilion at SIAL Montreal 2026" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/sial-montreal-2026.webp" alt="AIS Joins the Indonesian Pavilion at SIAL Montreal 2026" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
@@ -956,7 +962,7 @@
 
       <div class="article-card reveal">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/How Across Indonesian Seas Is Building Meaningful Partnerships in Indonesia%E2%80%99s Coffee Heartland.png" alt="How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/How Across Indonesian Seas Is Building Meaningful Partnerships in Indonesia%E2%80%99s Coffee Heartland.webp" alt="How Across Indonesian Seas is Building Meaningful Partnerships in Indonesia's Coffee Heartland" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
@@ -974,7 +980,7 @@
 
       <div class="article-card reveal reveal-d1">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/soontoarrive:frinsacoffeeacrosstheseas.png" alt="Soon to Arrive: Frinsa Coffee Across the Seas" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/soontoarrive:frinsacoffeeacrosstheseas.webp" alt="Soon to Arrive: Frinsa Coffee Across the Seas" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
@@ -992,7 +998,7 @@
 
       <div class="article-card reveal reveal-d2">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/From Farm to Future: A Conversation with Fikri from Frinsa Estate.png" alt="From Farm to Future: A Conversation with Fikri from Frinsa Estate" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/From Farm to Future: A Conversation with Fikri from Frinsa Estate.webp" alt="From Farm to Future: A Conversation with Fikri from Frinsa Estate" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
@@ -1010,7 +1016,7 @@
 
       <div class="article-card reveal">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada.png" alt="AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada.webp" alt="AIS and Frinsa Formalize Partnership to Bring Indonesian Coffee to Canada" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
@@ -1028,7 +1034,7 @@
 
       <div class="article-card reveal reveal-d1">
         <div class="article-img">
-          <img src="/PhotosforArticleplaceholder/bringingtherichnessofindonesiangreencoffeetocanada.png" alt="Bringing the Richness of Indonesian Green Coffee to Canada" loading="lazy" />
+          <img src="/PhotosforArticleplaceholder/bringingtherichnessofindonesiangreencoffeetocanada.webp" alt="Bringing the Richness of Indonesian Green Coffee to Canada" loading="lazy" />
         </div>
         <div class="article-body">
           <div class="article-meta">
