@@ -100,6 +100,17 @@
     header#top.hero-play > div > div > *:nth-child(3){ animation-delay:.27s; }
     header#top.hero-play > div > div > *:nth-child(4){ animation-delay:.38s; }
     @media(prefers-reduced-motion:reduce){ header#top > div > div > *{ opacity:1; animation:none; } }
+
+    /* ── MOBILE LAYOUT FIXES ── */
+    @media(max-width:768px){
+      /* WHO WE ARE: stack text above portrait card */
+      #about div[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+      /* Material cards: stack image column above product column */
+      #chain article[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+      #chain article > div[style*="border-right"]{border-right:none!important;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)!important}
+      /* Brand statement quote: drop fixed pixel dimensions */
+      section[aria-label="Brand statement"] blockquote{width:auto!important;height:auto!important;max-width:20ch!important}
+    }
   </style>
   <link rel="preload" as="image" href="/europe-assets/pexels-fandymuch-34465333-mrn0uxnl-rt1y.webp" fetchpriority="high" />
 </head>

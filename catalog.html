@@ -768,7 +768,29 @@
     }
     @media (max-width: 900px) {
       .catalog-layout { flex-direction: column; }
-      .filter-sidebar { width: 100%; padding: 32px 24px; }
+      .filter-sidebar { width: 100%; padding: 18px 24px; }
+      /* Collapse filters behind a tappable header on mobile */
+      .filter-sidebar h2 {
+        margin-bottom: 0;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .filter-sidebar h2::after {
+        content: '+';
+        font-size: 26px;
+        font-weight: 400;
+        color: var(--red);
+        line-height: 1;
+      }
+      .filter-sidebar.filters-open h2 { margin-bottom: 16px; }
+      .filter-sidebar.filters-open h2::after { content: '\2212'; }
+      .filter-sidebar .filter-group,
+      .filter-sidebar .filter-note { display: none; }
+      .filter-sidebar.filters-open .filter-group,
+      .filter-sidebar.filters-open .filter-note { display: block; }
       .catalog-main { padding: 32px 20px 56px 20px; width: 100%; }
       .catalog-hero h1 { font-size: 32px; }
       .catalog-hero { height: 260px; }
@@ -1318,6 +1340,24 @@
     if (open) nav.classList.add('scrolled');
     else onScroll();
   });
+
+  // Mobile: collapse the whole filter panel behind the "Filter By" header
+  const filterSidebar = document.querySelector('.filter-sidebar');
+  const filterTitle = filterSidebar ? filterSidebar.querySelector('h2') : null;
+  if (filterTitle) {
+    filterTitle.setAttribute('role', 'button');
+    filterTitle.setAttribute('tabindex', '0');
+    filterTitle.setAttribute('aria-expanded', 'false');
+    const toggleFilters = () => {
+      if (window.innerWidth > 900) return;
+      const open = filterSidebar.classList.toggle('filters-open');
+      filterTitle.setAttribute('aria-expanded', open);
+    };
+    filterTitle.addEventListener('click', toggleFilters);
+    filterTitle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFilters(); }
+    });
+  }
 
   // Collapsible filter groups
   document.querySelectorAll('.filter-group-header').forEach(btn => {
