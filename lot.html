@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MH8YYYKH5R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MH8YYYKH5R');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Lot · Across Indonesian Seas</title>
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --charcoal: #2E2B29;
+      --charcoal-deep: #232120;
+      --text-dark: #1f1d1b;
+      --text-mid: #555555;
+      --text-light: #8a8a8a;
+      --line: #e6e3de;
+      --line-strong: #d8d4cd;
+      --paper: #f5f4f2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Archivo', 'Inter', sans-serif; }
+
+    a { color: inherit; }
+
+    button { font-family: inherit; cursor: pointer; }
+
+    img { max-width: 100%; }
+
+    /* ── NAV (same as rest of site, solid variant) ── */
+    nav#main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #D9D9D9;
+    }
+    .nav-logo {
+      flex-shrink: 0;
+      min-width: 160px;
+      overflow: hidden;
+    }
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+      transform: scale(2);
+      transform-origin: left center;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: var(--red); }
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 2px;
+      font-size: 11px !important;
+      letter-spacing: 0.1em !important;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+    .nav-cta:active { transform: translateY(0); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 4px;
+      color: var(--text-dark);
+      flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── BREADCRUMB ── */
+    .crumb-bar {
+      margin-top: 68px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .crumb-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 13px 48px;
+      font-size: 12.5px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .crumb-bar-inner a { text-decoration: none; color: var(--text-mid); transition: color 0.2s; }
+    .crumb-bar-inner a:hover { color: var(--red); }
+    .crumb-bar-inner a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .crumb-sep { color: var(--line-strong); }
+    .crumb-current { color: var(--text-dark); font-weight: 500; }
+
+    /* ── PRODUCT HEADER ── */
+    .lot-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 44px 48px 0;
+    }
+    .lot-top {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* Gallery */
+    .lot-gallery { position: sticky; top: 92px; }
+    .gallery-main {
+      position: relative;
+      aspect-ratio: 4 / 3.4;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-main.is-bag img { object-fit: contain; padding: 20px; }
+    .gallery-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(31,29,27,0.16), transparent 32%);
+    }
+    .gallery-main.is-bag::after { display: none; }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .gallery-thumbs button {
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid var(--line-strong);
+      border-radius: 2px;
+      background: var(--paper);
+      overflow: hidden;
+      padding: 0;
+      transition: border-color 0.2s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .gallery-thumbs button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-thumbs button.thumb-bag img { object-fit: contain; padding: 6px; }
+    .gallery-thumbs button:hover { transform: translateY(-1px); border-color: var(--text-light); }
+    .gallery-thumbs button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .gallery-thumbs button.current { border-color: var(--red); box-shadow: 0 0 0 1px var(--red); }
+
+    /* Info column */
+    .lot-producer {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .lot-title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .lot-origin { font-size: 15px; color: var(--text-mid); }
+    .lot-origin-admin { font-size: 13px; font-style: italic; color: var(--text-light); margin-bottom: 14px; }
+
+    .tier-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 2px;
+      border: 1px solid var(--line-strong);
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+    .tier-tag.tier-experimental { background: var(--charcoal); border-color: var(--charcoal); color: #fff; }
+    .tier-tag.tier-fruit-forward { background: #fff; border-color: var(--red); color: var(--red); }
+
+    .lot-notes {
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--text-dark);
+      margin: 20px 0 18px;
+      padding-left: 18px;
+      border-left: 3px solid var(--red);
+    }
+
+    .flavour-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .flavour-chips span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-mid);
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 99px;
+      padding: 4px 13px;
+      line-height: 1.6;
+    }
+
+    /* Availability strip */
+    .avail-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line-strong);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      background: #fff;
+    }
+    .avail-cell {
+      padding: 13px 18px;
+      border-right: 1px solid var(--line);
+    }
+    .avail-cell:last-child { border-right: none; }
+    .avail-cell .avail-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 2px;
+    }
+    .avail-cell .avail-value {
+      font-family: 'Archivo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+    .avail-cell .avail-sub { display: block; font-size: 11.5px; color: var(--text-light); }
+    .lot-page.sold-out .avail-value.stock-value { color: var(--red); }
+
+    /* CTAs */
+    .lot-ctas { display: flex; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
+    .btn-primary, .btn-secondary {
+      flex: 1;
+      min-width: 180px;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 2px;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 13px 22px;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: 1px solid var(--red);
+      box-shadow: 0 2px 10px -3px rgba(194,28,4,0.4);
+    }
+    .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-primary:active { transform: translateY(1px); }
+    .btn-primary:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+    .btn-secondary {
+      background: #fff;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+    }
+    .btn-secondary:hover { background: var(--charcoal); color: #fff; }
+    .btn-secondary:active { transform: translateY(1px); }
+    .btn-secondary:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    /* Spec table */
+    .spec-table { border-top: 1px solid var(--line-strong); }
+    .spec-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 18px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .spec-row dt {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      padding-top: 2px;
+    }
+    .spec-row dd { color: var(--text-dark); line-height: 1.6; }
+
+    /* ── SECTIONS ── */
+    .lot-section { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    .section-head h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .section-head::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line-strong);
+      transform: translateY(-4px);
+    }
+
+    .about-block { margin-top: 64px; }
+    .about-cols {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      gap: 56px;
+      align-items: start;
+    }
+    .about-cols p { color: var(--text-mid); margin-bottom: 16px; }
+    .about-cols p:last-child { margin-bottom: 0; }
+    .about-cols strong { color: var(--text-dark); }
+
+    .process-card {
+      background: var(--paper);
+      border-left: 3px solid var(--red);
+      border-radius: 2px;
+      padding: 24px 26px;
+    }
+    .process-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .process-card p { font-size: 14px; color: var(--text-mid); }
+
+    /* Producer section */
+    .producer-block { margin-top: 64px; }
+    .producer-cols {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 56px;
+      align-items: start;
+    }
+    .producer-photo {
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+      isolation: isolate;
+      aspect-ratio: 4 / 3.2;
+    }
+    .producer-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .producer-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(31,29,27,0.42), transparent 45%);
+    }
+    .producer-photo figcaption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 14px;
+      z-index: 1;
+      color: #fff;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 8px rgba(31,29,27,0.6);
+    }
+    .producer-text p { color: var(--text-mid); margin-bottom: 16px; }
+    .producer-text p:last-child { margin-bottom: 0; }
+    .producer-text strong { color: var(--text-dark); }
+
+    /* Practices */
+    .practices { margin-top: 40px; }
+    .practices h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .practices ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 40px;
+    }
+    .practices li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .practices li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    /* Partnership band */
+    .partner-band {
+      margin-top: 64px;
+      background: var(--charcoal);
+      border-radius: 3px;
+      padding: 44px 52px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .partner-band::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: -80px;
+      width: 260px;
+      background: linear-gradient(105deg, transparent 0%, rgba(194,28,4,0.22) 55%, rgba(194,28,4,0.34) 100%);
+      transform: skewX(-16deg);
+      z-index: -1;
+    }
+    .partner-band::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: 148px;
+      width: 3px;
+      background: var(--red);
+      opacity: 0.55;
+      transform: skewX(-16deg);
+      z-index: -1;
+    }
+    .partner-band h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .partner-band p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.72);
+      max-width: 720px;
+      margin-bottom: 0;
+    }
+    .partner-band .band-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      border-radius: 2px;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+    }
+
+    /* Related lots */
+    .related-block { margin-top: 72px; margin-bottom: 80px; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .related-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 2px;
+      padding: 16px 18px;
+      text-decoration: none;
+      background: #fff;
+      transition: box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .related-card:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 28px -14px rgba(46,43,41,0.22),
+        0 4px 10px -6px rgba(194,28,4,0.12);
+    }
+    .related-card:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .related-card img {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      object-fit: contain;
+      background: var(--paper);
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+    }
+    .related-card .rel-producer {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .related-card .rel-name {
+      font-family: 'Archivo', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-dark);
+    }
+    .related-card .rel-notes {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Not-found state */
+    .lot-missing {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 90px 48px 110px;
+      text-align: center;
+    }
+    .lot-missing h1 { font-size: 30px; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .lot-missing p { color: var(--text-mid); margin-bottom: 26px; }
+    .lot-missing a.btn-primary { flex: none; display: inline-block; }
+
+    /* ── INQUIRY MODAL (same as catalog) ── */
+    .quote-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .quote-modal[hidden] { display: none; }
+    .quote-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(31,29,27,0.6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .quote-modal.open .quote-modal-backdrop { opacity: 1; }
+    .quote-modal-panel {
+      position: relative;
+      background: #fff;
+      width: 100%;
+      max-width: 520px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      border-radius: 3px;
+      padding: 40px 40px 36px;
+      box-shadow: 0 24px 64px -16px rgba(31,29,27,0.45);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .quote-modal.open .quote-modal-panel { opacity: 1; transform: translateY(0); }
+    .quote-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-content: center;
+      background: none;
+      border: none;
+      border-radius: 50%;
+      font-size: 16px;
+      color: var(--text-mid);
+      transition: background 0.2s, color 0.2s;
+    }
+    .quote-modal-close:hover { background: var(--paper); color: var(--text-dark); }
+    .quote-modal-close:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .quote-modal-panel h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .quote-modal-lot {
+      font-size: 14px;
+      color: var(--text-mid);
+      margin-bottom: 26px;
+    }
+    .quote-modal-lot strong { color: var(--text-dark); }
+    .quote-form-row { display: flex; gap: 12px; }
+    .quote-form-row > .quote-form-group { flex: 1; }
+    .quote-form-group { margin-bottom: 16px; }
+    .quote-form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+    }
+    .quote-form-group input,
+    .quote-form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #c9c5be;
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-dark);
+      background: #fff;
+    }
+    .quote-form-group textarea { min-height: 90px; resize: vertical; }
+    .quote-form-group input:focus,
+    .quote-form-group textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; border-color: var(--red); }
+    .quote-form-hint { font-size: 12px; color: var(--text-light); margin-top: 5px; line-height: 1.5; }
+
+    .quote-sample-optin {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      color: var(--text-dark);
+      margin: 2px 0 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .quote-sample-optin input[type="checkbox"] {
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      border: 1px solid #c9c5be;
+      border-radius: 2px;
+      background: #fff;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: border-color 0.15s;
+    }
+    .quote-sample-optin input[type="checkbox"]:hover { border-color: var(--text-mid); }
+    .quote-sample-optin input[type="checkbox"]:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .quote-sample-optin input[type="checkbox"]:checked { border-color: #b3aea6; }
+    .quote-sample-optin input[type="checkbox"]:checked::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+    .quote-sample-box {
+      border: 0;
+      border-left: 3px solid var(--red);
+      border-radius: 2px;
+      background: #faf7f5;
+      padding: 18px 20px 20px;
+      margin-bottom: 18px;
+      min-width: 0;
+    }
+    .quote-sample-box[hidden] { display: none; }
+    .quote-sample-box legend {
+      float: left;
+      width: 100%;
+      font-family: 'Archivo', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--red);
+      padding: 0;
+      margin-bottom: 16px;
+    }
+    .quote-sample-box legend + * { clear: both; }
+    .quote-sample-box .quote-form-group:last-child { margin-bottom: 0; }
+    .quote-sample-box input,
+    .quote-sample-box textarea { background: #fff; }
+    #quote-sample-qty { max-width: 130px; }
+    .quote-submit {
+      width: 100%;
+      margin-top: 6px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 13px 0;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 2px 10px -3px rgba(194,28,4,0.4);
+    }
+    .quote-submit:hover { background: var(--red-dark); }
+    .quote-submit:active { transform: translateY(1px); }
+    .quote-submit:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+    .quote-submit:disabled { opacity: 0.7; cursor: default; }
+    .quote-success {
+      text-align: center;
+      padding: 4px 0 8px;
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    .quote-success strong { display: block; font-size: 18px; margin-bottom: 6px; }
+    .quote-success-check {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--red);
+      display: grid;
+      place-content: center;
+      color: #fff;
+    }
+    .quote-modal.success .quote-modal-panel { text-align: center; padding-top: 48px; }
+    .quote-modal.success .quote-modal-panel h2 { margin-bottom: 4px; }
+    .quote-modal.success .quote-modal-lot { margin-bottom: 30px; }
+    @media (max-width: 520px) {
+      .quote-modal-panel { padding: 32px 22px 28px; }
+      .quote-form-row { flex-direction: column; gap: 0; }
+    }
+
+    /* ── FOOTER (same as homepage) ── */
+    footer {
+      background: var(--charcoal);
+      padding: 32px 80px 36px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 36px;
+    }
+    .footer-brand { display: flex; flex-direction: column; }
+    .footer-logo-clip {
+      width: 220px; overflow: hidden; height: 110px;
+      margin-bottom: 10px; margin-left: -38px;
+    }
+    .footer-logo-clip img {
+      width: 220px; height: auto; margin-top: -27px;
+      filter: brightness(0) invert(1); opacity: 0.7;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 13px; line-height: 1.7;
+      color: rgba(255,255,255,0.38);
+      font-weight: 300; max-width: 240px;
+    }
+    .footer-col h5 {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 11px;
+    }
+    .footer-col ul a {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-col ul a:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 300;
+    }
+    .footer-loc {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1020px) {
+      .lot-top { grid-template-columns: 1fr; gap: 36px; }
+      .lot-gallery { position: static; max-width: 560px; }
+      .about-cols { grid-template-columns: 1fr; gap: 32px; }
+      .producer-cols { grid-template-columns: 1fr; gap: 32px; }
+      .producer-photo { max-width: 560px; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      footer { padding: 32px 32px 36px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 32px; margin-bottom: 24px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-logo-clip { margin-left: -14px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+    @media (max-width: 768px) {
+      nav#main-nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 68px; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 8px 0 24px;
+        border-top: 1px solid #D9D9D9;
+        overflow-y: auto;
+        z-index: 99;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 14px 24px;
+        color: var(--text-mid) !important;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid #f0efec;
+        transition: background 0.15s, color 0.15s;
+      }
+      .nav-links a:hover { color: var(--red) !important; background: #f5f4f2; }
+      .nav-cta {
+        margin: 12px 20px 0 !important;
+        display: inline-block;
+        border-bottom: none !important;
+        color: #fff !important;
+      }
+      .crumb-bar-inner { padding: 11px 20px; }
+      .lot-wrap { padding: 28px 20px 0; }
+      .lot-section { padding: 0 20px; }
+      .lot-title { font-size: 30px; }
+      .spec-row { grid-template-columns: 104px 1fr; gap: 14px; }
+      .avail-strip { grid-template-columns: 1fr; }
+      .avail-cell { border-right: none; border-bottom: 1px solid var(--line); }
+      .avail-cell:last-child { border-bottom: none; }
+      .practices ul { grid-template-columns: 1fr; }
+      .partner-band { padding: 32px 26px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .about-block, .producer-block { margin-top: 48px; }
+      .related-block { margin-top: 56px; margin-bottom: 60px; }
+      .lot-missing { padding: 70px 20px 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo" aria-label="Across Indonesian Seas">
+    <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/coffee.html" class="active">Coffee</a></li>
+    <li><a href="/cocopeat.html">Cocopeat</a></li>
+    <li><a href="/europe.html">Fashion & Furniture</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/#articles">Articles</a></li>
+    <li><a href="/coffee.html#contact" class="nav-cta">Request Samples</a></li>
+  </ul>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="crumb-bar">
+  <div class="crumb-bar-inner">
+    <a href="/coffee.html">Coffee</a>
+    <span class="crumb-sep">/</span>
+    <a href="/catalog.html">Available Lots</a>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-current" id="crumb-name">Lot</span>
+  </div>
+</div>
+
+<!-- LOT PAGE -->
+<div class="lot-page" id="lot-page" hidden>
+
+  <div class="lot-wrap">
+    <div class="lot-top">
+
+      <!-- Gallery -->
+      <div class="lot-gallery">
+        <div class="gallery-main" id="gallery-main">
+          <img id="gallery-main-img" src="" alt="" />
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+
+      <!-- Info -->
+      <div class="lot-info">
+        <p class="lot-producer" id="lot-producer"></p>
+        <h1 class="lot-title" id="lot-title"></h1>
+        <p class="lot-origin" id="lot-origin"></p>
+        <p class="lot-origin-admin" id="lot-origin-admin"></p>
+        <span class="tier-tag" id="lot-tier"></span>
+
+        <p class="lot-notes" id="lot-notes"></p>
+        <div class="flavour-chips" id="lot-chips"></div>
+
+        <div class="avail-strip">
+          <div class="avail-cell">
+            <span class="avail-label">Availability</span>
+            <span class="avail-value stock-value" id="avail-bags">…</span>
+            <span class="avail-sub" id="avail-kg"></span>
+          </div>
+          <div class="avail-cell">
+            <span class="avail-label">Warehouse</span>
+            <span class="avail-value" id="avail-warehouse"></span>
+            <span class="avail-sub" id="avail-position"></span>
+          </div>
+          <div class="avail-cell">
+            <span class="avail-label">Bag Size</span>
+            <span class="avail-value" id="avail-bagsize"></span>
+            <span class="avail-sub">GrainPro-lined jute</span>
+          </div>
+        </div>
+
+        <div class="lot-ctas">
+          <a class="btn-primary" id="cta-sample" href="#">Request Sample</a>
+          <a class="btn-secondary" id="cta-quote" href="#">Get a Quote</a>
+        </div>
+
+        <dl class="spec-table" id="spec-table"></dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT THIS COFFEE -->
+  <section class="lot-section about-block">
+    <div class="section-head"><h2>About This Coffee</h2></div>
+    <div class="about-cols">
+      <div id="about-text"></div>
+      <aside class="process-card">
+        <h3 id="process-name"></h3>
+        <p id="process-text"></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PRODUCER -->
+  <section class="lot-section producer-block">
+    <div class="section-head"><h2 id="producer-heading">The Producer</h2></div>
+    <div class="producer-cols">
+      <figure class="producer-photo">
+        <img id="producer-img" src="" alt="" loading="lazy" />
+        <figcaption id="producer-caption"></figcaption>
+      </figure>
+      <div class="producer-text" id="producer-text"></div>
+    </div>
+    <div class="practices">
+      <h3 id="practices-heading"></h3>
+      <ul id="practices-list"></ul>
+    </div>
+    <div class="partner-band">
+      <span class="band-tag">Direct Trade Partnership</span>
+      <h2>Connecting cultures through equitable trade</h2>
+      <p id="partner-text"></p>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="lot-section related-block">
+    <div class="section-head"><h2>More From Our Catalog</h2></div>
+    <div class="related-grid" id="related-grid"></div>
+  </section>
+</div>
+
+<!-- NOT FOUND -->
+<div class="lot-missing" id="lot-missing" hidden>
+  <h1>We couldn't find that lot</h1>
+  <p>The coffee you're looking for may have sold through, or the link may be out of date. Browse everything currently in stock on our catalog.</p>
+  <a class="btn-primary" href="/catalog.html">View Available Lots</a>
+</div>
+
+<!-- INQUIRY MODAL -->
+<div class="quote-modal" id="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title" hidden>
+  <div class="quote-modal-backdrop" data-close></div>
+  <div class="quote-modal-panel">
+    <button class="quote-modal-close" type="button" aria-label="Close" data-close>✕</button>
+    <h2 id="quote-modal-title">Coffee Inquiry</h2>
+    <p class="quote-modal-lot">You're enquiring about <strong id="quote-modal-coffee"></strong></p>
+
+    <form id="quote-form" action="https://formspree.io/f/mykbozod" method="POST">
+      <input type="hidden" name="coffee_selection" id="quote-coffee-input" />
+      <input type="hidden" name="inquiry_type" id="quote-type-input" />
+      <div class="quote-form-row">
+        <div class="quote-form-group">
+          <label for="quote-first-name">First Name</label>
+          <input type="text" id="quote-first-name" name="first_name" required />
+        </div>
+        <div class="quote-form-group">
+          <label for="quote-last-name">Last Name</label>
+          <input type="text" id="quote-last-name" name="last_name" required />
+        </div>
+      </div>
+      <div class="quote-form-group">
+        <label for="quote-email">Email</label>
+        <input type="email" id="quote-email" name="email" required />
+      </div>
+      <div class="quote-form-group">
+        <label for="quote-company">Company</label>
+        <input type="text" id="quote-company" name="company" />
+      </div>
+      <div class="quote-form-row">
+        <div class="quote-form-group">
+          <label for="quote-location">Where are you located?</label>
+          <input type="text" id="quote-location" name="location" />
+        </div>
+        <div class="quote-form-group">
+          <label for="quote-purchase-qty">Potential purchase (bags)</label>
+          <input type="number" id="quote-purchase-qty" name="purchase_quantity_bags" min="1" />
+          <p class="quote-form-hint">Full 30&nbsp;kg export bags you're considering.</p>
+        </div>
+      </div>
+
+      <label class="quote-sample-optin">
+        <input type="checkbox" id="quote-want-samples" name="receive_samples" value="Yes" />
+        I'd like to receive samples of this coffee
+      </label>
+
+      <fieldset class="quote-sample-box" id="quote-sample-box" hidden disabled>
+        <legend>Sample Shipment</legend>
+        <div class="quote-form-group">
+          <label for="quote-sample-qty">Number of samples</label>
+          <input type="number" id="quote-sample-qty" name="sample_quantity" min="1" value="1" />
+          <p class="quote-form-hint">200&nbsp;g sample packs.</p>
+        </div>
+        <div class="quote-form-group" style="margin-bottom: 0;">
+          <label for="quote-sample-address">Best address to ship samples to</label>
+          <textarea id="quote-sample-address" name="sample_shipping_address" rows="2"></textarea>
+        </div>
+      </fieldset>
+      <div class="quote-form-group">
+        <label for="quote-message">Questions? Comments?</label>
+        <textarea id="quote-message" name="message"></textarea>
+      </div>
+      <button class="quote-submit" type="submit">Send Inquiry</button>
+    </form>
+
+    <div class="quote-success" id="quote-success" hidden>
+      <div class="quote-success-check" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <strong>Thank you!</strong>
+      We've received your inquiry and will get back to you within one business day.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-clip">
+        <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+      </div>
+      <p>A Vancouver-based importer of Indonesian goods. Direct trade with producers across the archipelago. North American distribution.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="/coffee.html">Specialty Coffee</a></li>
+        <li><a href="/catalog.html">Available Lots</a></li>
+        <li><a href="/cocopeat.html">Cocopeat</a></li>
+        <li><a href="/coffee.html#contact">Request Samples</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/#about">About AIS</a></li>
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#articles">Articles</a></li>
+        <li><a href="https://bumicoffee.com" target="_blank" rel="noopener noreferrer">Bumi Coffee</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@acrossindonesianseas.com">info@acrossindonesianseas.com</a></li>
+        <li><a href="/coffee.html#contact">Coffee Inquiries</a></li>
+        <li><a href="/cocopeat.html#contact">Cocopeat Inquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Across Indonesian Seas. All rights reserved.</p>
+    <div class="footer-loc">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Vancouver, BC · Canada
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Nav ──
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // ── Producer profiles (from the AIS producer profile documents) ──
+  const PRODUCERS = {
+    'frinsa-estate': {
+      heading: 'The Producer · Java Frinsa Estate',
+      photo: '/Brand Photos/Wildanfikri.webp',
+      caption: 'Wildan and Fikri Mustofa of Java Frinsa Estate',
+      story: [
+        'Java Frinsa Estate is a specialty coffee producer based in the Bandung Highlands of West Java, Indonesia. The estate is owned by <strong>Wildan Mustofa and Atieq Mustikaningtyas</strong>, with Wildan overseeing farming and processing while Atieq manages human resources and finance. Today their son <strong>Fikri Mustofa</strong> is stepping into a leading operational role, carrying the family project into its next generation.',
+        'Frinsa was established in 2012 in direct response to recurring landslides and flooding in the highland regions of West Java, problems closely tied to deforestation and poor agricultural practice on steep terrain. The founders set out to build a coffee operation that could deliver world-class quality while restoring environmental stability to the region.',
+        'The estate spans multiple growing zones across West Java, including Weninggalih, Mekarwangi, Tilu Mountain, Pengalengan, Malabar Mountain, and Garut, and is widely regarded as one of the most technically advanced and consistently high-quality coffee producers in Indonesia.'
+      ],
+      practicesHeading: 'Environmental Practices at Frinsa',
+      practices: [
+        'Coffee grown under shade, including Lamtoro, avocado, jackfruit, and native forest species',
+        'Shade-tree root systems stabilize slopes and reduce soil erosion',
+        'Fallen leaves left as natural mulch to rebuild soil nutrients',
+        'Wastewater treated through bioremediation, then reused or safely released',
+        'Coffee pulp composted into organic fertilizer, eliminating chemical inputs',
+        'Mucilage collected and processed into cascara, ensuring full use of the harvest'
+      ],
+      partner: 'Our partnership with Frinsa is built on a bond that began a generation ago, when the fathers of our CEO, Akhtar, and producer, Fikri, met at university. Your support helps sustain long-term family farming, responsible land use, and consistently high-quality Indonesian coffee.'
+    },
+    'frinsa-collective': {
+      heading: 'The Producer · Java Frinsa Collective',
+      photo: '/Brand Photos/Frinsa_Processing_Line.webp',
+      caption: 'Green coffee sorting line at the Frinsa processing facility, Bandung',
+      story: [
+        'The Frinsa Collective is the smallholder program of <strong>Java Frinsa Estate</strong>, a specialty producer based in the Bandung Highlands of West Java. Beyond its own land, Frinsa works with selected smallholder farmers and outgrowers across four regions, around <strong>200 contract farmers</strong>, supporting them with technical training and post-harvest processing.',
+        'Cherries from partner plots are collected and processed under direct Frinsa supervision, extending the estate’s standards of agronomy, post-harvest control, and traceability beyond its own land, while providing better market access and price stability for partner farmers.',
+        'Frinsa was established in 2012 by Wildan Mustofa and Atieq Mustikaningtyas in response to recurring landslides and flooding in the West Java highlands. Their son Fikri now leads day-to-day operations, and the family actively trains neighboring farms in sustainable land use and quality-focused processing.'
+      ],
+      practicesHeading: 'Environmental Practices at Frinsa',
+      practices: [
+        'Coffee grown under shade, including Lamtoro, avocado, jackfruit, and native forest species',
+        'Shade-tree root systems stabilize slopes and reduce soil erosion',
+        'Fallen leaves left as natural mulch to rebuild soil nutrients',
+        'Wastewater treated through bioremediation, then reused or safely released',
+        'Coffee pulp composted into organic fertilizer, eliminating chemical inputs',
+        'Mucilage collected and processed into cascara, ensuring full use of the harvest'
+      ],
+      partner: 'Our partnership with Frinsa is built on a bond that began a generation ago, when the fathers of our CEO, Akhtar, and producer, Fikri, met at university. Buying Collective lots directly supports smallholder families farming under the Frinsa program.'
+    },
+    'pkni': {
+      heading: 'The Producer · Pusat Kopi Nusantara',
+      photo: '/Brand Photos/Rivo_with_coffee.webp',
+      caption: 'Rivo Trie Septiadiguna of Pusat Kopi Nusantara, Cianjur',
+      story: [
+        'Pusat Kopi Nusantara Indonesia (PKNI) is a specialty coffee operation based in Cianjur, West Java. The project is led by <strong>Rivo Trie Septiadiguna</strong>, a central figure for the farming community in Cianjur and one of the region’s longest-standing, highest-quality producers.',
+        'Rivo supports a network of dedicated farmers with expertise in agronomy and processing, together responsible for an annual output of around <strong>700 tonnes</strong> of specialty and high-quality commercial coffee. Processing spans natural, honey, and washed methods, producing profiles that range from fruity and floral naturals to clean, bright washed lots.',
+        'Our journey to PKNI began when our teammate Hadi met Rivo, and our most special moment was drinking Rivo’s coffee beneath the very trees where the beans were grown. PKNI prioritizes people and community over profit, fostering long-term partnerships built on trust and a shared commitment to quality.'
+      ],
+      practicesHeading: 'Community Impact at PKNI',
+      practices: [
+        'Rivo works directly on the ground, providing hands-on support to farmers',
+        'Farmer collaboration and knowledge-sharing across the Cianjur network',
+        'Community infrastructure support, including earthquake relief efforts',
+        'Donations toward health facilities and learning environments',
+        'Fair pricing and direct market access for partner farmers',
+        'Quality control at every stage, from cherry selection to processing'
+      ],
+      partner: 'PKNI represents a community-first Indonesian coffee model: transparent, quality-driven, and built to uplift the people behind every cup. Your support strengthens the partnership between Across Indonesian Seas and PKNI, helping sustain community farming in Cianjur.'
+    }
+  };
+
+  // ── Process explainers ──
+  const PROCESSES = {
+    'washed': {
+      name: 'Fully Washed Process',
+      text: 'Cherries are pulped, fermented to break down the mucilage, washed clean, and dried on raised beds. Washing strips everything but the seed itself, so the cup shows the coffee’s intrinsic character: clean, transparent, and bright.'
+    },
+    'natural': {
+      name: 'Natural Process',
+      text: 'Whole cherries are dried intact, letting the fruit sugars ferment slowly around the seed. The result is a heavier body and pronounced ripe-fruit sweetness that carries through into the finished cup.'
+    },
+    'honey': {
+      name: 'Honey Process',
+      text: 'Cherries are pulped but dried with a layer of sticky mucilage, the "honey," left on the parchment. The method lands between washed and natural: extra sweetness and body, while keeping a clean, structured finish.'
+    },
+    'wet-hulled': {
+      name: 'Wet Hulled · Giling Basah',
+      text: 'Indonesia’s signature method: parchment is removed while the beans are still at high moisture, then drying finishes on the exposed green bean. It produces the deep, earthy, full-bodied profile Indonesian coffee is famous for.'
+    },
+    'natural-lactic': {
+      name: 'Lactic Natural Process',
+      text: 'Before drying as a natural, cherries are held in a sealed, oxygen-free tank so lactic-acid bacteria dominate the fermentation. The controlled ferment layers creamy, yogurt-like texture and candy-like sweetness over the fruit-forward natural base.'
+    },
+    'honey-lactic': {
+      name: 'Lactic Honey Process',
+      text: 'Pulped coffee is fermented in a sealed, oxygen-free environment favouring lactic-acid bacteria before drying honey-style with the mucilage on. The result is an aromatic, delicately structured cup with amplified sweetness.'
+    },
+    'honey-tempe': {
+      name: 'Tempe Honey Process',
+      text: 'An experimental honey-process lot fermented with a Rhizopus culture, the same culture used to make Indonesian tempe. A true only-in-Indonesia experiment, it yields florals, citrus, and an elegant tea-like finish.'
+    }
+  };
+
+  // ── Lot data (matched to the live catalog + Google Sheet names) ──
+  const LOTS = {
+    'frinsa-collective-fully-washed': {
+      name: 'Frinsa Collective Fully Washed',
+      producerLabel: 'Java Frinsa Collective',
+      producer: 'frinsa-collective',
+      sheet: 'Frinsa Collective Fully Washed',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'washed', processLabel: 'Fully Washed',
+      stock: [0, 0],
+      notes: 'Sweet and balanced fruit-forward coffee with bright orange acidity and a milk chocolate aftertaste.',
+      chips: ['Orange Acidity', 'Milk Chocolate', 'Sweet & Balanced', 'Fruit-Forward'],
+      about: [
+        'This is our benchmark washed coffee from the Frinsa Collective: cherries grown by smallholder partner farmers in the Bandung highlands and processed fully washed under direct Frinsa supervision. It cups sweet and fruit-forward, with bright orange acidity that resolves into a comfortable milk-chocolate finish.',
+        'Approachable enough for an everyday batch brew, clean enough to hold its own as a single origin: this is the lot we recommend to roasters meeting Java Preanger coffee for the first time.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Collective Full Wash.webp',
+      gallery: ['/Brand Photos/Frinsa_Processing_Line.webp', '/newest stairsfikri.webp', '/Brand Photos/Wildanfikri.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Collective (smallholder partners of Java Frinsa Estate)'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Fully washed, dried on raised beds'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'frinsa-collective-natural': {
+      name: 'Frinsa Collective Natural',
+      producerLabel: 'Java Frinsa Collective',
+      producer: 'frinsa-collective',
+      sheet: 'Frinsa Collective Natural',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
+      process: 'natural', processLabel: 'Natural',
+      stock: [104, 3120],
+      notes: 'Fragrance of melon and flavour notes of peach strudel. Rounded body with broad, elegant melon acidity.',
+      chips: ['Melon', 'Peach Strudel', 'Rounded Body', 'Elegant Acidity'],
+      about: [
+        'Whole-cherry natural processing gives this Collective lot its ripe-fruit character: a fragrance of melon leading into peach-strudel sweetness, with a rounded body and broad, elegant melon acidity.',
+        'Grown by Frinsa’s smallholder partners in the Bandung highlands and dried under close supervision at the estate’s facilities, it’s a fruit-forward crowd-pleaser that stays clean, with no wild ferment funk, just ripe fruit.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Collective Natural.webp',
+      gallery: ['/Brand Photos/Frinsa_Processing_Line.webp', '/newest stairsfikri.webp', '/Brand Photos/Wildanfikri.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Collective (smallholder partners of Java Frinsa Estate)'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Natural, whole-cherry dried'],
+        ['Profile', 'Fruit-Forward'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'frinsa-collective-wet-hulled': {
+      name: 'Frinsa Collective Wet Hulled',
+      producerLabel: 'Java Frinsa Collective',
+      producer: 'frinsa-collective',
+      sheet: 'Frinsa Collective Wet Hulled',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'wet-hulled', processLabel: 'Wet Hulled',
+      stock: [0, 0],
+      notes: 'Fragrance of cedar with smooth, easy chocolate and spice. The clean, smooth taste of traditional wet-hulled Indonesian coffee.',
+      chips: ['Dark Chocolate', 'Cedar', 'Spice', 'Earthy Body'],
+      about: [
+        'Giling basah (wet hulling) is the processing method Indonesia is known for worldwide, and this Collective lot is a clean, modern take on the tradition. Expect cedar in the fragrance, smooth and easy chocolate with gentle spice in the cup, and the deep body that makes wet-hulled coffee a natural anchor for espresso and dark-roast blends.',
+        'Because Frinsa controls hulling and drying centrally, this lot delivers the classic profile without the inconsistency that often comes with the method.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Collective Wethulled.webp',
+      gallery: ['/Brand Photos/Frinsa_Processing_Line.webp', '/newest stairsfikri.webp', '/Brand Photos/Wildanfikri.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Collective (smallholder partners of Java Frinsa Estate)'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Wet hulled · giling basah'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'frinsa-honey-lactic': {
+      name: 'Frinsa Honey Lactic',
+      producerLabel: 'Java Frinsa Estate',
+      producer: 'frinsa-estate',
+      sheet: 'Honey Lactic',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'experimental', tierLabel: 'Experimental',
+      process: 'honey-lactic', processLabel: 'Lactic Honey',
+      stock: [6, 180],
+      notes: 'A sweeter, aromatic cup with honeydew melon and orange citrus, layered with floral honey and Earl Grey tea, finishing clean and delicately structured.',
+      chips: ['Honeydew Melon', 'Orange Citrus', 'Floral Honey', 'Earl Grey'],
+      about: [
+        'One of Frinsa’s experimental fermentation lots: pulped coffee is held in a sealed, oxygen-free tank so lactic-acid bacteria drive the ferment, then dried honey-style with the mucilage left on. The lactic stage amplifies sweetness and aromatics without tipping into funk.',
+        'The cup layers honeydew melon and orange citrus over floral honey and Earl Grey tea, finishing clean and delicately structured: a coffee built for standout single-origin filter menus.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Honey Lactic.webp',
+      gallery: ['/Brand Photos/Wildanfikri.webp', '/newest stairsfikri.webp', '/Brand Photos/Frinsa_Processing_Line.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Estate'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Honey, anaerobic lactic fermentation'],
+        ['Profile', 'Experimental'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'frinsa-honey-tempe': {
+      name: 'Frinsa Honey Tempe',
+      producerLabel: 'Java Frinsa Estate',
+      producer: 'frinsa-estate',
+      sheet: 'Honey Rhizopus',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'experimental', tierLabel: 'Experimental',
+      process: 'honey-tempe', processLabel: 'Tempe Honey',
+      stock: [7, 210],
+      notes: 'Fragrance of honeydew melon and orange citrus with floral honey and Earl Grey tea. Delicate and refined, with bright citrus acidity, gentle sweetness, and a clean, elegant finish.',
+      chips: ['Honeydew Melon', 'Orange Citrus', 'Earl Grey', 'Elegant Finish'],
+      about: [
+        'A fermentation experiment that could only come from Indonesia: this honey-process lot is fermented with a Rhizopus culture, the same culture used to make tempe, the Javanese fermented staple. It’s Frinsa’s technical processing at its most creative.',
+        'The cup is delicate and refined: honeydew melon and orange citrus in the fragrance, floral honey and Earl Grey tea in the flavour, bright citrus acidity, and a clean, elegant finish. Limited volumes: when it’s gone, it’s gone until next harvest.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Honey Tempe.webp',
+      gallery: ['/Brand Photos/Wildanfikri.webp', '/newest stairsfikri.webp', '/Brand Photos/Frinsa_Processing_Line.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Estate'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Honey, Rhizopus (tempe culture) fermentation'],
+        ['Profile', 'Experimental'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'frinsa-estate-natural-lactic': {
+      name: 'Frinsa Estate Natural Lactic',
+      producerLabel: 'Java Frinsa Estate',
+      producer: 'frinsa-estate',
+      sheet: 'Frinsa Lactic Natural',
+      origin: 'Bandung, Java Preanger',
+      originAdmin: 'Bandung Regency, West Java, Indonesia',
+      tier: 'experimental', tierLabel: 'Experimental',
+      process: 'natural-lactic', processLabel: 'Lactic Natural',
+      stock: [37, 1110],
+      notes: 'Elegant tropical fragrance with distinct notes of ripe mango and honeydew, finishing with a long, pleasant candy-like sweetness.',
+      chips: ['Ripe Mango', 'Honeydew', 'Candy Sweetness', 'Tropical'],
+      about: [
+        'Frinsa’s flagship experimental natural: whole cherries are sealed in an oxygen-free tank where lactic-acid bacteria dominate the fermentation, then dried slowly as a natural. The controlled ferment pushes the fruit character toward the tropical end of the spectrum.',
+        'Expect an elegant tropical fragrance, distinct ripe mango and honeydew in the cup, and a long, candy-like sweetness in the finish. This is the lot we hand people when we want to show what modern Indonesian processing can do.'
+      ],
+      bag: '/Frinsa Bags/Frinsa Lactic Natural.webp',
+      gallery: ['/Brand Photos/Wildanfikri.webp', '/newest stairsfikri.webp', '/Brand Photos/Frinsa_Processing_Line.webp'],
+      specs: [
+        ['Producer', 'Java Frinsa Estate'],
+        ['Region', 'Bandung Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,300–1,600 masl'],
+        ['Cultivars', 'Typica, Sigararutang, Lini S795, Andungsari, Borbor, Timtim, P88, Ateng Super, Blue Mountain'],
+        ['Process', 'Natural, anaerobic lactic fermentation'],
+        ['Profile', 'Experimental'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'pkni-washed': {
+      name: 'PKNI Washed',
+      producerLabel: 'Pusat Kopi Nusantara',
+      producer: 'pkni',
+      sheet: 'PKNI Full Wash',
+      origin: 'Cianjur, Java Preanger',
+      originAdmin: 'Cianjur Regency, West Java, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'washed', processLabel: 'Washed',
+      stock: [63, 1890],
+      notes: 'Fragrance of cereal and toasted grain with light cocoa. The cup is earthy and structured, finishing with cacao-nib bitterness, medium acidity, and medium body.',
+      chips: ['Toasted Grain', 'Light Cocoa', 'Cacao Nib', 'Structured'],
+      about: [
+        'A clean, structured washed coffee from Rivo’s network of farmers in the Cianjur highlands. The fragrance leans toasted: cereal and grain with light cocoa, and the cup follows through earthy and structured, closing on pleasant cacao-nib bitterness with medium acidity and body.',
+        'It’s a dependable workhorse lot: comfortable as a daily drinker, and a strong base for milk-drink espresso where you want cocoa depth without heavy earth.'
+      ],
+      bag: '/PKNI Bags/Pusaka Washed.webp',
+      gallery: ['/Brand Photos/Rivo_with_coffee.webp'],
+      specs: [
+        ['Producer', 'Pusat Kopi Nusantara Indonesia (PKNI), led by Rivo Trie Septiadiguna'],
+        ['Region', 'Cianjur Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,200–1,500 masl'],
+        ['Process', 'Fully washed'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'pkni-honey': {
+      name: 'PKNI Honey',
+      producerLabel: 'Pusat Kopi Nusantara',
+      producer: 'pkni',
+      sheet: 'PKNI Honey',
+      origin: 'Cianjur, Java Preanger',
+      originAdmin: 'Cianjur Regency, West Java, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'honey', processLabel: 'Honey',
+      stock: [18, 540],
+      notes: 'Fragrance of honey and soft cocoa with subtle white tea aromatics. Smooth and balanced, with gentle sweetness, light chocolate depth, and a clean, tea-like finish.',
+      chips: ['Honey', 'Soft Cocoa', 'White Tea', 'Clean Finish'],
+      about: [
+        'Honey processing suits Cianjur coffee beautifully: drying with the mucilage on gives this lot a fragrance of honey and soft cocoa with subtle white-tea aromatics, and a smooth, balanced cup with gentle sweetness and light chocolate depth.',
+        'The finish is clean and tea-like with medium acidity and body: an easy recommendation for roasters who want more sweetness than a washed lot without moving all the way to a natural.'
+      ],
+      bag: '/PKNI Bags/Pusaka Honey.webp',
+      gallery: ['/Brand Photos/Rivo_with_coffee.webp'],
+      specs: [
+        ['Producer', 'Pusat Kopi Nusantara Indonesia (PKNI), led by Rivo Trie Septiadiguna'],
+        ['Region', 'Cianjur Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,200–1,500 masl'],
+        ['Process', 'Honey, dried with mucilage intact'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    },
+    'pkni-natural': {
+      name: 'PKNI Natural',
+      producerLabel: 'Pusat Kopi Nusantara',
+      producer: 'pkni',
+      sheet: 'PKNI Natural',
+      origin: 'Cianjur, Java Preanger',
+      originAdmin: 'Cianjur Regency, West Java, Indonesia',
+      tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
+      process: 'natural', processLabel: 'Natural',
+      stock: [0, 0],
+      notes: 'Notes of fig and red apple when hot, transitioning to apple-cinnamon as it cools. Medium-to-full body with a long-lasting, pleasantly sweet aftertaste.',
+      chips: ['Fig', 'Red Apple', 'Apple Cinnamon', 'Long Sweetness'],
+      about: [
+        'A natural-process lot from the Cianjur highlands that evolves in the cup: fig and red apple while hot, shifting toward apple-cinnamon as it cools, carried by a medium-to-full body and a long, pleasantly sweet aftertaste.',
+        'Rivo’s careful cherry selection keeps the fruit ripe and defined rather than boozy: a natural that works as well in a warming autumn single origin as it does bringing sweetness to a blend.'
+      ],
+      bag: '/PKNI Bags/Pusaka Natural.webp',
+      gallery: ['/Brand Photos/Rivo_with_coffee.webp'],
+      specs: [
+        ['Producer', 'Pusat Kopi Nusantara Indonesia (PKNI), led by Rivo Trie Septiadiguna'],
+        ['Region', 'Cianjur Regency, Java Preanger, West Java, Indonesia'],
+        ['Elevation', '± 1,200–1,500 masl'],
+        ['Process', 'Natural, whole-cherry dried'],
+        ['Profile', 'Fruit-Forward'],
+        ['Bag Size', '30 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Spot']
+      ]
+    }
+  };
+
+  // Legacy/alternate slugs so printed QR codes keep working even if names shift
+  const SLUG_ALIASES = {
+    'frinsa-natural-lactic': 'frinsa-estate-natural-lactic',
+    'frinsa-lactic-natural': 'frinsa-estate-natural-lactic',
+    'honey-lactic': 'frinsa-honey-lactic',
+    'honey-tempe': 'frinsa-honey-tempe',
+    'honey-rhizopus': 'frinsa-honey-tempe',
+    'pkni-full-wash': 'pkni-washed'
+  };
+
+  // ── Render ──
+  const params = new URLSearchParams(location.search);
+  let slug = (params.get('lot') || '').toLowerCase().trim();
+  if (SLUG_ALIASES[slug]) slug = SLUG_ALIASES[slug];
+  const lot = LOTS[slug];
+
+  const pageEl = document.getElementById('lot-page');
+  const missingEl = document.getElementById('lot-missing');
+
+  if (!lot) {
+    missingEl.hidden = false;
+    document.title = 'Lot Not Found · Across Indonesian Seas';
+    document.getElementById('crumb-name').textContent = 'Not Found';
+  } else {
+    renderLot(lot);
+  }
+
+  function renderLot(lot) {
+    const producer = PRODUCERS[lot.producer];
+    pageEl.hidden = false;
+
+    document.title = `${lot.name} · Across Indonesian Seas`;
+    document.getElementById('crumb-name').textContent = lot.name;
+    document.getElementById('lot-producer').textContent = lot.producerLabel;
+    document.getElementById('lot-title').textContent = lot.name;
+    document.getElementById('lot-origin').textContent = lot.origin;
+    document.getElementById('lot-origin-admin').textContent = lot.originAdmin;
+
+    const tierEl = document.getElementById('lot-tier');
+    tierEl.textContent = lot.tierLabel;
+    tierEl.classList.add('tier-' + lot.tier);
+
+    document.getElementById('lot-notes').textContent = lot.notes;
+
+    const chipsEl = document.getElementById('lot-chips');
+    lot.chips.forEach(c => {
+      const s = document.createElement('span');
+      s.textContent = c;
+      chipsEl.appendChild(s);
+    });
+
+    // Availability defaults (live numbers overwrite via the sheet sync below)
+    document.getElementById('avail-warehouse').textContent = 'Vancouver, BC';
+    document.getElementById('avail-position').textContent = 'Seaforth · Spot';
+    document.getElementById('avail-bagsize').textContent = '30 kg';
+    setAvailability(lot.stock[0], lot.stock[1]);
+
+    // CTAs: modal openers with no-JS fallback hrefs
+    const sampleBtn = document.getElementById('cta-sample');
+    const quoteBtn = document.getElementById('cta-quote');
+    const fallback = '/coffee.html?coffee=' + encodeURIComponent(lot.name) + '#contact';
+    sampleBtn.href = fallback;
+    quoteBtn.href = fallback;
+
+    // Gallery
+    const images = [{ src: lot.bag, bag: true, alt: lot.name + ' bag' }]
+      .concat(lot.gallery.map(g => ({ src: g, bag: false, alt: lot.producerLabel })));
+    const mainWrap = document.getElementById('gallery-main');
+    const mainImg = document.getElementById('gallery-main-img');
+    const thumbs = document.getElementById('gallery-thumbs');
+
+    function showImage(i) {
+      const im = images[i];
+      mainImg.src = im.src;
+      mainImg.alt = im.alt;
+      mainWrap.classList.toggle('is-bag', im.bag);
+      thumbs.querySelectorAll('button').forEach((b, bi) => b.classList.toggle('current', bi === i));
+    }
+
+    images.forEach((im, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'View image ' + (i + 1));
+      if (im.bag) b.classList.add('thumb-bag');
+      const img = document.createElement('img');
+      img.src = im.src;
+      img.alt = '';
+      img.loading = 'lazy';
+      b.appendChild(img);
+      b.addEventListener('click', () => showImage(i));
+      thumbs.appendChild(b);
+    });
+    showImage(0);
+
+    // Spec table
+    const specTable = document.getElementById('spec-table');
+    lot.specs.forEach(([k, v]) => {
+      const row = document.createElement('div');
+      row.className = 'spec-row';
+      const dt = document.createElement('dt');
+      dt.textContent = k;
+      const dd = document.createElement('dd');
+      dd.textContent = v;
+      row.appendChild(dt);
+      row.appendChild(dd);
+      specTable.appendChild(row);
+    });
+
+    // About
+    const aboutText = document.getElementById('about-text');
+    lot.about.forEach(p => {
+      const el = document.createElement('p');
+      el.innerHTML = p;
+      aboutText.appendChild(el);
+    });
+    const proc = PROCESSES[lot.process];
+    document.getElementById('process-name').textContent = proc.name;
+    document.getElementById('process-text').textContent = proc.text;
+
+    // Producer
+    document.getElementById('producer-heading').textContent = producer.heading;
+    const pImg = document.getElementById('producer-img');
+    pImg.src = producer.photo;
+    pImg.alt = producer.caption;
+    document.getElementById('producer-caption').textContent = producer.caption;
+    const pText = document.getElementById('producer-text');
+    producer.story.forEach(p => {
+      const el = document.createElement('p');
+      el.innerHTML = p;
+      pText.appendChild(el);
+    });
+    document.getElementById('practices-heading').textContent = producer.practicesHeading;
+    const list = document.getElementById('practices-list');
+    producer.practices.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+    document.getElementById('partner-text').textContent = producer.partner;
+
+    // Related lots: same producer first, then the rest
+    const related = Object.entries(LOTS)
+      .filter(([s]) => s !== slug)
+      .sort((a, b) => (b[1].producer === lot.producer) - (a[1].producer === lot.producer))
+      .slice(0, 3);
+    const relGrid = document.getElementById('related-grid');
+    related.forEach(([s, r]) => {
+      const a = document.createElement('a');
+      a.className = 'related-card';
+      a.href = '/lot.html?lot=' + s;
+      a.innerHTML =
+        '<img src="' + r.bag + '" alt="" loading="lazy" />' +
+        '<div>' +
+          '<p class="rel-producer">' + r.producerLabel + '</p>' +
+          '<p class="rel-name">' + r.name + '</p>' +
+          '<p class="rel-notes">' + r.chips.slice(0, 3).join(' · ') + '</p>' +
+        '</div>';
+      relGrid.appendChild(a);
+    });
+  }
+
+  // ── Inquiry modal (same behaviour as catalog) ──
+  (function() {
+    const modal = document.getElementById('quote-modal');
+    const title = document.getElementById('quote-modal-title');
+    const coffeeLabel = document.getElementById('quote-modal-coffee');
+    const coffeeInput = document.getElementById('quote-coffee-input');
+    const typeInput = document.getElementById('quote-type-input');
+    const form = document.getElementById('quote-form');
+    const success = document.getElementById('quote-success');
+    const submitBtn = form.querySelector('.quote-submit');
+    const wantSamples = document.getElementById('quote-want-samples');
+    const sampleBox = document.getElementById('quote-sample-box');
+    const sampleAddress = document.getElementById('quote-sample-address');
+    let lastFocused = null;
+
+    function syncSampleBox() {
+      const on = wantSamples.checked;
+      sampleBox.hidden = !on;
+      sampleBox.disabled = !on;
+      sampleAddress.required = on;
+    }
+    wantSamples.addEventListener('change', syncSampleBox);
+
+    function openModal(coffee, type) {
+      title.textContent = type === 'Get a Quote' ? 'Get a Quote' : 'Request a Sample';
+      coffeeLabel.textContent = coffee;
+      coffeeInput.value = coffee;
+      typeInput.value = type;
+      form.hidden = false;
+      success.hidden = true;
+      modal.classList.remove('success');
+      submitBtn.textContent = 'Send Inquiry';
+      submitBtn.disabled = false;
+      wantSamples.checked = type !== 'Get a Quote';
+      syncSampleBox();
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+      lastFocused = document.activeElement;
+      document.getElementById('quote-first-name').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { modal.hidden = true; }, 250);
+      if (lastFocused) lastFocused.focus();
+    }
+
+    ['cta-sample', 'cta-quote'].forEach(id => {
+      const btn = document.getElementById(id);
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        if (!lot) return;
+        openModal(lot.name, btn.textContent.trim());
+      });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          form.hidden = true;
+          success.hidden = false;
+          modal.classList.add('success');
+        } else {
+          submitBtn.textContent = 'Error, try again';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        submitBtn.textContent = 'Error, try again';
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+
+  // ── Live inventory from the same published Google Sheet as the catalog ──
+  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbDmqVSzRDGaS1LfumRNhtFSoa_Ht5CnSIiqaLqafiUOU9YtMofQ3Jq9qAbYvt-xLj7ZoIw574uIxn/pub?gid=0&single=true&output=csv';
+
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], field = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else inQuotes = false;
+        } else field += c;
+      } else if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i + 1] === '\n') i++;
+        row.push(field); field = '';
+        rows.push(row); row = [];
+      } else field += c;
+    }
+    if (field !== '' || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  function setAvailability(bags, kg) {
+    const bagsEl = document.getElementById('avail-bags');
+    const kgEl = document.getElementById('avail-kg');
+    const sampleBtn = document.getElementById('cta-sample');
+    const quoteBtn = document.getElementById('cta-quote');
+    if (bags > 0) {
+      document.querySelector('.lot-page').classList.remove('sold-out');
+      bagsEl.textContent = `${bags.toLocaleString('en-CA')} Bags`;
+      kgEl.textContent = `${kg.toLocaleString('en-CA')} kg in stock`;
+      sampleBtn.textContent = 'Request Sample';
+      quoteBtn.style.display = '';
+    } else {
+      document.querySelector('.lot-page').classList.add('sold-out');
+      bagsEl.textContent = 'Sold Out';
+      kgEl.textContent = 'Enquire about the next shipment';
+      sampleBtn.textContent = 'Get a Quote';
+      quoteBtn.style.display = 'none';
+    }
+  }
+
+  async function syncInventory() {
+    if (!SHEET_CSV_URL || !lot) return;
+    try {
+      const res = await fetch(SHEET_CSV_URL);
+      if (!res.ok) return;
+      const rows = parseCSV(await res.text());
+      if (rows.length < 2) return;
+      const header = rows[0].map(h => h.trim().toLowerCase());
+      const bagsIdx = header.findIndex(h => h.includes('current') && h.includes('bag'));
+      const kgIdx = header.findIndex(h => h.includes('current') && h.includes('kg'));
+      if (bagsIdx === -1) return;
+      const num = v => Math.round(parseFloat(String(v || '').replace(/[^0-9.]/g, ''))) || 0;
+      const match = rows.slice(1).find(r => (r[0] || '').trim() === lot.sheet);
+      if (!match) return;
+      setAvailability(num(match[bagsIdx]), kgIdx === -1 ? 0 : num(match[kgIdx]));
+    } catch (e) {
+      /* offline or sheet unavailable: keep the placeholder */
+    }
+  }
+
+  syncInventory();
+</script>
+
+</body>
+</html>

@@ -350,6 +350,10 @@
       flex-direction: column;
       transition: box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .product-card[data-lot] { cursor: pointer; }
+    .card-title a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    .product-card:hover .card-title a { color: var(--red); }
+    .card-title a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
     .product-card:hover {
       transform: translateY(-2px);
       box-shadow:
@@ -1023,11 +1027,11 @@
     <div class="product-grid" id="product-grid">
 
       <!-- 1 -->
-      <article class="product-card sold-out" data-sheet="Frinsa Collective Fully Washed" data-producer="frinsa-collective" data-process="washed" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
+      <article class="product-card sold-out" data-sheet="Frinsa Collective Fully Washed" data-lot="frinsa-collective-fully-washed" data-producer="frinsa-collective" data-process="washed" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Collective</p>
-            <h3 class="card-title">Frinsa Collective<br />Fully Washed</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-collective-fully-washed">Frinsa Collective<br />Fully Washed</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag">Classic &amp; Balanced</span>
@@ -1042,11 +1046,11 @@
       </article>
 
       <!-- 2 -->
-      <article class="product-card" data-sheet="Frinsa Collective Natural" data-producer="frinsa-collective" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="fruit-forward" data-origin="java west-java">
+      <article class="product-card" data-sheet="Frinsa Collective Natural" data-lot="frinsa-collective-natural" data-producer="frinsa-collective" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="fruit-forward" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Collective</p>
-            <h3 class="card-title">Frinsa Collective<br />Natural</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-collective-natural">Frinsa Collective<br />Natural</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag tier-fruit-forward">Fruit-Forward</span>
@@ -1061,11 +1065,11 @@
       </article>
 
       <!-- 3 -->
-      <article class="product-card sold-out" data-sheet="Frinsa Collective Wet Hulled" data-producer="frinsa-collective" data-process="wet-hulled" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
+      <article class="product-card sold-out" data-sheet="Frinsa Collective Wet Hulled" data-lot="frinsa-collective-wet-hulled" data-producer="frinsa-collective" data-process="wet-hulled" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Collective</p>
-            <h3 class="card-title">Frinsa Collective<br />Wet Hulled</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-collective-wet-hulled">Frinsa Collective<br />Wet Hulled</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag">Classic &amp; Balanced</span>
@@ -1080,11 +1084,11 @@
       </article>
 
       <!-- 4 -->
-      <article class="product-card" data-sheet="Honey Lactic" data-producer="frinsa-estate" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
+      <article class="product-card" data-sheet="Honey Lactic" data-lot="frinsa-honey-lactic" data-producer="frinsa-estate" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Estate</p>
-            <h3 class="card-title">Frinsa Honey<br />Lactic</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-honey-lactic">Frinsa Honey<br />Lactic</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag tier-experimental">Experimental</span>
@@ -1099,11 +1103,11 @@
       </article>
 
       <!-- 5 -->
-      <article class="product-card" data-sheet="Honey Rhizopus" data-producer="frinsa-estate" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
+      <article class="product-card" data-sheet="Honey Rhizopus" data-lot="frinsa-honey-tempe" data-producer="frinsa-estate" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Estate</p>
-            <h3 class="card-title">Frinsa Honey<br />Tempe</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-honey-tempe">Frinsa Honey<br />Tempe</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag tier-experimental">Experimental</span>
@@ -1118,11 +1122,11 @@
       </article>
 
       <!-- 6 -->
-      <article class="product-card" data-sheet="Frinsa Lactic Natural" data-producer="frinsa-estate" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
+      <article class="product-card" data-sheet="Frinsa Lactic Natural" data-lot="frinsa-estate-natural-lactic" data-producer="frinsa-estate" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="experimental" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Java Frinsa Estate</p>
-            <h3 class="card-title">Frinsa Estate<br />Natural Lactic</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=frinsa-estate-natural-lactic">Frinsa Estate<br />Natural Lactic</a></h3>
             <p class="card-origin">Bandung, Java Preanger</p>
             <p class="card-origin-admin">Bandung Regency, West Java, Indonesia</p>
             <span class="tier-tag tier-experimental">Experimental</span>
@@ -1137,11 +1141,11 @@
       </article>
 
       <!-- 7 -->
-      <article class="product-card" data-sheet="PKNI Full Wash" data-producer="pkni" data-process="washed" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
+      <article class="product-card" data-sheet="PKNI Full Wash" data-lot="pkni-washed" data-producer="pkni" data-process="washed" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Pusat Kopi Nusantara</p>
-            <h3 class="card-title">PKNI<br />Washed</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=pkni-washed">PKNI<br />Washed</a></h3>
             <p class="card-origin">Cianjur, Java Preanger</p>
             <p class="card-origin-admin">Cianjur Regency, West Java, Indonesia</p>
             <span class="tier-tag">Classic &amp; Balanced</span>
@@ -1156,11 +1160,11 @@
       </article>
 
       <!-- 8 -->
-      <article class="product-card" data-sheet="PKNI Honey" data-producer="pkni" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
+      <article class="product-card" data-sheet="PKNI Honey" data-lot="pkni-honey" data-producer="pkni" data-process="honey" data-warehouse="vancouver" data-position="spot" data-tier="classic" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Pusat Kopi Nusantara</p>
-            <h3 class="card-title">PKNI<br />Honey</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=pkni-honey">PKNI<br />Honey</a></h3>
             <p class="card-origin">Cianjur, Java Preanger</p>
             <p class="card-origin-admin">Cianjur Regency, West Java, Indonesia</p>
             <span class="tier-tag">Classic &amp; Balanced</span>
@@ -1175,11 +1179,11 @@
       </article>
 
       <!-- 9 -->
-      <article class="product-card sold-out" data-sheet="PKNI Natural" data-producer="pkni" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="fruit-forward" data-origin="java west-java">
+      <article class="product-card sold-out" data-sheet="PKNI Natural" data-lot="pkni-natural" data-producer="pkni" data-process="natural" data-warehouse="vancouver" data-position="spot" data-tier="fruit-forward" data-origin="java west-java">
         <div class="card-head">
           <div>
             <p class="card-producer">Pusat Kopi Nusantara</p>
-            <h3 class="card-title">PKNI<br />Natural</h3>
+            <h3 class="card-title"><a href="/lot.html?lot=pkni-natural">PKNI<br />Natural</a></h3>
             <p class="card-origin">Cianjur, Java Preanger</p>
             <p class="card-origin-admin">Cianjur Regency, West Java, Indonesia</p>
             <span class="tier-tag tier-fruit-forward">Fruit-Forward</span>
@@ -1427,6 +1431,14 @@
   });
 
   applyFilters();
+
+  // Whole card links to the lot detail page — except links, buttons, and form fields
+  document.querySelectorAll('.product-card[data-lot]').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button, input, select, textarea, label')) return;
+      window.location.href = '/lot.html?lot=' + card.dataset.lot;
+    });
+  });
 
   // ── INQUIRY MODAL ──
   (function() {
