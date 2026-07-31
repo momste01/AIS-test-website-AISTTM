@@ -920,6 +920,8 @@
       .lot-wrap { padding: 28px 20px 0; }
       .lot-section { padding: 0 20px; }
       .lot-title { font-size: 30px; }
+      .section-head { flex-wrap: wrap; row-gap: 6px; }
+      .section-head h2 { white-space: normal; font-size: 21px; }
       .spec-row { grid-template-columns: 104px 1fr; gap: 14px; }
       .avail-strip { grid-template-columns: 1fr; }
       .avail-cell { border-right: none; border-bottom: 1px solid var(--line); }
@@ -930,6 +932,9 @@
       .about-block, .producer-block { margin-top: 48px; }
       .related-block { margin-top: 56px; margin-bottom: 60px; }
       .lot-missing { padding: 70px 20px 90px; }
+    }
+    @media (max-width: 640px) {
+      .footer-top { grid-template-columns: 1fr; }
     }
   </style>
 </head>
