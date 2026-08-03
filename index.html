@@ -88,6 +88,53 @@
     .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+    /* ── NAV DROPDOWNS ── */
+    .nav-item { position: relative; }
+    .nav-item-row { display: flex; align-items: center; }
+    .nav-item-row a { flex: 1; min-width: 0; }
+    .nav-caret {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; padding: 0; margin-left: 3px;
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s, transform 0.2s ease;
+    }
+    nav.scrolled .nav-caret { color: var(--text-mid); }
+    .nav-item.open .nav-caret { color: #fff; transform: rotate(180deg); }
+    nav.scrolled .nav-item.open .nav-caret { color: var(--red); }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-item:hover .nav-caret { color: #fff; transform: rotate(180deg); }
+      nav.scrolled .nav-item:hover .nav-caret { color: var(--red); }
+    }
+    .nav-caret svg { display: block; pointer-events: none; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0;
+      padding-top: 12px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1), visibility 0.18s;
+      z-index: 120;
+    }
+    .nav-dropdown-inner {
+      min-width: 220px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 20px 48px -16px rgba(31,29,27,0.35), 0 4px 14px -6px rgba(31,29,27,0.18);
+      padding: 8px;
+    }
+    .nav-dropdown a {
+      display: block; padding: 9px 12px; border-radius: 3px;
+      font-size: 12.5px !important; font-weight: 500 !important;
+      letter-spacing: 0.02em !important; text-transform: none !important;
+      color: var(--text-dark) !important; white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown a:hover { background: var(--grey-light); color: var(--red) !important; }
+    .nav-item.open .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+    }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -662,6 +709,23 @@
         transition: background 0.15s, color 0.15s;
       }
       .nav-links a:hover { color: var(--red) !important; background: var(--grey-light); }
+      .nav-item-row a { flex: 1; }
+      .nav-caret { width: 44px; height: 44px; margin-left: 0; color: var(--text-mid); }
+      .nav-item.open .nav-caret { color: var(--red); }
+      .nav-dropdown {
+        position: static; padding-top: 0;
+        max-height: 0; overflow: hidden;
+        opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+        transition: max-height 0.25s ease;
+      }
+      .nav-item.open .nav-dropdown { max-height: 480px; }
+      .nav-dropdown-inner { min-width: 0; background: var(--grey-light); border-radius: 0; box-shadow: none; padding: 4px 0; }
+      .nav-dropdown a {
+        padding: 12px 24px 12px 40px !important;
+        font-size: 13px !important; color: var(--text-mid) !important;
+        border-bottom: 1px solid #e8e6e2 !important;
+      }
+      .nav-dropdown a:last-child { border-bottom: none !important; }
       .nav-cta {
         margin: 12px 20px 0 !important;
         display: block !important;
@@ -688,13 +752,74 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="/" class="active">Home</a></li>
-    <li><a href="/coffee.html">Coffee</a></li>
-    <li><a href="/cocopeat.html">Cocopeat</a></li>
-    <li><a href="/europe.html">Fashion & Furniture</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#articles">Articles</a></li>
+    <li class="nav-item">
+      <div class="nav-item-row">
+        <a href="/" class="active">Home</a>
+        <button class="nav-caret" type="button" aria-label="Show Home sections" aria-expanded="false">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/">Overview</a>
+          <a href="/#products">What We Ship</a>
+          <a href="/#about">Why AIS</a>
+          <a href="/#team">Meet the Team</a>
+          <a href="/#articles">Field Notes</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="nav-item-row">
+        <a href="/coffee.html">Coffee</a>
+        <button class="nav-caret" type="button" aria-label="Show Coffee sections" aria-expanded="false">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/coffee.html">Overview</a>
+          <a href="/catalog.html">Available Lots</a>
+          <a href="/coffee.html#producers">Our Farmer Network</a>
+          <a href="/coffee.html#indonesia">Why Indonesia</a>
+          <a href="/coffee.html#contact">Get in Touch</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="nav-item-row">
+        <a href="/cocopeat.html">Cocopeat</a>
+        <button class="nav-caret" type="button" aria-label="Show Cocopeat sections" aria-expanded="false">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/cocopeat.html">Overview</a>
+          <a href="/cocopeat.html#specs">Specifications</a>
+          <a href="/cocopeat.html#beyond-cocopeat">More from Indonesia</a>
+          <a href="/cocopeat.html#contact">Request a Sample</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="nav-item-row">
+        <a href="/europe.html">Fashion & Furniture</a>
+        <button class="nav-caret" type="button" aria-label="Show Fashion & Furniture sections" aria-expanded="false">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/europe.html">Overview</a>
+          <a href="/europe.html#about">Who We Are</a>
+          <a href="/europe.html#goods">What We Ship</a>
+          <a href="/europe.html#chain">Our Producers' Materials</a>
+          <a href="/europe.html#terms">Trade Terms</a>
+          <a href="/europe.html#contact">Get in Touch</a>
+        </div>
+      </div>
+    </li>
     <li><a href="/coffee.html#contact" class="nav-cta">Request Samples</a></li>
   </ul>
 </nav>
@@ -1110,6 +1235,7 @@
       navLinks.classList.remove('mobile-open');
       hamburger.setAttribute('aria-expanded','false');
       document.body.style.overflow = '';
+      closeDropdowns();
     }
     hamburger.addEventListener('click', function() {
       var open = navLinks.classList.toggle('mobile-open');
@@ -1121,6 +1247,29 @@
     document.addEventListener('click', function(e) { if (!e.target.closest('nav')) closeMenu(); });
     window.addEventListener('resize', function() { if (window.innerWidth > 768) closeMenu(); });
   })();
+
+  // Nav dropdowns (hover on desktop via CSS; click/tap toggle here for touch + keyboard)
+  function closeDropdowns(except) {
+    document.querySelectorAll('.nav-item.open').forEach(function(li) {
+      if (li === except) return;
+      li.classList.remove('open');
+      var caret = li.querySelector('.nav-caret');
+      if (caret) caret.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.querySelectorAll('.nav-caret').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var item = btn.closest('.nav-item');
+      var willOpen = !item.classList.contains('open');
+      closeDropdowns(willOpen ? item : null);
+      item.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e) { if (!e.target.closest('.nav-item')) closeDropdowns(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDropdowns(); });
 
   // Nav scroll
   var nav = document.getElementById('main-nav');
