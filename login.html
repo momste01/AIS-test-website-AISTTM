@@ -151,6 +151,14 @@
     }
     .btn-ghost:hover { background: var(--sidebar-bg); color: var(--text-dark); }
 
+    /* Smooth tab switch: card height eases while the incoming form fades in */
+    #view-auth.animating { transition: height 0.32s cubic-bezier(0.3, 0.9, 0.3, 1); overflow: hidden; }
+    @keyframes formIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .form-enter { animation: formIn 0.32s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
     .spinner {
       display: inline-block; width: 15px; height: 15px; vertical-align: -2px;
       border: 2px solid rgba(255,255,255,0.5); border-top-color: #fff; border-radius: 50%;
@@ -217,7 +225,7 @@
         <input id="su-password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters" />
       </div>
       <button class="btn" type="submit" id="su-btn">Request access</button>
-      <p class="alt muted">New accounts are reviewed by our team before pricing is unlocked — usually within one business day.</p>
+      <p class="alt muted">New accounts are reviewed by our team before pricing is unlocked, usually within one business day.</p>
     </form>
 
     <div class="foot-link"><a href="/catalog.html">&larr; Back to available lots</a></div>
@@ -249,8 +257,8 @@
     </div>
     <h1 class="center">You're all set</h1>
     <p class="sub center" style="margin-top:10px">
-      Welcome, <strong id="ok-name">roaster</strong>. Your account is approved — wholesale pricing is
-      now visible on our lots.
+      Welcome, <strong id="ok-name">roaster</strong>. Your account is approved, and wholesale pricing
+      is now visible on our lots.
     </p>
     <a class="btn" href="/catalog.html" style="margin-top:22px; display:block; text-align:center;">Browse available lots</a>
     <div class="row-actions">
@@ -272,8 +280,11 @@
     // ── Tabs ──
     const tabSignin = $('tab-signin'), tabSignup = $('tab-signup');
     const formSignin = $('form-signin'), formSignup = $('form-signup');
-    function selectTab(which) {
+    function selectTab(which, animate = false) {
       const signin = which === 'signin';
+      const card = $('view-auth');
+      const prevHeight = animate ? card.offsetHeight : 0;
+
       tabSignin.setAttribute('aria-selected', String(signin));
       tabSignup.setAttribute('aria-selected', String(!signin));
       formSignin.classList.toggle('hide', !signin);
@@ -283,9 +294,32 @@
         ? 'Log in to see live wholesale pricing on our available lots.'
         : 'Tell us about your roastery and we\'ll unlock pricing after a quick review.';
       alertHTML('', '');
+
+      if (!animate) return;
+
+      // Ease the card between its old and new height, then release to auto.
+      const nextHeight = card.offsetHeight;
+      if (prevHeight !== nextHeight) {
+        card.style.height = prevHeight + 'px';
+        card.classList.add('animating');
+        void card.offsetHeight; // flush so the transition has a starting point
+        card.style.height = nextHeight + 'px';
+        card.addEventListener('transitionend', function done(e) {
+          if (e.propertyName !== 'height') return;
+          card.style.height = '';
+          card.classList.remove('animating');
+          card.removeEventListener('transitionend', done);
+        });
+      }
+
+      // Fade the incoming form in.
+      const incoming = signin ? formSignin : formSignup;
+      incoming.classList.remove('form-enter');
+      void incoming.offsetWidth;
+      incoming.classList.add('form-enter');
     }
-    tabSignin.addEventListener('click', () => selectTab('signin'));
-    tabSignup.addEventListener('click', () => selectTab('signup'));
+    tabSignin.addEventListener('click', () => selectTab('signin', true));
+    tabSignup.addEventListener('click', () => selectTab('signup', true));
 
     // ── Sign in ──
     formSignin.addEventListener('submit', async (e) => {
