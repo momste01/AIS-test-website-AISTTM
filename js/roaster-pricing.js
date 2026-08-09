@@ -44,8 +44,7 @@ function priceEl(text, { locked }) {
   const el = document.createElement('div');
   el.className = 'roaster-price' + (locked ? ' roaster-price-locked' : '');
   if (locked) {
-    el.innerHTML =
-      '<a href="/login.html"><span class="roaster-price-lock" aria-hidden="true">&#128274;</span> Log in to see roaster pricing</a>';
+    el.innerHTML = '<a href="/login.html">Log in to see roaster pricing</a>';
   } else {
     el.innerHTML =
       '<span class="roaster-price-label">Roaster price</span><span class="roaster-price-value">' +

@@ -49,10 +49,11 @@
     a:hover { color: var(--red-dark); }
 
     .brand {
-      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
       margin-bottom: 26px;
     }
-    .brand img { height: 46px; width: auto; }
+    /* AIS_logo_lockup.png is pre-cropped to the artwork — no clipping needed. */
+    .brand img { height: 72px; width: auto; max-width: 90vw; display: block; }
     .brand .tag {
       font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
       color: var(--text-light); font-weight: 600;
@@ -161,7 +162,7 @@
 <body>
   <div class="brand">
     <a href="/" aria-label="Across Indonesian Seas home">
-      <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+      <img src="/brand_assets/AIS_logo_lockup.png" alt="Across Indonesian Seas" />
     </a>
     <span class="tag">Roaster Portal</span>
   </div>
@@ -224,7 +225,9 @@
 
   <!-- Pending approval -->
   <div class="card hide" id="view-pending">
-    <div class="state-icon pending" aria-hidden="true">&#9203;</div>
+    <div class="state-icon pending" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
     <h1 class="center">Account under review</h1>
     <p class="sub center" style="margin-top:10px">
       Thanks for signing up, <strong id="pending-name">there</strong>. Our team is reviewing your
@@ -241,7 +244,9 @@
 
   <!-- Approved -->
   <div class="card hide" id="view-approved">
-    <div class="state-icon ok" aria-hidden="true">&#9989;</div>
+    <div class="state-icon ok" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f6b32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>
+    </div>
     <h1 class="center">You're all set</h1>
     <p class="sub center" style="margin-top:10px">
       Welcome, <strong id="ok-name">roaster</strong>. Your account is approved — wholesale pricing is
