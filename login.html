@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roaster Login · Across Indonesian Seas</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #C21C04;
+      --red-dark: #a01803;
+      --charcoal: #2E2B29;
+      --charcoal-deep: #232120;
+      --text-dark: #1f1d1b;
+      --text-mid: #555555;
+      --text-light: #8a8a8a;
+      --line: #e6e3de;
+      --line-strong: #d8d4cd;
+      --sidebar-bg: #f5f4f2;
+      --page-bg: #f0eee9;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(194, 28, 4, 0.10), transparent 60%),
+        radial-gradient(900px 500px at 100% 110%, rgba(46, 43, 41, 0.10), transparent 55%),
+        var(--page-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Archivo', 'Inter', sans-serif; letter-spacing: -0.02em; }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { color: var(--red-dark); }
+
+    .brand {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      margin-bottom: 26px;
+    }
+    .brand img { height: 46px; width: auto; }
+    .brand .tag {
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--text-light); font-weight: 600;
+    }
+
+    .card {
+      width: 100%; max-width: 430px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 34px 30px;
+      box-shadow:
+        0 1px 2px rgba(35, 33, 32, 0.04),
+        0 10px 24px -12px rgba(35, 33, 32, 0.18),
+        0 30px 60px -30px rgba(194, 28, 4, 0.10);
+    }
+    .card h1 { font-size: 1.5rem; font-weight: 800; }
+    .card .sub { color: var(--text-mid); font-size: 0.93rem; margin-top: 6px; }
+
+    /* Tabs */
+    .tabs {
+      display: flex; gap: 4px; margin: 22px 0 24px;
+      background: var(--sidebar-bg); padding: 4px; border-radius: 10px;
+    }
+    .tab {
+      flex: 1; border: none; background: transparent; padding: 9px 12px;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-mid);
+      border-radius: 7px; transition: color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+    .tab[aria-selected="true"] {
+      background: #fff; color: var(--text-dark);
+      box-shadow: 0 1px 2px rgba(35,33,32,0.06), 0 2px 8px -4px rgba(35,33,32,0.18);
+    }
+    .tab:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    .field { margin-bottom: 15px; }
+    .field label {
+      display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2px;
+      text-transform: uppercase; color: var(--text-mid); margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%; padding: 11px 13px; font-size: 0.95rem; font-family: inherit;
+      color: var(--text-dark); background: #fff;
+      border: 1px solid var(--line-strong); border-radius: 9px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .field input::placeholder { color: #b7b2aa; }
+    .field input:focus {
+      outline: none; border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(194, 28, 4, 0.12);
+    }
+
+    .btn {
+      width: 100%; padding: 12px 16px; font-size: 0.96rem; font-weight: 700;
+      font-family: inherit; color: #fff; background: var(--red);
+      border: none; border-radius: 10px; margin-top: 6px;
+      transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 6px 16px -8px rgba(194, 28, 4, 0.6);
+    }
+    .btn:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .btn:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+
+    .alt {
+      margin-top: 18px; font-size: 0.88rem; color: var(--text-mid); text-align: center;
+    }
+    .foot-link {
+      margin-top: 22px; text-align: center; font-size: 0.85rem;
+    }
+    .foot-link a { color: var(--text-mid); }
+    .foot-link a:hover { color: var(--red); }
+
+    .alert {
+      font-size: 0.87rem; padding: 11px 13px; border-radius: 9px; margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .alert-error { background: #fdecea; color: #8f1403; border: 1px solid #f5c9c2; }
+    .alert-info  { background: #eef4fb; color: #24506f; border: 1px solid #cfe0f0; }
+    .alert-ok    { background: #edf6ee; color: #1f6b32; border: 1px solid #cfe6d3; }
+
+    .state-icon {
+      width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+      margin: 0 auto 16px; font-size: 24px;
+    }
+    .state-icon.pending { background: #fff4e6; }
+    .state-icon.ok { background: #edf6ee; }
+    .center { text-align: center; }
+    .muted { color: var(--text-mid); font-size: 0.92rem; }
+    .hide { display: none !important; }
+    .row-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .btn-ghost {
+      background: transparent; color: var(--text-mid); border: 1px solid var(--line-strong);
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: var(--sidebar-bg); color: var(--text-dark); }
+
+    .spinner {
+      display: inline-block; width: 15px; height: 15px; vertical-align: -2px;
+      border: 2px solid rgba(255,255,255,0.5); border-top-color: #fff; border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="brand">
+    <a href="/" aria-label="Across Indonesian Seas home">
+      <img src="/brand_assets/AIS_logo.png" alt="Across Indonesian Seas" />
+    </a>
+    <span class="tag">Roaster Portal</span>
+  </div>
+
+  <!-- Loading -->
+  <div class="card" id="view-loading">
+    <p class="center muted">Loading…</p>
+  </div>
+
+  <!-- Auth (sign in / create account) -->
+  <div class="card hide" id="view-auth">
+    <h1 id="auth-title">Roaster sign in</h1>
+    <p class="sub" id="auth-sub">Log in to see live wholesale pricing on our available lots.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tab-signin" role="tab" aria-selected="true">Sign in</button>
+      <button class="tab" id="tab-signup" role="tab" aria-selected="false">Create account</button>
+    </div>
+
+    <div id="auth-alert"></div>
+
+    <!-- Sign in -->
+    <form id="form-signin">
+      <div class="field">
+        <label for="si-email">Email</label>
+        <input id="si-email" type="email" autocomplete="email" required placeholder="you@roastery.com" />
+      </div>
+      <div class="field">
+        <label for="si-password">Password</label>
+        <input id="si-password" type="password" autocomplete="current-password" required />
+      </div>
+      <button class="btn" type="submit" id="si-btn">Sign in</button>
+      <div class="alt"><a href="#" id="forgot-link">Forgot password?</a></div>
+    </form>
+
+    <!-- Sign up -->
+    <form id="form-signup" class="hide">
+      <div class="field">
+        <label for="su-company">Roastery / company</label>
+        <input id="su-company" type="text" autocomplete="organization" required placeholder="Blue Barn Coffee Roasters" />
+      </div>
+      <div class="field">
+        <label for="su-name">Your name</label>
+        <input id="su-name" type="text" autocomplete="name" required placeholder="Jamie Rivera" />
+      </div>
+      <div class="field">
+        <label for="su-email">Work email</label>
+        <input id="su-email" type="email" autocomplete="email" required placeholder="you@roastery.com" />
+      </div>
+      <div class="field">
+        <label for="su-password">Password</label>
+        <input id="su-password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters" />
+      </div>
+      <button class="btn" type="submit" id="su-btn">Request access</button>
+      <p class="alt muted">New accounts are reviewed by our team before pricing is unlocked — usually within one business day.</p>
+    </form>
+
+    <div class="foot-link"><a href="/">&larr; Back to acrossindonesianseas.com</a></div>
+  </div>
+
+  <!-- Pending approval -->
+  <div class="card hide" id="view-pending">
+    <div class="state-icon pending" aria-hidden="true">&#9203;</div>
+    <h1 class="center">Account under review</h1>
+    <p class="sub center" style="margin-top:10px">
+      Thanks for signing up, <strong id="pending-name">there</strong>. Our team is reviewing your
+      roastery so we can unlock wholesale pricing. You'll get an email once you're approved.
+    </p>
+    <div class="alert alert-info" style="margin-top:20px" id="pending-note">
+      If you just created your account, please also confirm your email address using the link we sent.
+    </div>
+    <div class="row-actions">
+      <button class="btn btn-ghost" id="pending-refresh" type="button">Check status</button>
+      <button class="btn btn-ghost" id="pending-signout" type="button">Sign out</button>
+    </div>
+  </div>
+
+  <!-- Approved -->
+  <div class="card hide" id="view-approved">
+    <div class="state-icon ok" aria-hidden="true">&#9989;</div>
+    <h1 class="center">You're all set</h1>
+    <p class="sub center" style="margin-top:10px">
+      Welcome, <strong id="ok-name">roaster</strong>. Your account is approved — wholesale pricing is
+      now visible on our lots.
+    </p>
+    <a class="btn" href="/catalog.html" style="margin-top:22px; display:block; text-align:center;">Browse available lots</a>
+    <div class="row-actions">
+      <button class="btn btn-ghost" id="ok-signout" type="button">Sign out</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { signIn, signUp, signOut, getAccessState, supabase } from '/js/ais-supabase.js';
+
+    const $ = (id) => document.getElementById(id);
+    const views = ['view-loading', 'view-auth', 'view-pending', 'view-approved'];
+    function show(view) { views.forEach((v) => $(v).classList.toggle('hide', v !== view)); }
+
+    function alertHTML(kind, msg) {
+      $('auth-alert').innerHTML = msg ? `<div class="alert alert-${kind}">${msg}</div>` : '';
+    }
+
+    // ── Tabs ──
+    const tabSignin = $('tab-signin'), tabSignup = $('tab-signup');
+    const formSignin = $('form-signin'), formSignup = $('form-signup');
+    function selectTab(which) {
+      const signin = which === 'signin';
+      tabSignin.setAttribute('aria-selected', String(signin));
+      tabSignup.setAttribute('aria-selected', String(!signin));
+      formSignin.classList.toggle('hide', !signin);
+      formSignup.classList.toggle('hide', signin);
+      $('auth-title').textContent = signin ? 'Roaster sign in' : 'Request roaster access';
+      $('auth-sub').textContent = signin
+        ? 'Log in to see live wholesale pricing on our available lots.'
+        : 'Tell us about your roastery and we\'ll unlock pricing after a quick review.';
+      alertHTML('', '');
+    }
+    tabSignin.addEventListener('click', () => selectTab('signin'));
+    tabSignup.addEventListener('click', () => selectTab('signup'));
+
+    // ── Sign in ──
+    formSignin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = $('si-btn');
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Signing in…';
+      alertHTML('', '');
+      const { error } = await signIn({ email: $('si-email').value.trim(), password: $('si-password').value });
+      btn.disabled = false; btn.textContent = 'Sign in';
+      if (error) { alertHTML('error', error.message); return; }
+      route();
+    });
+
+    // ── Sign up ──
+    formSignup.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = $('su-btn');
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Creating account…';
+      alertHTML('', '');
+      const { data, error } = await signUp({
+        email: $('su-email').value.trim(),
+        password: $('su-password').value,
+        company: $('su-company').value.trim(),
+        contactName: $('su-name').value.trim(),
+      });
+      btn.disabled = false; btn.textContent = 'Request access';
+      if (error) { alertHTML('error', error.message); return; }
+      // If email confirmation is required, there is no session yet.
+      if (!data.session) {
+        selectTab('signin');
+        alertHTML('ok', 'Account created. Check your inbox to confirm your email, then sign in. Pricing unlocks after our team approves your roastery.');
+        return;
+      }
+      route();
+    });
+
+    // ── Forgot password ──
+    $('forgot-link').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = $('si-email').value.trim();
+      if (!email) { alertHTML('info', 'Enter your email above first, then click “Forgot password?”.'); return; }
+      const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/login.html` });
+      alertHTML(error ? 'error' : 'ok', error ? error.message : 'Password reset link sent — check your email.');
+    });
+
+    // ── Sign out buttons ──
+    async function doSignOut() { await signOut(); route(); }
+    $('pending-signout').addEventListener('click', doSignOut);
+    $('ok-signout').addEventListener('click', doSignOut);
+    $('pending-refresh').addEventListener('click', route);
+
+    // ── Router ──
+    async function route() {
+      show('view-loading');
+      const { state, profile } = await getAccessState();
+      if (state === 'anonymous') { selectTab('signin'); show('view-auth'); return; }
+      const name = profile?.contact_name || profile?.company || 'roaster';
+      if (state === 'approved') { $('ok-name').textContent = name; show('view-approved'); return; }
+      $('pending-name').textContent = profile?.contact_name || 'there'; show('view-pending');
+    }
+
+    route();
+  </script>
+</body>
+</html>

@@ -998,6 +998,31 @@
     @media (max-width: 640px) {
       .footer-top { grid-template-columns: 1fr; }
     }
+    /* ── Roaster pricing (revealed to approved, signed-in roasters) ── */
+    .roaster-price {
+      margin: 6px 0 2px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--sidebar-bg, #f5f4f2);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .roaster-price-label {
+      color: var(--text-mid); font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; font-size: 0.7rem;
+    }
+    .roaster-price-value {
+      font-family: 'Archivo', sans-serif; font-weight: 700; color: var(--red); font-size: 1.15rem;
+    }
+    .roaster-price-locked { background: transparent; border-style: dashed; border-color: var(--line-strong); }
+    .roaster-price-locked a {
+      display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+      color: var(--text-mid); font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .roaster-price-locked a:hover { color: var(--red); }
+    .roaster-price-lock { font-size: 0.95em; }
+    .roaster-price-lot { max-width: 420px; margin: 4px 0 18px; }
   </style>
 </head>
 <body>
@@ -1079,6 +1104,7 @@
         </div>
       </div>
     </li>
+    <li><a href="/login.html">Roaster Login</a></li>
     <li><a href="mailto:info@acrossindonesianseas.com" class="nav-cta">Get in Contact</a></li>
   </ul>
 </nav>
@@ -2031,6 +2057,9 @@
 
   syncInventory();
 </script>
+
+  <!-- Roaster pricing: reveals wholesale prices to approved, signed-in roasters -->
+  <script type="module" src="/js/roaster-pricing.js"></script>
 
 </body>
 </html>
