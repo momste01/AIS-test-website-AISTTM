@@ -121,6 +121,16 @@
     }
     @media(max-width:560px){.footer-top{grid-template-columns:1fr}}
 
+    /* Mobile: spec tables scroll horizontally instead of crushing columns */
+    .spec-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+    .spec-scroll table{min-width:540px}
+    /* grid items default to min-width:auto and refuse to shrink — allow the
+       material-card columns to contract so .spec-scroll can do its job */
+    .europe-root article > div{min-width:0}
+    @media(max-width:640px){
+      .mono-caption{text-align:left !important}
+    }
+
     .europe-root{position:relative;background:#FFFFFF;color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16.5px;line-height:1.6}
     /* Hero pop-in on load/reload (re-triggerable on scroll-back via .hero-play) */
     @keyframes heroRise { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
@@ -284,7 +294,7 @@
   </section>
 
   <section aria-label="Brand statement" style="position:relative;z-index:1;padding:clamp(88px,13vw,150px) clamp(20px,5vw,64px);text-align:center;background:linear-gradient(rgba(15,12,10,0.6),rgba(15,12,10,0.6)),url('/europe-assets/pexels-jauhar-musthofal-qulub-2159484322-mrnpxmda-rxd6.webp') center/cover no-repeat">
-    <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.18em; color: var(--red);">Our Focus</span><div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(32px,4vw,48px);flex-wrap:wrap"></div><blockquote style="margin: 0 auto; max-width: 16ch; font-family: 'EB Garamond',Georgia,serif; font-style: italic; font-weight: 400; font-size: clamp(34px,5.5vw,60px); line-height: 1.12; letter-spacing: -.01em; color: #fff; text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,0.45); width: 473px; height: 214px">Expanding the Horizon of <span style="color:#C21C04">Ethical Luxury</span></blockquote>
+    <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.18em; color: var(--red);">Our Focus</span><div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(32px,4vw,48px);flex-wrap:wrap"></div><blockquote style="margin: 0 auto; max-width: 16ch; font-family: 'EB Garamond',Georgia,serif; font-style: italic; font-weight: 400; font-size: clamp(34px,5.5vw,60px); line-height: 1.12; letter-spacing: -.01em; color: #fff; text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,0.45); max-width: 473px">Expanding the Horizon of <span style="color:#C21C04">Ethical Luxury</span></blockquote>
   </section>
 
   <section id="goods" style="position:relative;z-index:1;padding:clamp(52px,7vw,88px) 0;border-top:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent)">
@@ -360,7 +370,7 @@
             <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
               
               <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-06-45-mrvojlet-cof6.webp" alt="screenshot-2026-07-22-at-13-06-45" width="1436" height="1292" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kove 3.0</figcaption>
-            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><br></div><div>Made from: Coffee skin waste through bacterial fermentation<br><div>Applications: Furniture surfaces, interior panels, fashion accessories, and customisable product design<br>Key features: Plant-based, biodegradable, and a unique alternative to leather with a modern, sustainable touch<br><div>Strength: 13,25 MPa</div><div>Color available: Black, Brown, Red</div></div><div>Certification: PETA Vegan Approved, USDA Biobased Product<br><br><br></div></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">Standard sheets: 90 × 90 cm<br>Maximum: up to 6 meters long<br></p>
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><br></div><div>Made from: Coffee skin waste through bacterial fermentation<br><div>Applications: Furniture surfaces, interior panels, fashion accessories, and customisable product design<br>Key features: Plant-based, biodegradable, and a unique alternative to leather with a modern, sustainable touch<br><div>Strength: 13,25 MPa</div><div>Color available: Black, Brown, Red</div></div><div>Certification: PETA Vegan Approved, USDA Biobased Product<br><br><br></div></div></div><p class="mono-caption" style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">Standard sheets: 90 × 90 cm<br>Maximum: up to 6 meters long<br></p>
           </div>
           
         </article>
@@ -393,7 +403,7 @@
             <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
               
               <img loading="lazy" decoding="async" src="/europe-assets/screenshot-2026-07-22-at-13-03-04-mrvoeu87-m12p.webp" alt="screenshot-2026-07-22-at-13-03-04" width="1408" height="1306" style="width:100%;height:200px;display:block;object-fit:cover"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Mudra Side Table</figcaption>
-            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66);"><br>Made from: Coffee husk and spent coffee grounds<br></span>Sound absorption: Coefficient 0.4 – 0.7 (similar to acoustic foam panels)</div><div>Applications: Acoustic wall panels, interior elements, design accents, and furniture inserts</div><div>Key features: Customizable shapes, organic texture, eco-friendly, combines beauty with function</div><div><br>The forming process enables precise edge definition, clean molds, and unique profiles that meet your design or functional requirements. This opens new possibilities for designers, brands, and architects to craft their own material stories.<br></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">fully customizable shapes<br><br></p>
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div><span style="color: color(srgb 0.145098 0.145098 0.145098 / 0.66);"><br>Made from: Coffee husk and spent coffee grounds<br></span>Sound absorption: Coefficient 0.4 – 0.7 (similar to acoustic foam panels)</div><div>Applications: Acoustic wall panels, interior elements, design accents, and furniture inserts</div><div>Key features: Customizable shapes, organic texture, eco-friendly, combines beauty with function</div><div><br>The forming process enables precise edge definition, clean molds, and unique profiles that meet your design or functional requirements. This opens new possibilities for designers, brands, and architects to craft their own material stories.<br></div></div><p class="mono-caption" style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">fully customizable shapes<br><br></p>
           </div>
           
         </article>
@@ -427,7 +437,7 @@
             <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
               
               <img loading="lazy" decoding="async" src="/europe-assets/kalpa-tiles-gray.webp" alt="Kalpa wall panels" width="1244" height="1066" style="max-width: 100%; height: 202px; display: block; object-fit: cover; width: 207px; aspect-ratio: 1244 / 1066"><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent)">Kalpa Wall Panels</figcaption>
-            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div>Made from: Coffee husk, coffee grounds, and other upcycled plant-based fibers</div><div>Applications: Wall panels, tiles, decorative surfaces, furniture components, and creative packaging</div><div>Key features: Natural earthy aesthetics, modular and pattern-combinable, adaptable shapes<br><br><br></div></div><p style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">STANDARD SHEETS: 20 × 20 CM SHEETS</p><table style="width:100%;border-collapse:collapse;border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);table-layout:fixed">
+            </figure></div><div style="font-size:14.5px;color:color-mix(in srgb,var(--ink,#252525) 66%,transparent);line-height:1.6"><div>Made from: Coffee husk, coffee grounds, and other upcycled plant-based fibers</div><div>Applications: Wall panels, tiles, decorative surfaces, furniture components, and creative packaging</div><div>Key features: Natural earthy aesthetics, modular and pattern-combinable, adaptable shapes<br><br><br></div></div><p class="mono-caption" style="font-family: 'IBM Plex Mono',monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; text-align: right">STANDARD SHEETS: 20 × 20 CM SHEETS</p><div class="spec-scroll"><table style="width:100%;border-collapse:collapse;border:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);table-layout:fixed">
               <thead>
                 <tr>
                   <th style="width:18%;text-align:left;vertical-align:middle;padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);border-right:1px solid color-mix(in srgb,var(--ink,#252525) 16%,transparent);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Size</th>
@@ -456,7 +466,7 @@
                   <td style="vertical-align:top;padding:16px;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--ink,#252525) 78%,transparent)">Sturdy tiles available in a flat surface finish and surface pattern customization. This variant offers limited flexibility.</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
           </div>
         </article></div>
 
