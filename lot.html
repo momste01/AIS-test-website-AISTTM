@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
       --red: #C21C04;
@@ -46,7 +46,8 @@
       line-height: 1.7;
     }
 
-    h1, h2, h3, h4, h5 { font-family: 'Archivo', 'Inter', sans-serif; }
+    /* Headings use the same serif as the coffee page */
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', Georgia, serif; }
 
     a { color: inherit; }
 
@@ -276,10 +277,10 @@
       margin-bottom: 8px;
     }
     .lot-title {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: -0.03em;
+      font-size: 46px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
     .lot-origin { font-size: 15px; color: var(--text-mid); }
@@ -417,10 +418,11 @@
       margin-bottom: 26px;
     }
     .section-head h2 {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
       white-space: nowrap;
+      color: var(--charcoal, #2E2B29);
     }
     .section-head::after {
       content: '';
@@ -630,10 +632,10 @@
       color: var(--red);
     }
     .related-card .rel-name {
-      font-family: 'Archivo', sans-serif;
-      font-size: 14.5px;
-      font-weight: 700;
-      line-height: 1.3;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.25;
       color: var(--text-dark);
     }
     .related-card .rel-notes {
@@ -981,9 +983,9 @@
       .crumb-bar-inner { padding: 11px 20px; }
       .lot-wrap { padding: 28px 20px 0; }
       .lot-section { padding: 0 20px; }
-      .lot-title { font-size: 30px; }
+      .lot-title { font-size: 34px; }
       .section-head { flex-wrap: wrap; row-gap: 6px; }
-      .section-head h2 { white-space: normal; font-size: 21px; }
+      .section-head h2 { white-space: normal; font-size: 25px; }
       .spec-row { grid-template-columns: 104px 1fr; gap: 14px; }
       .avail-strip { grid-template-columns: 1fr; }
       .avail-cell { border-right: none; border-bottom: 1px solid var(--line); }
