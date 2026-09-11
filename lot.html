@@ -1530,7 +1530,7 @@
       name: 'Frinsa Collective Fully Washed',
       producerLabel: 'Java Frinsa Collective',
       producer: 'frinsa-collective',
-      sheet: 'Frinsa Collective Fully Washed',
+      sheet: 'Frinsa Collective Fully Washed (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'classic', tierLabel: 'Classic & Balanced',
@@ -1560,7 +1560,7 @@
       name: 'Frinsa Collective Natural',
       producerLabel: 'Java Frinsa Collective',
       producer: 'frinsa-collective',
-      sheet: 'Frinsa Collective Natural',
+      sheet: 'Frinsa Collective Natural (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
@@ -1590,7 +1590,7 @@
       name: 'Frinsa Collective Wet Hulled',
       producerLabel: 'Java Frinsa Collective',
       producer: 'frinsa-collective',
-      sheet: 'Frinsa Collective Wet Hulled',
+      sheet: 'Frinsa Collective Wet Hulled (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'classic', tierLabel: 'Classic & Balanced',
@@ -1620,7 +1620,7 @@
       name: 'Frinsa Honey Lactic',
       producerLabel: 'Java Frinsa Estate',
       producer: 'frinsa-estate',
-      sheet: 'Honey Lactic',
+      sheet: 'Honey Lactic (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'experimental', tierLabel: 'Experimental',
@@ -1650,7 +1650,7 @@
       name: 'Frinsa Honey Tempe',
       producerLabel: 'Java Frinsa Estate',
       producer: 'frinsa-estate',
-      sheet: 'Honey Rhizopus',
+      sheet: 'Honey Rhizopus (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'experimental', tierLabel: 'Experimental',
@@ -1680,7 +1680,7 @@
       name: 'Frinsa Estate Natural Lactic',
       producerLabel: 'Java Frinsa Estate',
       producer: 'frinsa-estate',
-      sheet: 'Frinsa Lactic Natural',
+      sheet: 'Frinsa Lactic Natural (2025 crop)',
       origin: 'Bandung, Java Preanger',
       originAdmin: 'Bandung Regency, West Java, Indonesia',
       tier: 'experimental', tierLabel: 'Experimental',
@@ -1710,7 +1710,7 @@
       name: 'PKNI Washed',
       producerLabel: 'Pusat Kopi Nusantara',
       producer: 'pkni',
-      sheet: 'PKNI Full Wash',
+      sheet: 'PKNI Full Wash (2025 crop)',
       origin: 'Cianjur, Java Preanger',
       originAdmin: 'Cianjur Regency, West Java, Indonesia',
       tier: 'classic', tierLabel: 'Classic & Balanced',
@@ -1739,7 +1739,7 @@
       name: 'PKNI Honey',
       producerLabel: 'Pusat Kopi Nusantara',
       producer: 'pkni',
-      sheet: 'PKNI Honey',
+      sheet: 'PKNI Honey (2025 crop)',
       origin: 'Cianjur, Java Preanger',
       originAdmin: 'Cianjur Regency, West Java, Indonesia',
       tier: 'classic', tierLabel: 'Classic & Balanced',
@@ -1768,7 +1768,7 @@
       name: 'PKNI Natural',
       producerLabel: 'Pusat Kopi Nusantara',
       producer: 'pkni',
-      sheet: 'PKNI Natural',
+      sheet: 'PKNI Natural (2025 crop)',
       origin: 'Cianjur, Java Preanger',
       originAdmin: 'Cianjur Regency, West Java, Indonesia',
       tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
@@ -2318,8 +2318,9 @@
     });
   })();
 
-  // ── Live inventory from the same published Google Sheet as the catalog ──
-  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbDmqVSzRDGaS1LfumRNhtFSoa_Ht5CnSIiqaLqafiUOU9YtMofQ3Jq9qAbYvt-xLj7ZoIw574uIxn/pub?gid=0&single=true&output=csv';
+  // ── Live inventory from the same AIS Logistics feed as the catalog ──
+  // Each lot's `sheet` key must match the feed's "<name> (<year> crop)" string verbatim.
+  const SHEET_CSV_URL = 'https://ais-logistics-two.vercel.app/inventory.csv';
 
   function parseCSV(text) {
     const rows = [];
