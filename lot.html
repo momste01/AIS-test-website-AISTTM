@@ -461,18 +461,16 @@
 
     /* Producer section */
     .producer-block { margin-top: 64px; }
-    .producer-cols {
-      display: grid;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-      gap: 56px;
-      align-items: start;
-    }
+    .producer-cols::after { content: ''; display: block; clear: both; }
     .producer-photo {
       position: relative;
       border-radius: 3px;
       overflow: hidden;
       isolation: isolate;
       aspect-ratio: 4 / 3.2;
+      float: left;
+      width: 45%;
+      margin: 6px 48px 22px 0;
     }
     .producer-photo img {
       width: 100%;
@@ -916,8 +914,7 @@
       .lot-top { grid-template-columns: 1fr; gap: 36px; }
       .lot-gallery { position: static; max-width: 560px; }
       .about-cols { grid-template-columns: 1fr; gap: 32px; }
-      .producer-cols { grid-template-columns: 1fr; gap: 32px; }
-      .producer-photo { max-width: 560px; }
+      .producer-photo { float: none; width: 100%; max-width: 560px; margin: 0 0 24px; }
       .related-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
@@ -1090,7 +1087,7 @@
   <div class="crumb-bar-inner">
     <a href="/coffee.html">Coffee</a>
     <span class="crumb-sep">/</span>
-    <a href="/catalog.html">Available Lots</a>
+    <a href="/catalog.html" id="crumb-catalog">Available Lots</a>
     <span class="crumb-sep">/</span>
     <span class="crumb-current" id="crumb-name">Lot</span>
   </div>
@@ -1411,6 +1408,87 @@
         'Quality control at every stage, from cherry selection to processing'
       ],
       partner: 'PKNI represents a community-first Indonesian coffee model: transparent, quality-driven, and built to uplift the people behind every cup. Your support strengthens the partnership between Across Indonesian Seas and PKNI, helping sustain community farming in Cianjur.'
+    },
+    'etalase': {
+      heading: 'The Producer · Alko Sumatra Kopi & The Etalase Foundation',
+      photo: '/etalase-photos/etalase-alko-welcome.webp',
+      caption: 'The AIS and Alko Sumatra Kopi teams at the Etalase collective, Jambi, Sumatra',
+      story: [
+        '<strong>Alko Sumatra Kopi</strong> is the producer and processor behind these coffees, working in partnership with the <strong>Etalase Foundation</strong> (Yayasan Etalase Ekosistem Indonesia), a non-profit coffee cooperative that supports producers across Jambi Province, Sumatra. Alko grows and processes the coffee; Etalase provides quality validation, sustainability oversight, some logistics and storage, and farmer education. Because Etalase is a non-profit and cannot act as the registered exporter, the commercial side, including export, runs through Alko, which makes the two a natural fit.',
+        'Quality runs as a two-step process. Alko checks each lot first at its own mill and warehouse, and then Etalase’s <strong>Internal Control System</strong> team validates it, staffed with nationally certified (BNSP) assessors and technicians in processing, cupping, and roasting. Every lot receives an Etalase registration number recording its journey from farm through post-harvest, roasting, and sensory evaluation, checked against Indonesian national (SNI) and Coffee Quality Institute (CQI) standards.',
+        'Traceability is the standout. Beyond the registration numbers, the partners are investing in digital, farm-level traceability: Alko is an early supporter of <strong>QThinkX</strong>, a young blockchain-based traceability platform that has already accompanied Kerinci coffee exports abroad. The platform is still early-stage and being refined, but the direction is clear: every lot carrying a scannable record of the farmers who grew it, their farms, and the exact GPS coordinates of where the coffee was grown, so the story can travel with the coffee all the way to a roaster’s customers.',
+        'Etalase’s reach goes well beyond a single farm. Across Jambi it supports multiple producer partners province-wide, with farmers paid before the harvest begins and a Workshop Series that trains growers and processors in good agricultural practice and coffee-based agroforestry. Its network spans all four coffee species: Arabica on volcanic highland slopes, Robusta across volcanic and mineral soils, and both Liberica and Excelsa on coastal peat and lowland soils, from a 1,700-metre volcano down to sea-level peatland. Its coastal Liberica, mostly the Tungkal Komposit variety, leans into tropical fruit with notes of jackfruit and cempedak. The coffees on this page are Alko’s, grown in the volcanic highlands around Kerinci where Arabica ripens under shade between 1,300 and 1,650 metres.'
+      ],
+      practicesHeading: 'Forest and Farming Practices',
+      practices: [
+        'Coffee grown as agroforestry, shaded by forest hardwoods, cinnamon, cacao, durian, and citrus',
+        'Many farmer groups licensed under Indonesia’s Social Forestry program to grow coffee inside designated forest landscapes',
+        'Coffee agroforestry replaces prohibited oil palm, helping keep the forest standing',
+        'A decade of continuous work toward reducing and eliminating synthetic fertilizer use',
+        'Coffee pulp returned to the fields or composted to improve the soil',
+        'Reforestation and biodiversity demonstration plots in forest landscape areas'
+      ],
+      partner: 'Alko and Etalase together are AIS’s partners in Jambi, combining producer-led processing with cooperative quality validation and one of the deepest traceability systems in Indonesian coffee. Every harvest and lot is registered and documented from farm to cupping table, and their doors are open to buyers who wish to visit.'
+    },
+    'rumah-kopi-bajawa': {
+      heading: 'The Producer · Rumah Kopi Bajawa',
+      photo: '/flores-photos/flores-greenhouse-team.webp',
+      caption: 'Hadi and Akhtar of AIS with the Rumah Kopi Bajawa team, including Oday (far right), in the greenhouse drying house, Ngada Regency, Flores',
+      story: [
+        'Rumah Kopi Bajawa pairs a farmer cooperative with a dedicated processor in the highlands of Flores. The coffee is grown by the <strong>33 member farmers of Koperasi Produsen Kopi Ekoheto Sejahtera</strong> in Desa Mukuvoka, Ngada Regency, who pick the cherry and take it through to wet parchment. From there, <strong>PT Rumah Kopi Bajawa</strong>, led by Bernard Suryanto Langoday, handles drying, hulling, sorting, and packing to export-ready green bean. More than 260 families in the area depend on coffee for their livelihood.',
+        'Coffee was first brought to Bajawa by Catholic missionaries in 1930 and spread widely through the 1980s. Today it is more than a crop here: it is the identity and culture of the Bajawa people, passed from generation to generation, with member gardens farmed by the same families for around fifteen years. The past five years have brought real pressure, with climate change cutting yields and price uncertainty pushing some farmers toward other crops, and the cooperative model exists to keep Bajawa coffee viable for the next generation. In 2025 the project took first place for village economic innovation at the ASTRA Innovation Festival.',
+        'The gardens sit at 1,150 to 1,450 metres on volcanic Andosol slopes, shaded by Lamtoro, Dadap, and Sengon and intercropped with food crops. By the producers’ account the land has been farmed without pesticides or synthetic fertilizer for around two decades, relying on compost, leaf litter, and shade for soil and pest management. Drying is done carefully: three days in the open sun, then a slow finish on racks inside a greenhouse. Farmers are paid cash on delivery when their coffee is weighed.'
+      ],
+      practicesHeading: 'Farming Practices at Rumah Kopi Bajawa',
+      practices: [
+        'Farmed without pesticides or synthetic fertilizer for around two decades, by the producers’ account',
+        'Grown under Lamtoro, Dadap, and Sengon shade with intercropped food crops',
+        'Cherry pulp and parchment husk composted back into the coffee gardens',
+        'Open-sun drying followed by slow drying on racks in a greenhouse',
+        'Nursery and replanting program restoring unproductive plots',
+        'Written records from cherry purchase through processing and storage'
+      ],
+      partner: 'Rumah Kopi Bajawa combines smallholder tradition with careful, centralized processing on Flores, an island still rare in North American offerings. Buying these lots supports the families keeping Bajawa’s coffee culture alive, and the cooperative welcomes buyers who wish to visit.'
+    },
+    'mandalagiri': {
+      heading: 'The Producer · Koperasi Mandalagiri',
+      photo: '/placeholders/coming-soon-photo.jpg',
+      caption: 'Koperasi Produsen Kopi Mandalagiri, Cikandang, Garut',
+      story: [
+        'Koperasi Produsen Kopi Mandalagiri is a cooperative of <strong>75 farmers</strong> in Desa Cikandang, high on the volcanic slopes of Garut, West Java. The coffee grows on members’ own plots and on state forest land in the <strong>Papandayan and Mandalagiri blocks</strong>, managed under formal agreements that grew out of Perhutani’s community forestry program and transitioned into Indonesia’s Social Forestry scheme in 2024. Governance is participatory: elected officers coordinate production, quality, collection, and marketing, with decisions made in open member meetings.',
+        'The cooperative’s pride is its <strong>Bourbon</strong>, in particular the Yellow Bourbon it has developed in the Mandalagiri area, grown in fertile volcanic soil at elevations reaching 1,750 metres. Around 300 people in Cikandang depend on the coffee economy, and the work has been recognized beyond the village: a Desa Sejahtera Astra coffee-cluster award in 2021 and a Star Energy community empowerment award in 2025 for environmental education. A generation of young farmers is being trained to carry it forward.',
+        'Processing is deliberately circular. Wastewater from the wet mill is converted into liquid organic fertilizer rather than discharged, and coffee pulp is turned into solid fertilizer and charcoal. Compost goes on at least twice a year, with pesticides used only sparingly when needed. Farm workers are paid above the Garut minimum wage, and member farmers are paid cash at the scale the moment they deliver. The lot reaches roasters through Rumah Kopi Bajawa, the partner outfit led by the cooperative’s general manager, Bernard Langoday.'
+      ],
+      practicesHeading: 'Farming Practices at Mandalagiri',
+      practices: [
+        'Coffee grown on farmer plots and state forest blocks under Indonesia’s Social Forestry program',
+        'Shaded by pine and rasamala alongside avocado, jackfruit, and citrus',
+        'Organic compost applied at least twice a year; pesticides used only sparingly when needed',
+        'Wet-mill wastewater converted into liquid organic fertilizer rather than discharged',
+        'Coffee pulp processed into solid fertilizer and charcoal',
+        'Registered in the Garut Geographical Indication, with written lot records kept'
+      ],
+      partner: 'Mandalagiri pairs smallholder cooperative farming with a distinctive varietal story in Garut’s volcanic highlands. Buying this lot supports the families of Cikandang and the young farmers taking over the gardens, and the cooperative’s doors are open to buyers who wish to visit.'
+    },
+    'agtn': {
+      heading: 'The Producer · Agrotropik Nusantara (AGTN)',
+      photo: '/placeholders/coming-soon-photo.jpg',
+      caption: 'Agrotropik Nusantara, Kayu Aro, Kerinci',
+      story: [
+        'PT Agro Tropic Nusantara (AGTN) is a family-run producer and exporter at the foot of <strong>Mount Kerinci</strong>, the highest volcano in Indonesia. The organization was founded around 2009 by people who cared about the landscape, with a clear purpose: reduce encroachment into <strong>Kerinci Seblat National Park</strong> by giving farming families a real living from coffee instead. Production is centred in the Kayu Aro highlands, and the operation runs as a pair of companies under one family: <strong>Emma Fatma</strong>, who spent nearly two decades with WWF Indonesia before turning to coffee, leads AGTN and its exports, while her husband <strong>Mulyadi</strong> leads CV Rumpun Tani Lestari, the sister company serving Indonesia’s domestic market.',
+        'Across Arabica and Robusta, the two companies work with roughly <strong>680 to 800 farmers</strong> around the Kerinci valley. This Arabica lot is the work of around 200 farming families growing Andungsari and Sigararutang between 1,200 and 1,400 metres, with cherry bought directly from the community. Ask the producers what they are proudest of and the answer is simple: value, quality, and a consistent cup, year after year.',
+        'By the producers’ account the land has been farmed without synthetic chemicals since 2012, with pests managed using botanical, plant-based preparations and coffee grown under citrus, medang, and avocado shade. Coffee pulp goes back to the farmers as fertilizer and processing wastewater is collected in treatment tanks rather than released. The project’s work developing Kerinci Arabica has been covered by ANTARA News and Mongabay Indonesia, and buyers are welcome to visit the farms.'
+      ],
+      practicesHeading: 'Environmental Practices at AGTN',
+      practices: [
+        'Founded to reduce encroachment into Kerinci Seblat National Park',
+        'No synthetic pesticides or fertilizer since 2012, by the producers’ account',
+        'Pest management with botanical, plant-based preparations',
+        'Coffee grown under citrus, medang, and avocado shade',
+        'Coffee pulp returned to farmers as fertilizer',
+        'Processing wastewater collected in treatment tanks'
+      ],
+      partner: 'AGTN pairs a conservation-driven origin story with a family operation that controls its coffee from farm to export. Buying this lot supports the farming families of Kerinci and the effort to keep coffee, not encroachment, at the foot of Sumatra’s highest volcano.'
     }
   };
 
@@ -1714,6 +1792,270 @@
         ['Warehouse', 'Vancouver, BC · Seaforth'],
         ['Position', 'Spot']
       ]
+    },
+    'etalase-natural': {
+      name: 'Etalase Natural',
+      producerLabel: 'The Etalase Foundation',
+      producer: 'etalase',
+      sheet: 'Etalase Natural (2026 Crop)',
+      origin: 'Kerinci, Sumatra',
+      originAdmin: 'Kerinci Regency, Jambi, Indonesia',
+      tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
+      process: 'natural', processLabel: 'Natural',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [32, 1920],
+      notes: 'Red apple and orange blossom, complex and elegant, floral and fruit-forward through the finish.',
+      chips: ['Red Apple', 'Orange Blossom', 'Floral', 'Fruit-Forward'],
+      about: [
+        'A natural-process Arabica from the volcanic highlands around Kerinci in Jambi, dried whole-cherry to draw out its ripe fruit. It cups complex and elegant, with red apple and orange blossom carried on a floral, fruit-forward finish.',
+        'Grown under shade at 1,300 to 1,650 metres in the Gunung Tujuh and Kayu Aro highlands near Kerinci Seblat, and dry-fermented before finishing in the sun and parabolic drying domes. This is part of the collective’s incoming 2026 crop from Sumatra; samples are available on request.'
+      ],
+      bag: '/etalase-photos/etalase-drying-dome.webp',
+      bagIsPhoto: true,
+      gallery: ['/etalase-photos/etalase-farm.webp', '/etalase-photos/etalase-alko-grading.webp', '/etalase-photos/etalase-drying-green.webp'],
+      specs: [
+        ['Producer', 'Alko Sumatra Kopi'],
+        ['Collective', 'The Etalase Foundation, Jambi, Sumatra'],
+        ['Farm', 'Gunung Tujuh, Kayu Aro, Kerinci'],
+        ['Region', 'Kerinci Regency, Jambi, Sumatra, Indonesia'],
+        ['Elevation', '± 1,300–1,650 masl'],
+        ['Cultivars', 'Andungsari, Kartika'],
+        ['Process', 'Natural, whole-cherry dried'],
+        ['Drying', 'Sun drying and parabolic domes'],
+        ['Harvest', 'June 2026'],
+        ['Profile', 'Fruit-Forward'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'etalase-honey': {
+      name: 'Etalase Honey',
+      producerLabel: 'The Etalase Foundation',
+      producer: 'etalase',
+      sheet: 'Etalase Honey (2026 Crop)',
+      origin: 'Kerinci, Sumatra',
+      originAdmin: 'Kerinci Regency, Jambi, Indonesia',
+      tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
+      process: 'honey', processLabel: 'Honey',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [34, 2040],
+      notes: 'Caramel sweetness, blueberry muffin and a juicy acidity, sweet and round.',
+      chips: ['Caramel', 'Blueberry Muffin', 'Juicy Acidity', 'Sweet & Round'],
+      about: [
+        'A honey-process Arabica from the Kerinci highlands, pulped and dried with the mucilage left on the parchment for extra sweetness and body. Expect caramel sweetness and blueberry muffin over a juicy acidity, sweet and round in the cup.',
+        'Grown under shade on volcanic slopes at 1,300 to 1,650 metres in the Gunung Tujuh and Kayu Aro highlands, dry-fermented and finished in the sun and parabolic drying domes. Part of the incoming 2026 crop from Jambi, Sumatra; samples are available on request.'
+      ],
+      bag: '/etalase-photos/etalase-drying-green.webp',
+      bagIsPhoto: true,
+      gallery: ['/etalase-photos/etalase-drying-dome.webp', '/etalase-photos/etalase-farm.webp', '/etalase-photos/etalase-alko-grading.webp'],
+      specs: [
+        ['Producer', 'Alko Sumatra Kopi'],
+        ['Collective', 'The Etalase Foundation, Jambi, Sumatra'],
+        ['Farm', 'Gunung Tujuh, Kayu Aro, Kerinci'],
+        ['Region', 'Kerinci Regency, Jambi, Sumatra, Indonesia'],
+        ['Elevation', '± 1,300–1,650 masl'],
+        ['Cultivars', 'Andungsari, Sigararutang'],
+        ['Process', 'Honey, dry fermented, dried with mucilage intact'],
+        ['Drying', 'Sun drying and parabolic domes'],
+        ['Harvest', 'June 2026'],
+        ['Profile', 'Fruit-Forward'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'etalase-fully-washed': {
+      name: 'Etalase Fully Washed',
+      producerLabel: 'The Etalase Foundation',
+      producer: 'etalase',
+      sheet: 'Etalase Fully Washed (2026 Crop)',
+      origin: 'Kerinci, Sumatra',
+      originAdmin: 'Kerinci Regency, Jambi, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'washed', processLabel: 'Fully Washed',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [50, 3000],
+      notes: 'Plum and cherry sweetness carrying into a long grapefruit finish, syrupy with strong body.',
+      chips: ['Plum', 'Cherry', 'Grapefruit Finish', 'Syrupy Body'],
+      about: [
+        'A fully washed Arabica from the volcanic highlands around Kerinci, fermented and washed clean so the coffee’s intrinsic structure comes through. Plum and cherry sweetness carry into a long grapefruit finish, syrupy with a strong body.',
+        'Grown under shade at 1,300 to 1,650 metres in the Gunung Tujuh and Kayu Aro highlands, wet-fermented for a full day before drying in the sun and parabolic domes. Part of the incoming 2026 crop from Jambi, Sumatra; samples are available on request.'
+      ],
+      bag: '/etalase-photos/etalase-farm.webp',
+      bagIsPhoto: true,
+      gallery: ['/etalase-photos/etalase-drying-dome.webp', '/etalase-photos/etalase-alko-grading.webp', '/etalase-photos/etalase-drying-green.webp'],
+      specs: [
+        ['Producer', 'Alko Sumatra Kopi'],
+        ['Collective', 'The Etalase Foundation, Jambi, Sumatra'],
+        ['Farm', 'Gunung Tujuh, Kayu Aro, Kerinci'],
+        ['Region', 'Kerinci Regency, Jambi, Sumatra, Indonesia'],
+        ['Elevation', '± 1,300–1,650 masl'],
+        ['Cultivars', 'Andungsari, Sigararutang'],
+        ['Process', 'Fully washed, wet fermented 1 day'],
+        ['Drying', 'Sun drying and parabolic domes'],
+        ['Harvest', 'July 2026'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'natural-bajawa': {
+      name: 'Natural Bajawa',
+      producerLabel: 'Rumah Kopi Bajawa',
+      producer: 'rumah-kopi-bajawa',
+      sheet: 'Natural Bajawa (2026 Crop)',
+      origin: 'Bajawa, Flores',
+      originAdmin: 'Ngada Regency, East Nusa Tenggara, Indonesia',
+      tier: 'fruit-forward', tierLabel: 'Fruit-Forward',
+      process: 'natural', processLabel: 'Natural',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [8, 480],
+      notes: 'Final cupping is being logged; tasting notes to follow shortly.',
+      chips: ['Whole-Cherry Natural', 'Lini S795', 'Volcanic Andosol', 'Flores'],
+      about: [
+        'A whole-cherry natural from the cooperative’s own gardens on the slopes of Gunung Wolobobo, at around 1,200 metres on Flores. The Lini S795 cherry is dried in parabolic domes, concentrating ripe-fruit sweetness. Final cupping is being logged now, and tasting notes will follow shortly.',
+        'Grown by the member farmers of Koperasi Ekoheto Sejahtera and finished by Rumah Kopi Bajawa’s drying, hulling, and sorting line. A small lot, part of the incoming 2026 crop from Flores; samples are available on request.'
+      ],
+      bag: '/flores-photos/flores-drying-patio.webp',
+      bagIsPhoto: true,
+      gallery: ['/flores-photos/flores-picking-2.webp', '/flores-photos/flores-shade-forest.webp', '/flores-photos/flores-village.webp'],
+      specs: [
+        ['Producer', 'Rumah Kopi Bajawa · Koperasi Ekoheto Sejahtera'],
+        ['Farm', 'Cooperative gardens, Gunung Wolobobo'],
+        ['Region', 'Bajawa, Ngada Regency, East Nusa Tenggara (Flores)'],
+        ['Elevation', '± 1,200 masl'],
+        ['Cultivars', 'Lini S795'],
+        ['Process', 'Natural, whole-cherry dried'],
+        ['Drying', 'Parabolic dome'],
+        ['Harvest', 'June – July 2026'],
+        ['Profile', 'Fruit-Forward'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'fully-washed-bajawa': {
+      name: 'Fully Washed Bajawa',
+      producerLabel: 'Rumah Kopi Bajawa',
+      producer: 'rumah-kopi-bajawa',
+      sheet: 'Fully Washed Bajawa (2026 Crop)',
+      origin: 'Bajawa, Flores',
+      originAdmin: 'Ngada Regency, East Nusa Tenggara, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'washed', processLabel: 'Fully Washed',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [33, 1980],
+      notes: 'Bright and clean, orange zest and citrus fruit with a dark chocolate bitterness through the finish.',
+      chips: ['Orange Zest', 'Citrus', 'Dark Chocolate', 'Clean Finish'],
+      about: [
+        'A fully washed Lini S795 from cooperative gardens spread across Gunung Lobobutu, Gunung Lebijaga, and Gunung Wolobobo, at around 1,250 metres on Flores. A one-day dry fermentation and a clean wash give a bright, transparent cup: orange zest and citrus fruit with a dark chocolate bitterness carrying through the finish.',
+        'Grown by the member farmers of Koperasi Ekoheto Sejahtera, sun-dried and finished in parabolic domes, then hulled and sorted by Rumah Kopi Bajawa. Part of the incoming 2026 crop from Flores; samples are available on request.'
+      ],
+      bag: '/flores-photos/flores-sorting.webp',
+      bagIsPhoto: true,
+      gallery: ['/flores-photos/flores-drying-center.webp', '/flores-photos/flores-greenhouse-racks.webp', '/flores-photos/flores-picking.webp'],
+      specs: [
+        ['Producer', 'Rumah Kopi Bajawa · Koperasi Ekoheto Sejahtera'],
+        ['Farm', 'Cooperative gardens: Gunung Lobobutu, Lebijaga, Wolobobo'],
+        ['Region', 'Bajawa, Ngada Regency, East Nusa Tenggara (Flores)'],
+        ['Elevation', '± 1,250 masl'],
+        ['Cultivars', 'Lini S795'],
+        ['Process', 'Fully washed, dry fermented 1 day'],
+        ['Drying', 'Sun drying and parabolic domes'],
+        ['Harvest', 'June – July 2026'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'natural-garut': {
+      name: 'Natural Garut',
+      producerLabel: 'Koperasi Mandalagiri',
+      producer: 'mandalagiri',
+      sheet: 'Natural Garut (2026 Crop)',
+      origin: 'Garut, Java Preanger',
+      originAdmin: 'Garut Regency, West Java, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'natural', processLabel: 'Natural',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [9, 540],
+      notes: 'Bright cup carrying caramel, toffee and warm spice over plum and chocolate.',
+      chips: ['Caramel', 'Toffee', 'Warm Spice', 'Plum & Chocolate'],
+      about: [
+        'A Bourbon natural from the volcanic slopes of Gunung Papandayan and Gunung Mandalagiri, grown between 1,350 and 1,750 metres on state forest blocks farmed under Indonesia’s Social Forestry program. A traditional natural with no intentional fermentation step: whole cherry goes straight to raised beds, shaded for the first two to three days so the fruit dries without cracking, then sun-dried for twenty to thirty-five days and turned hourly through the first week. The cup stays bright: caramel, toffee, and warm spice over plum and chocolate.',
+        'Grown by the 75 farmers of Koperasi Mandalagiri in Cikandang, the cooperative behind Garut’s Yellow Bourbon development, and brought to export through Rumah Kopi Bajawa. Part of the incoming 2026 crop; samples are available on request.'
+      ],
+      bag: '/placeholders/coming-soon-tall.jpg',
+      bagIsPhoto: true,
+      gallery: [],
+      specs: [
+        ['Producer', 'Koperasi Produsen Kopi Mandalagiri, Cikandang'],
+        ['Partner', 'Rumah Kopi Bajawa'],
+        ['Farm', 'Perhutani blocks Papandayan & Mandalagiri'],
+        ['Region', 'Cikandang, Garut Regency, West Java, Indonesia'],
+        ['Elevation', '± 1,350–1,750 masl'],
+        ['Cultivars', 'Bourbon (incl. Yellow Bourbon)'],
+        ['Process', 'Traditional natural, no intentional fermentation'],
+        ['Drying', 'Raised beds, shaded 2–3 days then full sun; 20–35 days total'],
+        ['Harvest', 'June – July 2026'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
+    },
+    'agtn-wet-hulled': {
+      name: 'AGTN Wet Hulled',
+      producerLabel: 'Agrotropik Nusantara',
+      producer: 'agtn',
+      sheet: 'AGTN Wet Hulled (2026 Crop)',
+      origin: 'Kerinci, Sumatra',
+      originAdmin: 'Kerinci Regency, Jambi, Indonesia',
+      tier: 'classic', tierLabel: 'Classic & Balanced',
+      process: 'wet-hulled', processLabel: 'Wet Hulled',
+      incoming: true,
+      positionLabel: 'Incoming · 2026 Crop',
+      bagSize: '60 kg',
+      stock: [88, 5280],
+      notes: 'Dried fruit, nutmeg and date, medium body with a syrupy texture and a gentle herbal edge.',
+      chips: ['Dried Fruit', 'Nutmeg & Date', 'Syrupy Texture', 'Gentle Herbal'],
+      about: [
+        'A semi-washed, wet-hulled Arabica from partner farmers around Mount Kerinci, wet fermented for twelve hours before hulling at high moisture in the Indonesian tradition. The cup is classic Sumatra with polish: dried fruit, nutmeg and date, a medium body with syrupy texture, and a gentle herbal edge through the finish.',
+        'Grown by around 200 farming families at 1,200 to 1,400 metres in the shadow of Kerinci Seblat National Park, and dried in parabolic domes at AGTN’s Kayu Aro facility. The largest lot in the incoming 2026 shipment; samples are available on request.'
+      ],
+      bag: '/placeholders/coming-soon-tall.jpg',
+      bagIsPhoto: true,
+      gallery: [],
+      specs: [
+        ['Producer', 'PT Agro Tropic Nusantara (AGTN)'],
+        ['Domestic Arm', 'CV Rumpun Tani Lestari'],
+        ['Farm', 'Partner farmers, Kayu Aro, Mount Kerinci'],
+        ['Region', 'Kerinci Regency, Jambi, Sumatra, Indonesia'],
+        ['Elevation', '± 1,200–1,400 masl'],
+        ['Cultivars', 'Andungsari, Sigararutang'],
+        ['Process', 'Semi-washed (wet hulled), wet fermented 12 hours'],
+        ['Drying', 'Parabolic dome'],
+        ['Harvest', 'June – July 2026'],
+        ['Profile', 'Classic & Balanced'],
+        ['Bag Size', '60 kg export bags'],
+        ['Warehouse', 'Vancouver, BC · Seaforth'],
+        ['Position', 'Incoming · 2026 Crop']
+      ]
     }
   };
 
@@ -1750,6 +2092,11 @@
 
     document.title = `${lot.name} · Across Indonesian Seas`;
     document.getElementById('crumb-name').textContent = lot.name;
+    if (lot.incoming) {
+      const crumbCatalog = document.getElementById('crumb-catalog');
+      crumbCatalog.textContent = 'Incoming 2026 Crop';
+      crumbCatalog.href = '/catalog-2.html';
+    }
     document.getElementById('lot-producer').textContent = lot.producerLabel;
     document.getElementById('lot-title').textContent = lot.name;
     document.getElementById('lot-origin').textContent = lot.origin;
@@ -1770,8 +2117,10 @@
 
     // Availability defaults (live numbers overwrite via the sheet sync below)
     document.getElementById('avail-warehouse').textContent = 'Vancouver, BC';
-    document.getElementById('avail-position').textContent = 'Seaforth · Spot';
-    document.getElementById('avail-bagsize').textContent = '30 kg';
+    document.getElementById('avail-position').textContent = lot.positionLabel || 'Seaforth · Spot';
+    document.getElementById('avail-bagsize').textContent = lot.bagSize || '30 kg';
+    const hintEl = document.querySelector('.quote-form-hint');
+    if (hintEl) hintEl.innerHTML = 'Full ' + (lot.bagSize || '30 kg').replace(' ', '&nbsp;') + ' export bags you\'re considering.';
     setAvailability(lot.stock[0], lot.stock[1]);
 
     // CTAs: modal openers with no-JS fallback hrefs
@@ -1782,7 +2131,8 @@
     quoteBtn.href = fallback;
 
     // Gallery
-    const images = [{ src: lot.bag, bag: true, alt: lot.name + ' bag' }]
+    const firstIsBag = !lot.bagIsPhoto;
+    const images = [{ src: lot.bag, bag: firstIsBag, alt: firstIsBag ? lot.name + ' bag' : lot.producerLabel }]
       .concat(lot.gallery.map(g => ({ src: g, bag: false, alt: lot.producerLabel })));
     const mainWrap = document.getElementById('gallery-main');
     const mainImg = document.getElementById('gallery-main-img');
@@ -1796,6 +2146,7 @@
       thumbs.querySelectorAll('button').forEach((b, bi) => b.classList.toggle('current', bi === i));
     }
 
+    if (images.length === 1) thumbs.style.display = 'none';
     images.forEach((im, i) => {
       const b = document.createElement('button');
       b.type = 'button';
@@ -2000,7 +2351,7 @@
     if (bags > 0) {
       document.querySelector('.lot-page').classList.remove('sold-out');
       bagsEl.textContent = `${bags.toLocaleString('en-CA')} Bags`;
-      kgEl.textContent = `${kg.toLocaleString('en-CA')} kg in stock`;
+      kgEl.textContent = `${kg.toLocaleString('en-CA')} kg ${lot && lot.incoming ? 'arriving' : 'in stock'}`;
       sampleBtn.textContent = 'Request Sample';
       quoteBtn.style.display = '';
     } else {
@@ -2013,7 +2364,7 @@
   }
 
   async function syncInventory() {
-    if (!SHEET_CSV_URL || !lot) return;
+    if (!SHEET_CSV_URL || !lot || lot.incoming) return;
     try {
       const res = await fetch(SHEET_CSV_URL);
       if (!res.ok) return;
