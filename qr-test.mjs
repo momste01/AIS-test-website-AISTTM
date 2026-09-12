@@ -10,9 +10,9 @@ const SLUGS = [
   ['etalase-honey', 'Etalase Honey'],
   ['etalase-fully-washed', 'Etalase Fully Washed'],
   ['agtn-wet-hulled', 'AGTN Wet Hulled'],
-  ['natural-bajawa', 'Natural Bajawa'],
-  ['fully-washed-bajawa', 'Fully Washed Bajawa'],
-  ['natural-garut', 'Natural Garut'],
+  ['natural-bajawa', 'Bajawa Natural'],
+  ['fully-washed-bajawa', 'Bajawa Fully Washed'],
+  ['natural-garut', 'Garut Natural'],
   ['frinsa-estate-natural-lactic', 'Frinsa Estate Natural Lactic'],
   ['frinsa-collective-natural', 'Frinsa Collective Natural'],
 ];
